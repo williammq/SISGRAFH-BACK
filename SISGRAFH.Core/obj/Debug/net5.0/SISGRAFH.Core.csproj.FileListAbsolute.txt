@@ -1,0 +1,12 @@
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\bin\Debug\net5.0\SISGRAFH.Core.deps.json
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\bin\Debug\net5.0\SISGRAFH.Core.dll
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\bin\Debug\net5.0\SISGRAFH.Core.pdb
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\obj\Debug\net5.0\SISGRAFH.Core.csproj.AssemblyReference.cache
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\obj\Debug\net5.0\SISGRAFH.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\obj\Debug\net5.0\SISGRAFH.Core.AssemblyInfoInputs.cache
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\obj\Debug\net5.0\SISGRAFH.Core.AssemblyInfo.cs
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\obj\Debug\net5.0\SISGRAFH.Core.csproj.CoreCompileInputs.cache
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\obj\Debug\net5.0\SISGRAFH.Core.dll
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\obj\Debug\net5.0\refint\SISGRAFH.Core.dll
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\obj\Debug\net5.0\SISGRAFH.Core.pdb
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Core\obj\Debug\net5.0\ref\SISGRAFH.Core.dll

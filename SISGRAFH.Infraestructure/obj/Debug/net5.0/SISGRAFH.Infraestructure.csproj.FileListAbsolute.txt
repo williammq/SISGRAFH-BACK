@@ -1,0 +1,15 @@
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\bin\Debug\net5.0\SISGRAFH.Infraestructure.deps.json
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\bin\Debug\net5.0\SISGRAFH.Infraestructure.dll
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\bin\Debug\net5.0\SISGRAFH.Infraestructure.pdb
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\bin\Debug\net5.0\SISGRAFH.Core.dll
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\bin\Debug\net5.0\SISGRAFH.Core.pdb
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\SISGRAFH.Infraestructure.csproj.AssemblyReference.cache
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\SISGRAFH.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\SISGRAFH.Infraestructure.AssemblyInfoInputs.cache
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\SISGRAFH.Infraestructure.AssemblyInfo.cs
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\SISGRAFH.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\SISGRAFH.Infraestructure.csproj.CopyComplete
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\SISGRAFH.Infraestructure.dll
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\refint\SISGRAFH.Infraestructure.dll
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\SISGRAFH.Infraestructure.pdb
+C:\Proyectos\SISGRAFH\SISGRAFH-BACK\SISGRAFH.Infraestructure\obj\Debug\net5.0\ref\SISGRAFH.Infraestructure.dll
