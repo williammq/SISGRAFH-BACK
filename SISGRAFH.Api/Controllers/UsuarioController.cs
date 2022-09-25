@@ -24,6 +24,7 @@ namespace SISGRAFH.Api.Controllers
             var users = await _usuarioService.GetUsuarios();
             var response = new ApiResponse<IEnumerable<Usuario>>(users);
             return Ok(response);
+            //comentario
 
         }
     }
