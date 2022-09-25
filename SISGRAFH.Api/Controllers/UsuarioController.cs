@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SISGRAFH.Api.Responses;
+using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Infraestructure.Repositories;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SISGRAFH.Api.Controllers
@@ -19,7 +22,8 @@ namespace SISGRAFH.Api.Controllers
         public async Task<IActionResult> GetUsers()
         {
             var users = await _usuarioService.GetUsuarios();
-            return Ok(users);
+            var response = new ApiResponse<IEnumerable<Usuario>>(users);
+            return Ok(response);
 
         }
     }
