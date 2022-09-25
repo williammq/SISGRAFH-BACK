@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SISGRAFH.Core.Entities
 {
     [BsonIgnoreExtraElements]
-    public class Usuario
+    public class beUsuario
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

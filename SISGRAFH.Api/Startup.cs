@@ -39,6 +39,9 @@ namespace SISGRAFH.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SISGRAFH.Api", Version = "v1" });
             });
 
+            //Automapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             //Inyección de dependencias de MongoDB debe ir antes de la I.D. de los servicios
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoConnection"));
             services.AddSingleton<MongoContext>();

@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using SISGRAFH.Core.DTOs.Usuario;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Infraestructure.Data;
@@ -12,16 +13,22 @@ namespace SISGRAFH.Infraestructure.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        private readonly IMongoCollection<Usuario> _usuario;
+        private readonly IMongoCollection<beUsuario> _usuario;
 
         public UsuarioRepository(IMongoDatabase database)
         {
-            _usuario = database.GetCollection<Usuario>(MongoCollectionNames.Usuarios);
+            _usuario = database.GetCollection<beUsuario>(MongoCollectionNames.Usuarios);
         }
-        public async Task<IEnumerable<Usuario>> GetUsuarios()
+        public async Task<IEnumerable<beUsuario>> GetUsuarios()
         {
             var usuarios = await _usuario.Find(usuario => true).ToListAsync();
             return usuarios;
+        }
+
+        public async Task<beUsuario> PostUsuario(beUsuario usuario)
+        {
+            await _usuario.InsertOneAsync(usuario);
+            return usuario;
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SISGRAFH.Api.Responses;
+using SISGRAFH.Core.DTOs.Usuario;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Infraestructure.Repositories;
@@ -14,15 +16,29 @@ namespace SISGRAFH.Api.Controllers
     public class UsuarioController : ControllerBase
     {
         private static IUsuarioService _usuarioService;
-        public UsuarioController(IUsuarioService usuarioService)
+        private static IMapper _mapper;
+        public UsuarioController(IUsuarioService usuarioService, IMapper mapper)
         {
             _usuarioService = usuarioService;
+            _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
             var users = await _usuarioService.GetUsuarios();
-            var response = new ApiResponse<IEnumerable<Usuario>>(users);
+            var response = new ApiResponse<IEnumerable<beUsuario>>(users);
+            return Ok(response);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostUsers(UsuarioDto usuarioDto)
+        {
+            var usuario = _mapper.Map<beUsuario>(usuarioDto);
+            var usuarioPosted = await _usuarioService.PostUsuario(usuario);
+
+            usuarioDto = _mapper.Map<UsuarioDto>(usuarioPosted);
+            var response = new ApiResponse<UsuarioDto>(usuarioDto);
             return Ok(response);
 
         }

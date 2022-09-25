@@ -21,10 +21,14 @@ namespace SISGRAFH.Core.Services
             _dataService = dataService;
         }
 
-        public async Task<IEnumerable<Usuario>> GetUsuarios()
+        public async Task<IEnumerable<beUsuario>> GetUsuarios()
         {
             return await _usuarioRepository.GetUsuarios();
         }
 
+        public async Task<beUsuario> PostUsuario(beUsuario usuario)
+        {
+            return await _usuarioRepository.PostUsuario(usuario);
+        }
     }
 }

@@ -6,6 +6,7 @@ namespace SISGRAFH.Core.Interfaces
 {
     public interface IUsuarioService
     {
-        Task<IEnumerable<Usuario>> GetUsuarios();
+        Task<IEnumerable<beUsuario>> GetUsuarios();
+        Task<beUsuario> PostUsuario(beUsuario usuario);
     }
 }
