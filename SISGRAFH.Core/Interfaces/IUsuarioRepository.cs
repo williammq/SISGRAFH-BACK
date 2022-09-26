@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Core.Interfaces
 {
-    public interface IUsuarioRepository
+    public interface IUsuarioRepository : IRepository<beUsuario>
     {
         Task<IEnumerable<beUsuario>> GetUsuarios();
         Task<beUsuario> PostUsuario(beUsuario usuario);

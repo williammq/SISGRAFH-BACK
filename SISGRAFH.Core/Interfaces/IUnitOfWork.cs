@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Infraestructure.Data.Interfaces
 {
-    public interface IDataService
+    public interface IUnitOfWork
     {
         public IUsuarioRepository Usuario { get; }
     }

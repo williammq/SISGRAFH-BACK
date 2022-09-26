@@ -42,5 +42,17 @@ namespace SISGRAFH.Api.Controllers
             return Ok(response);
 
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser(UsuarioDto usuarioDto)
+        {
+            var usuario = _mapper.Map<beUsuario>(usuarioDto);
+            var usuarioPosted = await _usuarioService.UpdateUser(usuario);
+
+            usuarioDto = _mapper.Map<UsuarioDto>(usuarioPosted);
+            var response = new ApiResponse<UsuarioDto>(usuarioDto);
+            return Ok(response);
+
+        }
     }
 }

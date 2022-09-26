@@ -2,7 +2,7 @@
 using SISGRAFH.Core.DTOs.Usuario;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
-using SISGRAFH.Infraestructure.Data;
+using SISGRAFH.Core.Utils.MongoDbParams;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Infraestructure.Repositories
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository : BaseRepository<beUsuario>, IUsuarioRepository
     {
         private readonly IMongoCollection<beUsuario> _usuario;
 
-        public UsuarioRepository(IMongoDatabase database)
+        public UsuarioRepository(IMongoDatabase database) : base(database)
         {
             _usuario = database.GetCollection<beUsuario>(MongoCollectionNames.Usuarios);
         }

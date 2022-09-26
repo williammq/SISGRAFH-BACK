@@ -8,5 +8,6 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<beUsuario>> GetUsuarios();
         Task<beUsuario> PostUsuario(beUsuario usuario);
+        Task<beUsuario> UpdateUser(beUsuario usuario);
     }
 }

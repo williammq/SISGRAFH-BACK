@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SISGRAFH.Infraestructure.Data
+namespace SISGRAFH.Core.Utils.MongoDbParams
 {
     public static class MongoCollectionNames
     {

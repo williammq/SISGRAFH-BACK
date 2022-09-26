@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using SISGRAFH.Core.Utils.MongoDbParams;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,20 +9,15 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Core.Entities
 {
-    [BsonIgnoreExtraElements]
-    public class beUsuario
+    [BsonCollection(MongoCollectionNames.Usuarios)]
+    public class beUsuario : BaseEntity
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
         [BsonElement("nombre_usuario")]
         public string NombreUsuario { get; set; }
         [BsonElement("clave")]
         public string Clave { get; set; }
         [BsonElement("tipo_usuario")]
         public ObjTipoUsuario TipoUsuario { get; set; }
-        [BsonElement("fecha_creacion")]
-        public DateTime FechaCreacion { get; set; } = DateTime.MinValue;
         [BsonElement("estado")]
         public string Estado { get; set; }
         [BsonElement("roles")]

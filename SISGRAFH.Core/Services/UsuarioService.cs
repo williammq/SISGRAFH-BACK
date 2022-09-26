@@ -11,24 +11,39 @@ namespace SISGRAFH.Core.Services
 {
     public class UsuarioService : IUsuarioService
     {
-        //private static IUsuarioRepository _usuarioRepository;
-        private static IUsuarioRepository _usuarioRepository;
-        private static IDataService _dataService;
+        private static IUnitOfWork _unitOfWork;
 
-        public UsuarioService(IDataService dataService)
+        public UsuarioService(IUnitOfWork unitOfWork)
         {
-            _usuarioRepository = dataService.Usuario;
-            _dataService = dataService;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<beUsuario>> GetUsuarios()
         {
-            return await _usuarioRepository.GetUsuarios();
+            //return await _unitOfWork.Usuario.GetUsuarios();
+            return await _unitOfWork.Usuario.GetAllAsync();
         }
 
         public async Task<beUsuario> PostUsuario(beUsuario usuario)
         {
-            return await _usuarioRepository.PostUsuario(usuario);
+            usuario.Id = null;
+            return await _unitOfWork.Usuario.InsertOneAsync(usuario);
+        }
+
+        public async Task<beUsuario> UpdateUser(beUsuario usuarioRq)
+        {
+            var userDb = await _unitOfWork.Usuario.GetByIdAsync(usuarioRq.Id);
+            if (userDb == null)
+            {
+                return await PostUsuario(usuarioRq);
+            };
+            userDb.NombreUsuario = usuarioRq.NombreUsuario;
+            userDb.TipoUsuario = usuarioRq.TipoUsuario;
+            userDb.Roles = usuarioRq.Roles;
+            userDb.Clave = usuarioRq.Clave;
+            userDb.Estado = usuarioRq.Estado;
+
+            return await _unitOfWork.Usuario.UpdateOneAsync(userDb);
         }
     }
 }

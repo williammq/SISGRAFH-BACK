@@ -11,7 +11,6 @@ using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Core.Services;
 using SISGRAFH.Infraestructure.Data;
 using SISGRAFH.Infraestructure.Data.Interfaces;
-using SISGRAFH.Infraestructure.Data.Services;
 using SISGRAFH.Infraestructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,8 @@ namespace SISGRAFH.Api
             //Inyección de dependencias de MongoDB debe ir antes de la I.D. de los servicios
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoConnection"));
             services.AddSingleton<MongoContext>();
-            services.AddScoped<IDataService, DataService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 
             services.AddTransient<IUsuarioService, UsuarioService>();
 

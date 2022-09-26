@@ -14,7 +14,6 @@ namespace SISGRAFH.Core.DTOs.Usuario
         public string NombreUsuario { get; set; }
         public string Clave { get; set; }
         public ObjTipoUsuarioDto TipoUsuario { get; set; }
-        public DateTime FechaCreacion { get; set; } = DateTime.MinValue;
         public string Estado { get; set; }
         public List<ObjRolDto> Roles { get; set; }
     }
