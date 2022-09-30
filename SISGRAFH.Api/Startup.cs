@@ -27,6 +27,7 @@ namespace SISGRAFH.Api
         }
 
         public IConfiguration Configuration { get; }
+        readonly string PolizaCORSSISGEM = "_polizaCORSSISGEM";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -36,6 +37,21 @@ namespace SISGRAFH.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SISGRAFH.Api", Version = "v1" });
+            });
+            //cualquier cliente desplegado localmente en el puerto
+            //logico 8080 podra consumir las APIS de SISGEM-BACK
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    name: PolizaCORSSISGEM,
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:8080")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader()
+                                .SetIsOriginAllowed((host) => true)
+                                .AllowCredentials();
+                    });
             });
 
             //Automapper
@@ -61,6 +77,9 @@ namespace SISGRAFH.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SISGRAFH.Api v1"));
             }
+
+            //configuracion de la poliza Cross Origin Request Side
+            app.UseCors(PolizaCORSSISGEM);
 
             app.UseHttpsRedirection();
 

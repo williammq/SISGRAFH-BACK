@@ -4,8 +4,8 @@
     {
         public ApiResponse(T data)
         {
-            Data = data;
+            DataResponse = data;
         }
-        public T Data { get; set; }
+        public T DataResponse { get; set; }
     }
 }
