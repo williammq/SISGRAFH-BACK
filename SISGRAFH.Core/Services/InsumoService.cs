@@ -9,25 +9,25 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Core.Services
 {
-    public class CotizacionService : ICotizacionService
+    public class InsumoService : IInsumoService
     {
         private static IUnitOfWork _unitOfWork;
 
-        public CotizacionService(IUnitOfWork unitOfWork)
+        public InsumoService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<IEnumerable<beCotizacion>> GetCotizaciones()
+        public async Task<IEnumerable<object>> GetInsumos()
         {
-            return await _unitOfWork.Cotizacion.GetAllAsync();
+            return await _unitOfWork.Insumo.GetAllAsync();
         }
 
-        public async Task<beCotizacion> PostCotizacion(beCotizacion cotizacion)
+        public async Task<beInsumo> PostInsumo(beInsumo insumo)
         {
-            return await _unitOfWork.Cotizacion.InsertOneAsync(cotizacion);
+            return await _unitOfWork.Insumo.InsertOneAsync(insumo);
         }
 
-        public async Task<beCotizacion> UpdateCotizacion(beCotizacion cotizacion)
+        public Task<beInsumo> UpdateInsumo(beInsumo insumo)
         {
             throw new NotImplementedException();
         }

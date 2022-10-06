@@ -19,9 +19,9 @@ namespace SISGRAFH.Infraestructure.Repositories
             _maquina = database.GetCollection<beMaquina>(MongoCollectionNames.Maquinas);
         }
 
-        public async Task<IEnumerable<beMaquina>> GetMaquinas()
+        public async Task<IEnumerable<object>> GetMaquinas()
         {
-            var maquinas = await _maquina.Find(maquina => true).ToListAsync();
+            var maquinas = await _maquina.AsQueryable().ToListAsync();
             return maquinas;
         }
 

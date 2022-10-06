@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace SISGRAFH.Core.Entities
 {
     [BsonCollection(MongoCollectionNames.Maquinas)]
+    [BsonKnownTypes(typeof(beImpresoraDigital), typeof(beLaminadora), typeof(beGuillotina), typeof(beTroqueladora),typeof(bePerforador),typeof(beHendidora))]
     public class beMaquina : BaseEntity
     {
         [BsonElement("codigo")]
@@ -22,6 +23,8 @@ namespace SISGRAFH.Core.Entities
         public string url_imagen { get; set; }
         [BsonElement("marca")]
         public string marca { get; set; }
+        [BsonElement("tipo_maquina")]
+        public string tipo_maquina { get; set; }
     }
     public class beArea
     {
@@ -98,14 +101,6 @@ namespace SISGRAFH.Core.Entities
         public double longitud_corte { get; set; }
         [BsonElement("altura_corte")]
         public double altura_corte { get; set; }
-    }
-    public class beCizalla : beMaquina
-    {
-        [BsonElement("longitud_corte")]
-        public double longitud_corte { get; set; }
-        //milimetros de grosor de papel que puede cortar
-        [BsonElement("capacidad")]
-        public double capacidad { get; set; }
     }
     public class beTroqueladora : beMaquina
     {

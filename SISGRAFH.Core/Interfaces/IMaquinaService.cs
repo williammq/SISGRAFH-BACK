@@ -9,7 +9,7 @@ namespace SISGRAFH.Core.Interfaces
 {
     public interface IMaquinaService
     {
-        Task<IEnumerable<beMaquina>> GetMaquinas();
+        Task<IEnumerable<object>> GetMaquinas();
         Task<beMaquina> PostMaquina(beMaquina maquina);
         Task<beMaquina> UpdateMaquina(beMaquina maquina);
     }

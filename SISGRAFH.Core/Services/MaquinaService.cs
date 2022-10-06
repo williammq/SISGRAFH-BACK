@@ -17,7 +17,7 @@ namespace SISGRAFH.Core.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<IEnumerable<beMaquina>> GetMaquinas()
+        public async Task<IEnumerable<object>> GetMaquinas()
         {
             return await _unitOfWork.Maquina.GetAllAsync();
         }

@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Core.Interfaces
 {
-    public interface IMaquinaRepository : IRepository<beMaquina>
+    public interface IInsumoService
     {
-        Task<IEnumerable<object>> GetMaquinas();
-        Task<beMaquina> PostMaquina(beMaquina maquina);
+        Task<IEnumerable<object>> GetInsumos();
+        Task<beInsumo> PostInsumo(beInsumo insumo);
+        Task<beInsumo> UpdateInsumo(beInsumo insumo);
     }
 }
