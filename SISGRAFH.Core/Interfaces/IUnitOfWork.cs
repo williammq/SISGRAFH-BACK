@@ -13,5 +13,7 @@ namespace SISGRAFH.Infraestructure.Data.Interfaces
         public IMaquinaRepository Maquina { get; }
         public ICotizacionRepository Cotizacion { get; }
         public IInsumoRepository Insumo { get; }
+        public IProductoRepository Producto { get; }
+        public ISolicitudRepository Solicitud { get; }
     }
 }

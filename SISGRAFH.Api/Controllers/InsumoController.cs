@@ -41,7 +41,7 @@ namespace SISGRAFH.Api.Controllers
             {
                 case "Espiral": insumo = JsonSerializer.Deserialize<beEspiral>(js); break;
                 case "Tinta": insumo = JsonSerializer.Deserialize<beTinta>(js); break;
-                case "Papel": insumo = JsonSerializer.Deserialize<bePapel>(js); break;
+                case "Soporte de Impresión": insumo = JsonSerializer.Deserialize<bePapel>(js); break;
                 case "Pelicula": insumo = JsonSerializer.Deserialize<bePelicula_adhesiva>(js); break;
             }
             var insumoPosted = await _insumoService.PostInsumo(insumo);

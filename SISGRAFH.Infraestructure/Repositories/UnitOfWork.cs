@@ -22,5 +22,7 @@ namespace SISGRAFH.Infraestructure.Repositories
         public IMaquinaRepository Maquina => new MaquinaRepository(_dbContext.Database);
         public ICotizacionRepository Cotizacion => new CotizacionRepository(_dbContext.Database);
         public IInsumoRepository Insumo => new InsumoRepository(_dbContext.Database);
+        public IProductoRepository Producto => new ProductoRepository(_dbContext.Database);
+        public ISolicitudRepository Solicitud => new SolicitudRepository(_dbContext.Database);
     }
 }

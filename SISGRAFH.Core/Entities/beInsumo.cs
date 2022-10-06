@@ -30,6 +30,10 @@ namespace SISGRAFH.Core.Entities
         public string categoria { get; set; }
         [BsonElement("marca")]
         public string marca { get; set; }
+        [BsonElement("costo_unitario")]
+        public double costo_unitario { get; set; }
+        [BsonElement("stock_disponible")]
+        public int stock_disponible { get; set; }
     }
     public class beEspiral : beInsumo
     {
@@ -72,7 +76,7 @@ namespace SISGRAFH.Core.Entities
         public double largo { get; set; }
         // g/m2
         [BsonElement("gramaje")]
-        public string gramaje { get; set; }
+        public double gramaje { get; set; }
         [BsonElement("color")]
         public string color { get; set; }
         //couche o estucado mate, semimate, brillante, offset blanco, Cartulina Sulfatada, Bond, cartulina, opalina, kraft, reciclado

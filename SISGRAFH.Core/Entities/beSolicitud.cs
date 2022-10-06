@@ -10,6 +10,7 @@ using SISGRAFH.Core.Utils.MongoDbParams;
 namespace SISGRAFH.Core.Entities
 {
     [BsonCollection(MongoCollectionNames.Solicitudes)]
+    
     public class beSolicitud : BaseEntity
     {
         [BsonElement("nombre_apellidos")]
@@ -27,7 +28,7 @@ namespace SISGRAFH.Core.Entities
         [BsonElement("productos")]
         public List<producto_solicitud> productos { get; set; }
     }
-
+    [BsonKnownTypes(typeof(beTalonario), typeof(beTarjetaPresentación), typeof(beTriptico), typeof(beDiptico))]
     public class producto_solicitud
     {
         [BsonElement("id_producto")]
@@ -37,7 +38,7 @@ namespace SISGRAFH.Core.Entities
         //4+0 Impresos a todo color una cara y el reverso sin impresión(CMYK / – ).
         //1+1 Impresos a blanco y negro ambas caras(K / K)
         //1+0 Impreso blanco y negro una cara y el anverso sin impresión. (K / – )
-        [BsonElement("colores_impresion")]
+        [BsonElement("tipo_impresion")]
         public string colores_impresion { get; set; }
         [BsonElement("cantidad_ejemplares")]
         public Int32 cantidad_ejemplares { get; set; }
@@ -47,8 +48,8 @@ namespace SISGRAFH.Core.Entities
         //couche, offset blanco, Cartulina Sulfatada, Bond, cartulina verjurada, opalina, bristol
         [BsonElement("tipo_hoja")]
         public string tipo_hoja { get; set; }
-        [BsonElement("gramaje")]
-        public string gramaje { get; set; }
+        [BsonElement("acabado_Hoja")]
+        public string acabado_Hoja { get; set; }
         [BsonElement("archivos")]
         public List<string> archivos { get; set; }
     }
