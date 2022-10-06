@@ -64,6 +64,7 @@ namespace SISGRAFH.Api
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 
             services.AddTransient<IUsuarioService, UsuarioService>();
+            services.AddTransient<IMaquinaService, MaquinaService>();
 
 
         }

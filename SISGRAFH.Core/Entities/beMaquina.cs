@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using SISGRAFH.Core.Utils.MongoDbParams;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,9 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Core.Entities
 {
-    public class beMaquina
+    [BsonCollection(MongoCollectionNames.Maquinas)]
+    public class beMaquina : BaseEntity
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string id { get; set; }
         [BsonElement("codigo")]
         public string codigo { get; set; }
         [BsonElement("nombre")]
@@ -82,29 +81,6 @@ namespace SISGRAFH.Core.Entities
         public string tipo { get; set; }
         [BsonElement("tipos_soporte")]
         public List<string> tipos_soporte { get; set; }
-    }
-    public class beImpresoraOffset : beMaquina
-    {
-        [BsonElement("area_maxima_hoja")]
-        public beArea area_maxima_hoja { get; set; }
-        [BsonElement("area_minima_hoja")]
-        public beArea area_minima_hoja { get; set; }
-        // Sheets por Hora (Sheets/h)
-        [BsonElement("velocidad_minima")]
-        public int velocidad_minima { get; set; }
-        [BsonElement("velocidad_maxima")]
-        public int velocidad_maxima { get; set; }
-        // g/m2
-        [BsonElement("gramaje_minimo")]
-        public int gramaje_minimo { get; set; }
-        [BsonElement("gramaje_maximo")]
-        public int gramaje_maximo { get; set; }
-        // 1,2,3, y 4 colores
-        [BsonElement("numero_colores")]
-        public int numero_colores { get; set; }
-        //Volumen de la placa CTP 
-        [BsonElement("tamanio_placa")]
-        public beVolumen tamanio_placa { get; set; }
     }
     
     public class bePerforador : beMaquina

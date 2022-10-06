@@ -9,5 +9,6 @@ namespace SISGRAFH.Core.Utils.MongoDbParams
     public static class MongoCollectionNames
     {
         public const string Usuarios = "Usuarios";
+        public const string Maquinas = "Maquinas";
     }
 }

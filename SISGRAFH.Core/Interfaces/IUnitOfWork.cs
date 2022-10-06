@@ -10,5 +10,6 @@ namespace SISGRAFH.Infraestructure.Data.Interfaces
     public interface IUnitOfWork
     {
         public IUsuarioRepository Usuario { get; }
+        public IMaquinaRepository Maquina { get; }
     }
 }
