@@ -10,5 +10,8 @@ namespace SISGRAFH.Core.Utils.MongoDbParams
     {
         public const string Usuarios = "Usuarios";
         public const string Maquinas = "Maquinas";
+        public const string Cotizaciones = "Cotizaciones";
+        public const string Solicitudes = "Solicitudes";
+        public const string Insumos = "Insumos";
     }
 }

@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using SISGRAFH.Core.Utils.MongoDbParams;
 
 namespace SISGRAFH.Core.Entities
 {
-    public class beCotizacion
+    [BsonCollection(MongoCollectionNames.Cotizaciones)]
+    public class beCotizacion : BaseEntity
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string id { get; set; }
         [BsonElement("id_solicitud")]
         public string id_solicitud { get; set; }
         [BsonElement("codigo_cotizacion")]
@@ -24,7 +23,9 @@ namespace SISGRAFH.Core.Entities
         public DateTime fecha_registro { get; set; } = DateTime.Now;
         [BsonElement("fecha_modificacion")]
         public DateTime fecha_modificacion { get; set; } = DateTime.Now;
-
+        //Las maquinas por las que debera pasar antes de llegar a ser despachado
+        [BsonElement("localizaciones")]
+        public List<beLocalizacion> localizaciones { get; set; }
     }
     public class beLocalizacion
     {

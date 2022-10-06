@@ -65,7 +65,7 @@ namespace SISGRAFH.Api
 
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IMaquinaService, MaquinaService>();
-
+            services.AddTransient<ICotizacionService, CotizacionService>();
 
         }
 

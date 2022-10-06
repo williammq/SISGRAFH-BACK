@@ -20,5 +20,6 @@ namespace SISGRAFH.Infraestructure.Repositories
 
         public IUsuarioRepository Usuario => new UsuarioRepository(_dbContext.Database);
         public IMaquinaRepository Maquina => new MaquinaRepository(_dbContext.Database);
+        public ICotizacionRepository Cotizacion => new CotizacionRepository(_dbContext.Database);
     }
 }

@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using SISGRAFH.Core.Utils.MongoDbParams;
 
 namespace SISGRAFH.Core.Entities
 {
-    public class beSolicitud
+    [BsonCollection(MongoCollectionNames.Solicitudes)]
+    public class beSolicitud : BaseEntity
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string id { get; set; }
         [BsonElement("nombre_apellidos")]
         public string nombre_apellidos { get; set; }
         [BsonElement("numero_celular")]

@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using SISGRAFH.Core.Utils.MongoDbParams;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Core.Entities
 {
-    public class beInsumo
+    [BsonCollection(MongoCollectionNames.Insumos)]
+    [BsonKnownTypes(typeof(beEspiral), typeof(beTinta), typeof(bePapel),typeof(bePelicula_adhesiva))]
+    public class beInsumo : BaseEntity
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string id { get; set; }
         [BsonElement("nombre")]
         public string nombre { get; set; }
         [BsonElement("descripcion")]
@@ -35,8 +35,6 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("diametro")]
         public double diametro { get; set; }
-        [BsonElement("capacidad")]
-        public string capacidad { get; set; }
         [BsonElement("material")]
         public string material { get; set; }
         [BsonElement("longitud")]
@@ -95,24 +93,5 @@ namespace SISGRAFH.Core.Entities
         //sello al calor EVA
         [BsonElement("capa_adhesivo")]
         public string capa_adhesivo { get; set; }
-    }
-    public class bePlacaCTP : beInsumo
-    {
-        //De aluminio normalmente
-        [BsonElement("material")]
-        public string material { get; set; }
-        //Milimetros
-        [BsonElement("ancho")]
-        public double ancho { get; set; }
-        [BsonElement("largo")]
-        public double largo { get; set; }
-        [BsonElement("grosor")]
-        public double grosor { get; set; }
-        //negativo o positivo
-        [BsonElement("estilo")]
-        public double estilo { get; set; }
-        //Funcionamiento diurno y nocturno, Luza Blanca, Amarilla, etc
-        [BsonElement("luz_segura")]
-        public string luz_segura { get; set; }
     }
 }

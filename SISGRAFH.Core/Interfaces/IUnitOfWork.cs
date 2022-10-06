@@ -11,5 +11,6 @@ namespace SISGRAFH.Infraestructure.Data.Interfaces
     {
         public IUsuarioRepository Usuario { get; }
         public IMaquinaRepository Maquina { get; }
+        public ICotizacionRepository Cotizacion { get; }
     }
 }
