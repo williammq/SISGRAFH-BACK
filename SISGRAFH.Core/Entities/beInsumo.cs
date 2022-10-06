@@ -93,5 +93,7 @@ namespace SISGRAFH.Core.Entities
         //sello al calor EVA
         [BsonElement("capa_adhesivo")]
         public string capa_adhesivo { get; set; }
+        [BsonElement("acabado")]
+        public string acabado { get; set; }
     }
 }
