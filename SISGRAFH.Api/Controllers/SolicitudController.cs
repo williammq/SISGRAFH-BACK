@@ -21,7 +21,7 @@ namespace SISGRAFH.Api.Controllers
             _solicitudService = solicitudService;
             _mapper = mapper;
         }
-        [HttpGet]
+        [HttpGet("GetSolicitudes")]
         public async Task<IActionResult> GetSolicitudes()
         {
             var solicitudes = await _solicitudService.GetSolicitudes();

@@ -31,7 +31,7 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<beCotizacion>>(cotizaciones);
             return Ok(response);
         }
-        [HttpPost]
+        [HttpPost("PostCotizacion")]
         public async Task<IActionResult> PostCotizacion(beCotizacion cotizacion)
         {
             var cotizacionPosted = await _cotizacionService.PostCotizacion(cotizacion);

@@ -21,7 +21,7 @@ namespace SISGRAFH.Api.Controllers
             _productoService = productoService;
             _mapper = mapper;
         }
-        [HttpGet]
+        [HttpGet("GetProductos")]
         public async Task<IActionResult> GetProductos()
         {
             var cotizaciones = await _productoService.GetProductos();

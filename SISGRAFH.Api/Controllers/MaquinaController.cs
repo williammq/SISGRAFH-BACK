@@ -25,7 +25,7 @@ namespace SISGRAFH.Api.Controllers
             _maquinaService = maquinaService;
             _mapper = mapper;
         }
-        [HttpGet]
+        [HttpGet("GetMaquinas")]
         public async Task<IActionResult> GetMaquinas()
         {
             var maquinas = await _maquinaService.GetMaquinas();
