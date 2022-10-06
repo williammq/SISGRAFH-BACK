@@ -19,15 +19,23 @@ namespace SISGRAFH.Infraestructure.Repositories
             _solicitud = database.GetCollection<beSolicitud>(MongoCollectionNames.Solicitudes);
         }
 
-        public async Task<IEnumerable<object>> GetSoliccitudes()
+        public async Task<IEnumerable<object>> GetSolicitudes()
         {
             var solicitudes = await _solicitud.AsQueryable().ToListAsync();
             return solicitudes;
         }
-
         public Task<beSolicitud> PostSolicitud(beSolicitud insumo)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<object>> GetProductosBySolicitud(string id)
+        {
+            var solicitudes = await _solicitud.AsQueryable().ToListAsync();
+            var solicitud_encontrada = solicitudes.Where(x => x.Id == id).FirstOrDefault();
+            List<object> productos = new List<object>();
+            productos.AddRange(solicitud_encontrada.productos.AsQueryable().ToList());
+            return productos;
         }
     }
 }

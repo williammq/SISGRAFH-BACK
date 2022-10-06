@@ -18,6 +18,11 @@ namespace SISGRAFH.Core.Services
             _unitOfWork = unitOfWork;
         }
 
+        public async Task<IEnumerable<object>> GetProductosBySolicitud(string id)
+        {
+            return await _unitOfWork.Solicitud.GetProductosBySolicitud(id);
+        }
+
         public async Task<IEnumerable<object>> GetSolicitudes()
         {
             return await _unitOfWork.Solicitud.GetAllAsync();

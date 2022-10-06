@@ -28,5 +28,12 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<object>>(solicitudes);
             return Ok(response);
         }
+        [HttpGet("GetProductosBySolicitud")]
+        public async Task<IActionResult> GetProductosBySolicitud(string id)
+        {
+            var solicitudes = await _solicitudService.GetProductosBySolicitud(id);
+            var response = new ApiResponse<IEnumerable<object>>(solicitudes);
+            return Ok(response);
+        }
     }
 }

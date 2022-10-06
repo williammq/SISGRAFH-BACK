@@ -35,10 +35,8 @@ namespace SISGRAFH.Api.Controllers
         public async Task<IActionResult> PostCotizacion(beCotizacion cotizacion)
         {
             var cotizacionPosted = await _cotizacionService.PostCotizacion(cotizacion);
-
             var response = new ApiResponse<beCotizacion>(cotizacionPosted);
             return Ok(response);
-
         }
     }
 }

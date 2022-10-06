@@ -10,6 +10,7 @@ namespace SISGRAFH.Core.Interfaces
     public interface ISolicitudService
     {
         Task<IEnumerable<object>> GetSolicitudes();
+        Task<IEnumerable<object>> GetProductosBySolicitud(string id);
         Task<beSolicitud> PostSolicitud(beSolicitud solicitud);
         Task<beSolicitud> UpdateSolicitud(beSolicitud solicitud);
     }

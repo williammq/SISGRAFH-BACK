@@ -25,14 +25,14 @@ namespace SISGRAFH.Api.Controllers
             _insumoService = insumoService;
             _mapper = mapper;
         }
-        [HttpGet]
+        [HttpGet("GetInsumos")]
         public async Task<IActionResult> GetInsumos()
         {
             var insumos = await _insumoService.GetInsumos();
             var response = new ApiResponse<IEnumerable<object>>(insumos);
             return Ok(response);
         }
-        [HttpPost]
+        [HttpPost("PostInsumo")]
         public async Task<IActionResult> PostInsumo(JsonElement JSinsumo)
         {
             string js = JSinsumo.ToString();
