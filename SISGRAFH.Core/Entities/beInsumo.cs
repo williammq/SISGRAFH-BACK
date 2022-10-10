@@ -65,7 +65,7 @@ namespace SISGRAFH.Core.Entities
     public class modelo_serie
     {
         public string modelo { get; set; }
-        public string serie { get; set; }
+        public List<string> serie { get; set; }
     }
     public class bePapel : beInsumo 
     {
