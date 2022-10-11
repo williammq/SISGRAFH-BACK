@@ -79,7 +79,7 @@ namespace SISGRAFH.Core.Entities
         public double gramaje { get; set; }
         [BsonElement("color")]
         public string color { get; set; }
-        //couche o estucado mate, semimate, brillante, offset blanco, Cartulina Sulfatada, Bond, cartulina, opalina, kraft, reciclado
+        //couche o estucado mate, semimate, brillante, offset blanco, Cartulina Sulfatada, Bond, cartulina, opalina, kraft, reciclado, vegetal
         [BsonElement("tipo")]
         public string tipo { get; set; }
     }
@@ -99,5 +99,34 @@ namespace SISGRAFH.Core.Entities
         public string capa_adhesivo { get; set; }
         [BsonElement("acabado")]
         public string acabado { get; set; }
+    }
+    public class bePlacaOffset : beInsumo
+    {
+        //en milimetros
+        [BsonElement("largo")]
+        public double largo { get; set; }
+        [BsonElement("ancho")]
+        public double ancho { get; set; }
+        [BsonElement("grosor")]
+        public double grosor { get; set; }
+        //Alumino, poliester, etc
+        [BsonElement("material")]
+        public string material { get; set; }
+        //Negativo y positivo
+        [BsonElement("tipo")]
+        public string tipo { get; set; }
+        //Luz amarilla, Blanca, etc
+        [BsonElement("luz_segura")]
+        public string luz_segura { get; set; }
+        // medido en mj/cm2
+        [BsonElement("sensibilidad_minima")]
+        public string sensibilidad_minima { get; set; }
+        [BsonElement("sensibilidad_maxima")]
+        public string sensibilidad_maxima { get; set; }
+        // en segundos
+        [BsonElement("tiempo_desarrollo_minimo")]
+        public double tiempo_desarrollo_minimo { get; set; }
+        [BsonElement("tiempo_desarrollo_maximo")]
+        public double tiempo_desarrollo_maximo { get; set; }
     }
 }
