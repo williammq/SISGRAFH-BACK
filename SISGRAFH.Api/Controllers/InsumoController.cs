@@ -57,7 +57,13 @@ namespace SISGRAFH.Api.Controllers
 
             var response = new ApiResponse<beInsumo>(insumoPosted);
             return Ok(response);
-
+        }
+        [HttpGet("GetInsumoById")]
+        public async Task<IActionResult> GetInsumoById(string id)
+        {
+            var insumo = await _insumoService.GetInsumoById(id);
+            var response = new ApiResponse<object>(insumo);
+            return Ok(response);
         }
     }
 }

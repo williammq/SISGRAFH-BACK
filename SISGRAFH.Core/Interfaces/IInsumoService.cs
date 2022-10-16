@@ -11,6 +11,7 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<object>> GetInsumos();
         Task<beInsumo> PostInsumo(beInsumo insumo);
-        Task<beInsumo> UpdateInsumo(beInsumo insumo);
+        Task<object> GetInsumoById(string id);
+
     }
 }
