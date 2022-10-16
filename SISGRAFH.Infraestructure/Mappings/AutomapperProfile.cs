@@ -22,6 +22,14 @@ namespace SISGRAFH.Infraestructure.Mappings
 
             CreateMap<ObjTipoUsuario, ObjTipoUsuarioDto>();
             CreateMap<ObjTipoUsuarioDto, ObjTipoUsuario>();
+        
         }
+        
+        public AutoMapperProfile()
+        {
+        //Automapper de Catalogo
+            CreateMap<beCatalogo, CatalogoDto>();
+            CreateMap<CatalogoDto, beCatalogo>();
+
     }
 }
