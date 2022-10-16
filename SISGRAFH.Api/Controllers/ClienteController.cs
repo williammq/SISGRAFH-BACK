@@ -1,6 +1,7 @@
 ﻿
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Core.Services;
 using System.Threading.Tasks;
@@ -30,7 +31,19 @@ namespace SISGRAFH.Api.Controllers
             var clients = await _clienteService.GetClienteByCorreo(correo);
             return Ok(clients);
         }
-        
+        [HttpPut("UpdateCliente")]
+        public async Task<IActionResult> UpdateCliente(beCliente _beCliente)
+        {
+            var clients = await _clienteService.UpdateCliente(_beCliente);
+            return Ok(clients);
+        }
+
+        [HttpPost("InsertCliente")]
+        public async Task <IActionResult> InsertCliente(beCliente _beCliente)
+        {
+            var clients = await _clienteService.InsertCliente(_beCliente);
+            return Ok(clients);
+        }
 
     }
 }

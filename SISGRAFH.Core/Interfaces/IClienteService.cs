@@ -11,5 +11,8 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<beCliente>> GetAllClientes();
         Task<beCliente> GetClienteByCorreo(string correo);
+        Task<beCliente> UpdateCliente(beCliente _beCliente);
+        Task<beCliente> InsertCliente (beCliente _beCliente);
+
     }
 }

@@ -27,5 +27,16 @@ namespace SISGRAFH.Core.Services
         {
             return await _unitOfWork.Cliente.GetByIdAsync(id);
         }
+
+        public async Task<beCliente> InsertCliente(beCliente _beCliente)
+        {
+            return await _unitOfWork.Cliente.InsertOneAsync(_beCliente);
+        }
+
+        public async Task<beCliente> UpdateCliente(beCliente _beCliente)
+        {
+            return await _unitOfWork.Cliente.UpdateOneAsync(_beCliente);
+        }
+
     }
 }
