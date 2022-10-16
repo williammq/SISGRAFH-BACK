@@ -65,5 +65,31 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<object>(insumo);
             return Ok(response);
         }
+
+        [HttpPut("UpdateInsumo")]
+        public async Task<IActionResult> UpdateInsumo(JsonElement JSinsumo)
+        {
+            string js = JSinsumo.ToString();
+            var insumoDto = JsonSerializer.Deserialize<InsumoDto>(js);
+            switch (insumoDto.categoria)
+            {
+                case "Espiral": insumoDto = JsonSerializer.Deserialize<EspiralDto>(js); break;
+                case "Tinta": insumoDto = JsonSerializer.Deserialize<TintaDto>(js); break;
+                case "Soporte de Impresión": insumoDto = JsonSerializer.Deserialize<PapelDto>(js); break;
+                case "Pelicula": insumoDto = JsonSerializer.Deserialize<Pelicula_adhesivaDto>(js); break;
+            }
+            var insumo = new beInsumo();
+            switch (insumoDto.categoria)
+            {
+                case "Espiral": insumo = _mapper.Map<beEspiral>(insumoDto); break;
+                case "Tinta": insumo = _mapper.Map<beTinta>(insumoDto); break;
+                case "Soporte de Impresión": insumo = _mapper.Map<bePapel>(insumoDto); ; break;
+                case "Pelicula": insumo = _mapper.Map<bePelicula_adhesiva>(insumoDto); ; break;
+            }
+
+            var insumoPosted = await _insumoService.UpdateInsumo(insumo);
+            var response = new ApiResponse<beInsumo>(insumoPosted);
+            return Ok(response);
+        }
     }
 }
