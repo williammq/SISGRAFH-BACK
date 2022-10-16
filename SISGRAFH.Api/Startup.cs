@@ -69,6 +69,7 @@ namespace SISGRAFH.Api
             services.AddTransient<IInsumoService, InsumoService>();
             services.AddTransient<IProductoService, ProductoService>();
             services.AddTransient<ISolicitudService, SolicitudService>();
+            services.AddTransient<IMovimientoService, MovimientoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
