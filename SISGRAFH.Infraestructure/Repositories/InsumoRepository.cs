@@ -19,13 +19,6 @@ namespace SISGRAFH.Infraestructure.Repositories
         {
             _insumo = database.GetCollection<beInsumo>(MongoCollectionNames.Maquinas);
         }
-
-        public async Task<object> GetInsumoById(string id)
-        {
-            object insumo = _insumo.AsQueryable().ToList().Where(x => x.Id == id).FirstOrDefault();
-            return insumo;
-        }
-
         public async Task<IEnumerable<object>> GetInsumos()
         {
             var maquinas = await _insumo.AsQueryable().ToListAsync();
