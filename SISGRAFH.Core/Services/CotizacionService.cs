@@ -25,7 +25,7 @@ namespace SISGRAFH.Core.Services
 
         public async Task<beCotizacion> GetCotizacionById(string id)
         {
-            return await _unitOfWork.Cotizacion.GetCotizacionById(id);
+            return await _unitOfWork.Cotizacion.GetByIdAsync(id);
         }
 
         public async Task<IEnumerable<beCotizacion>> GetCotizaciones()

@@ -9,7 +9,7 @@ namespace SISGRAFH.Core.Interfaces
 {
     public interface IInsumoService
     {
-        Task<IEnumerable<object>> GetInsumos();
+        Task<IEnumerable<beInsumo>> GetInsumos();
         Task<beInsumo> PostInsumo(beInsumo insumo);
         Task<beInsumo> GetInsumoById(string id);
     }

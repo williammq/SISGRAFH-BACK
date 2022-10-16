@@ -23,7 +23,7 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Insumo.GetByIdAsync(id);
         }
 
-        public async Task<IEnumerable<object>> GetInsumos()
+        public async Task<IEnumerable<beInsumo>> GetInsumos()
         {
             return await _unitOfWork.Insumo.GetAllAsync();
         }
