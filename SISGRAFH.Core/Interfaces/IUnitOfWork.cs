@@ -16,5 +16,6 @@ namespace SISGRAFH.Infraestructure.Data.Interfaces
         public IProductoRepository Producto { get; }
         public ISolicitudRepository Solicitud { get; }
         public IMovimientoRepository Movimiento { get; }
+        public IClienteRepository Cliente { get; }
     }
 }

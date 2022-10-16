@@ -25,5 +25,7 @@ namespace SISGRAFH.Infraestructure.Repositories
         public IProductoRepository Producto => new ProductoRepository(_dbContext.Database);
         public ISolicitudRepository Solicitud => new SolicitudRepository(_dbContext.Database);
         public IMovimientoRepository Movimiento => new MovimientoRepository(_dbContext.Database);
+
+        public IClienteRepository Cliente => new ClienteRepository(_dbContext.Database);
     }
 }
