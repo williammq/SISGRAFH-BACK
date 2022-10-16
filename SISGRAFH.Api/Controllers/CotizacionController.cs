@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SISGRAFH.Api.Responses;
 using SISGRAFH.Core.DTOs.Usuario;
+using SISGRAFH.Core.DTOs.Cotizacion;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Infraestructure.Repositories;
@@ -31,11 +32,37 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<beCotizacion>>(cotizaciones);
             return Ok(response);
         }
-        [HttpPost("PostCotizacion")]
-        public async Task<IActionResult> PostCotizacion(beCotizacion cotizacion)
+        [HttpGet("GetCotizacionById")]
+        public async Task<IActionResult> GetCotizacionById(string id)
         {
+            var cotizacion = await _cotizacionService.GetCotizacionById(id);
+            var response = new ApiResponse<beCotizacion>(cotizacion);
+            return Ok(response);
+        }
+        [HttpGet("GetCotizacionByCodigoCotizacion")]
+        public async Task<IActionResult> GetCotizacionByCodigoCotizacion(string codigo)
+        {
+            var cotizacion = await _cotizacionService.GetCotizacionByCodigoCotizacion(codigo);
+            var response = new ApiResponse<beCotizacion>(cotizacion);
+            return Ok(response);
+        }
+        [HttpPost("PostCotizacion")]
+        public async Task<IActionResult> PostCotizacion(cotizacionDto cotizacionDTO)
+        {
+            var cotizacion = _mapper.Map<beCotizacion>(cotizacionDTO);
             var cotizacionPosted = await _cotizacionService.PostCotizacion(cotizacion);
             var response = new ApiResponse<beCotizacion>(cotizacionPosted);
+            return Ok(response);
+        }
+
+        [HttpPut("UpdateCotizacion")]
+        public async Task<IActionResult> UpdateCotizacion(cotizacionDto cotizacionDTO)
+        {
+            var cotizacion = _mapper.Map<beCotizacion>(cotizacionDTO);
+            var cotizacionPosted = await _cotizacionService.UpdateCotizacion(cotizacion);
+
+            cotizacionDTO = _mapper.Map<cotizacionDto>(cotizacionPosted);
+            var response = new ApiResponse<cotizacionDto>(cotizacionDTO);
             return Ok(response);
         }
     }

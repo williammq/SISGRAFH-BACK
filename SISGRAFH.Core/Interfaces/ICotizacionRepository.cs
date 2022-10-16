@@ -1,5 +1,6 @@
 ﻿using SISGRAFH.Core.Entities;
 using System;
+using SISGRAFH.Core.DTOs.Cotizacion;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<beCotizacion>> GetCotizaciones();
         Task<beCotizacion> PostCotizacion(beCotizacion cotizacion);
+        Task<beCotizacion> GetCotizacionById(string id);
+        Task<beCotizacion> GetCotizacionByCodigoCotizacion(string codigo);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SISGRAFH.Core.DTOs.Cotizacion;
 using SISGRAFH.Core.DTOs.Usuario;
 using SISGRAFH.Core.Entities;
 using System;
@@ -22,6 +23,16 @@ namespace SISGRAFH.Infraestructure.Mappings
 
             CreateMap<ObjTipoUsuario, ObjTipoUsuarioDto>();
             CreateMap<ObjTipoUsuarioDto, ObjTipoUsuario>();
+
+            //Automapper de Cotización
+            CreateMap<beCotizacion, cotizacionDto>();
+            CreateMap<cotizacionDto, beCotizacion>();
+
+            CreateMap<beLocalizacion, localizacionDto>();
+            CreateMap<localizacionDto, beLocalizacion>();
+
+            CreateMap<beInsumoCotizacion, insumoCotizacionDto>();
+            CreateMap<insumoCotizacionDto, beInsumoCotizacion>();
         }
     }
 }
