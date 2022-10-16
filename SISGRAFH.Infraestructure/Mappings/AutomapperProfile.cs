@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SISGRAFH.Core.DTOs.Cotizacion;
+using SISGRAFH.Core.DTOs.Insumo;
 using SISGRAFH.Core.DTOs.Usuario;
 using SISGRAFH.Core.Entities;
 using System;
@@ -33,6 +34,26 @@ namespace SISGRAFH.Infraestructure.Mappings
 
             CreateMap<beInsumoCotizacion, insumoCotizacionDto>();
             CreateMap<insumoCotizacionDto, beInsumoCotizacion>();
+            //Automapper de Insumo
+            CreateMap<beInsumo, InsumoDto>();
+            CreateMap<InsumoDto, beInsumo>();
+            CreateMap<beEspiral, EspiralDto>();
+            CreateMap<EspiralDto, beEspiral>();
+
+            CreateMap<beTinta, TintaDto>();
+            CreateMap<TintaDto, beTinta>();
+
+            CreateMap<bePapel, PapelDto>();
+            CreateMap<PapelDto, bePapel>();
+
+            CreateMap<bePelicula_adhesiva, Pelicula_adhesivaDto>();
+            CreateMap<Pelicula_adhesivaDto, bePelicula_adhesiva>();
+
+            CreateMap<bePlacaOffset, PlacaOffsetDto>();
+            CreateMap<PlacaOffsetDto, bePlacaOffset>();
+
+            CreateMap<modelo_serie, modelo_serie_Dto>();
+            CreateMap<modelo_serie_Dto, modelo_serie>();
         }
     }
 }
