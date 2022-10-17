@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using SISGRAFH.Core.DTOs.Cotizacion;
+using SISGRAFH.Core.DTOs.Insumo;
+using SISGRAFH.Core.DTOs.Solicitud;
 using SISGRAFH.Core.DTOs.Usuario;
 using SISGRAFH.Core.Entities;
 using System;
@@ -23,6 +26,54 @@ namespace SISGRAFH.Infraestructure.Mappings
             CreateMap<ObjTipoUsuario, ObjTipoUsuarioDto>();
             CreateMap<ObjTipoUsuarioDto, ObjTipoUsuario>();
         
+
+            //Automapper de Cotización
+            CreateMap<beCotizacion, cotizacionDto>();
+            CreateMap<cotizacionDto, beCotizacion>();
+
+            CreateMap<beLocalizacion, localizacionDto>();
+            CreateMap<localizacionDto, beLocalizacion>();
+
+            CreateMap<beInsumoCotizacion, insumoCotizacionDto>();
+            CreateMap<insumoCotizacionDto, beInsumoCotizacion>();
+            //Automapper de Insumo
+            CreateMap<beInsumo, InsumoDto>();
+            CreateMap<InsumoDto, beInsumo>();
+            CreateMap<beEspiral, EspiralDto>();
+            CreateMap<EspiralDto, beEspiral>();
+
+            CreateMap<beTinta, TintaDto>();
+            CreateMap<TintaDto, beTinta>();
+
+            CreateMap<bePapel, PapelDto>();
+            CreateMap<PapelDto, bePapel>();
+
+            CreateMap<bePelicula_adhesiva, Pelicula_adhesivaDto>();
+            CreateMap<Pelicula_adhesivaDto, bePelicula_adhesiva>();
+
+            CreateMap<bePlacaOffset, PlacaOffsetDto>();
+            CreateMap<PlacaOffsetDto, bePlacaOffset>();
+
+            CreateMap<modelo_serie, modelo_serie_Dto>();
+            CreateMap<modelo_serie_Dto, modelo_serie>();
+            //AutoMapper de solicitud de Cotización
+            CreateMap<beSolicitud, SolicitudDto>();
+            CreateMap<SolicitudDto, beSolicitud>(); 
+            
+            CreateMap<beProducto_solicitud, Producto_solicitudDto>();
+            CreateMap<Producto_solicitudDto, beProducto_solicitud>();
+
+            CreateMap<beTalonario, TalonarioDto>();
+            CreateMap<TalonarioDto, beTalonario>();
+
+            CreateMap<beTarjetaPresentación, TalonarioDto>();
+            CreateMap<TalonarioDto, beTarjetaPresentación>();
+
+            CreateMap<beTriptico, TripticoDto>();
+            CreateMap<TripticoDto, beTriptico>();
+
+            CreateMap<beDiptico, DipticoDto>();
+            CreateMap<DipticoDto, beDiptico>();
         }
         
         public AutoMapperProfile()

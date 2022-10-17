@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SISGRAFH.Api.Responses;
+using SISGRAFH.Core.DTOs.Solicitud;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using System;
@@ -33,6 +34,14 @@ namespace SISGRAFH.Api.Controllers
         {
             var solicitudes = await _solicitudService.GetProductosBySolicitud(id);
             var response = new ApiResponse<IEnumerable<object>>(solicitudes);
+            return Ok(response);
+        }
+        [HttpPost("PostSolicitud")]
+        public async Task<IActionResult> PostSolicitud(SolicitudDto solicitudDto)
+        {
+            var solicitud = _mapper.Map<beSolicitud>(solicitudDto);
+            var solicitudPosted = await _solicitudService.PostSolicitud(solicitud);
+            var response = new ApiResponse<beSolicitud>(solicitudPosted);
             return Ok(response);
         }
     }

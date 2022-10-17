@@ -19,7 +19,6 @@ namespace SISGRAFH.Infraestructure.Repositories
         {
             _insumo = database.GetCollection<beInsumo>(MongoCollectionNames.Maquinas);
         }
-
         public async Task<IEnumerable<object>> GetInsumos()
         {
             var maquinas = await _insumo.AsQueryable().ToListAsync();
@@ -31,5 +30,6 @@ namespace SISGRAFH.Infraestructure.Repositories
             await _insumo.InsertOneAsync(insumo);
             return insumo;
         }
+
     }
 }

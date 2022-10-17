@@ -17,6 +17,17 @@ namespace SISGRAFH.Core.Services
         {
             _unitOfWork = unitOfWork;
         }
+
+        public async Task<beCotizacion> GetCotizacionByCodigoCotizacion(string codigo)
+        {
+            return await _unitOfWork.Cotizacion.GetCotizacionByCodigoCotizacion(codigo);
+        }
+
+        public async Task<beCotizacion> GetCotizacionById(string id)
+        {
+            return await _unitOfWork.Cotizacion.GetByIdAsync(id);
+        }
+
         public async Task<IEnumerable<beCotizacion>> GetCotizaciones()
         {
             return await _unitOfWork.Cotizacion.GetAllAsync();
@@ -29,7 +40,16 @@ namespace SISGRAFH.Core.Services
 
         public async Task<beCotizacion> UpdateCotizacion(beCotizacion cotizacion)
         {
-            throw new NotImplementedException();
+            var cotizaciondb = await _unitOfWork.Cotizacion.GetByIdAsync(cotizacion.Id);
+            if (cotizaciondb == null)
+            {
+                return await PostCotizacion(cotizacion);
+            };
+            cotizaciondb.localizaciones =cotizacion.localizaciones;
+            cotizaciondb.fecha_modificacion =DateTime.Now;
+            cotizaciondb.estado =cotizacion.estado;
+            cotizaciondb.id_solicitud =cotizacion.id_solicitud;
+            return await _unitOfWork.Cotizacion.UpdateOneAsync(cotizaciondb);
         }
     }
 }

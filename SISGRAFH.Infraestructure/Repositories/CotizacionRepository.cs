@@ -29,5 +29,15 @@ namespace SISGRAFH.Infraestructure.Repositories
             await _cotizacion.InsertOneAsync(cotizacion);
             return cotizacion;
         }
+        //public async Task<beCotizacion> GetCotizacionById(string id)
+        //{
+        //    beCotizacion cotizacion =  await _cotizacion.Find(cotizacion => cotizacion.Id == id).FirstOrDefaultAsync();
+        //    return cotizacion;
+        //}
+        public async Task<beCotizacion> GetCotizacionByCodigoCotizacion(string codigo)
+        {
+            beCotizacion cotizacion = await _cotizacion.Find(cotizacion => cotizacion.codigo_cotizacion == codigo).FirstOrDefaultAsync();
+            return cotizacion;
+        }
     }
 }
