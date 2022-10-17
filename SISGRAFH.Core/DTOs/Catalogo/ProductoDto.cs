@@ -11,7 +11,7 @@ namespace SISGRAFH.Core.DTOs.Producto
     public class ProductoDto
     {
         public string Id { get; set; }
-        public string Descripcion{ get; set; }
+        public string descripcion_producto{ get; set; }
         public double Largo { get; set; }
         public double Ancho { get; set; }
     }

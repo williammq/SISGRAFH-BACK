@@ -24,12 +24,26 @@ namespace SISGRAFH.Core.Services
 
         public Task<beCatalogo> PostCatalogo(beCatalogo catalogo)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.Usuario.InsertOneAsync(catalogo);
         }
 
         public Task<beCatalogo> UpdateCatalogo(beCatalogo catalogo)
         {
-            throw new NotImplementedException();
+            var catalogoDb = await _unitOfWork.Catalogo.GetByIdAsync(catalogo.Id);
+            if (catalogoDb == null)
+            {
+                return await PostCatalogo(catalogo);
+            };
+            catalogoDb.idProducto = catalogoDb.idProducto;
+            catalogoDb.descripcionProducto = catalogoDb.descripcionProducto;
+            catalogoDb.largo = catalogoDb.largo;
+            catalogoDb.ancho = catalogoDb.ancho;
+            
+
+            return await _unitOfWork.Usuario.UpdateOneAsync(catalogoDb);
         }
+        
+    
+        
     }
 }
