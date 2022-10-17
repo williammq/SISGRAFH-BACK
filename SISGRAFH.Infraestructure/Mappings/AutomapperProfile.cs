@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SISGRAFH.Core.DTOs.Catalogo;
+using SISGRAFH.Core.DTOs.Cliente;
 using SISGRAFH.Core.DTOs.Cotizacion;
 using SISGRAFH.Core.DTOs.Insumo;
 using SISGRAFH.Core.DTOs.Solicitud;
@@ -82,6 +83,10 @@ namespace SISGRAFH.Infraestructure.Mappings
 
             CreateMap<beTamanioHoja, beTamanioHojaDto>();
             CreateMap<beTamanioHojaDto, beTamanioHoja>();
+
+            //Automapper de Cliente
+            CreateMap<beCliente, ClienteDto>();
+            CreateMap<ClienteDto, beCliente>();
         }
     }
 }
