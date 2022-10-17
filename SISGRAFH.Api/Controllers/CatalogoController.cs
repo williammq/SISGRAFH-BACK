@@ -25,7 +25,7 @@ namespace SISGRAFH.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCatalogo()
         {
-            var catalog = await _catalogoService.GetCatalogo();
+            var catalogo = await _catalogoService.GetCatalogo();
             var response = new ApiResponse<IEnumerable<beCatalogo>>(catalogo);
             return Ok(response);
 
@@ -35,7 +35,7 @@ namespace SISGRAFH.Api.Controllers
         public async Task<IActionResult> PostCatalogo(CatalogoDto catalogoDto)
         {
             var catalogo= _mapper.Map<beCatalogo>(catalogoDto);
-            var catalogoPosted = await _catalogoService.PostCatalogo(catalogo));
+            var catalogoPosted = await _catalogoService.PostCatalogo(catalogo);
 
             catalogoDto = _mapper.Map<CatalogoDto>(catalogoPosted);
             var response = new ApiResponse<CatalogoDto>(catalogoDto);
@@ -46,7 +46,7 @@ namespace SISGRAFH.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateCatalogo(CatalogoDto catalogoDto)
         {
-            var catalogo = _mapper.Map<beCatalogo>(CatalogoDto);
+            var catalogo = _mapper.Map<beCatalogo>(catalogoDto);
             var catalogoPosted = await _catalogoService.UpdateCatalogo(catalogo);
 
             catalogoDto = _mapper.Map<CatalogoDto>(catalogoPosted);

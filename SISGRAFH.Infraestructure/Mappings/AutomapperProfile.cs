@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SISGRAFH.Core.DTOs.Catalogo;
 using SISGRAFH.Core.DTOs.Cotizacion;
 using SISGRAFH.Core.DTOs.Insumo;
 using SISGRAFH.Core.DTOs.Solicitud;
@@ -74,13 +75,10 @@ namespace SISGRAFH.Infraestructure.Mappings
 
             CreateMap<beDiptico, DipticoDto>();
             CreateMap<DipticoDto, beDiptico>();
-        }
-        
-        public AutoMapperProfile()
-        {
-        //Automapper de Catalogo
+
+            //Automapper de Catalogo
             CreateMap<beCatalogo, CatalogoDto>();
             CreateMap<CatalogoDto, beCatalogo>();
-
+        }
     }
 }

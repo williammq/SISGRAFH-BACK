@@ -13,7 +13,7 @@ namespace SISGRAFH.Core.DTOs.Catalogo
        public string Id { get; set; }
        public List<beTamanioHoja> tamanios { get; set; }
        public List<string> tipos_hoja { get; set; }
-       public boolean estadoProducto { get; set; }
+       public bool estadoProducto { get; set; }
        
     }
 

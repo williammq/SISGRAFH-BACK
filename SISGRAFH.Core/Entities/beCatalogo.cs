@@ -19,7 +19,7 @@ namespace SISGRAFH.Core.Entities
         [BsonElement("tipos_hoja")]
         public List<string> tipos_hoja { get; set; }
         [BsonElement("estadoProducto")]
-        public boolean estadoProducto { get; set; }
+        public bool estadoProducto { get; set; }
     }
 
     public class beTamanioHoja{
