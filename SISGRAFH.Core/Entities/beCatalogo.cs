@@ -14,13 +14,24 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("id_producto")]
         public string idProducto { get; set; }
-        [BsonElement("descripcion")]
-        public string descripcionProducto { get; set; }
-        [BsonElement("largo")]
+        [BsonElement("tamanios")]
+        public List<beTamanioHoja> tamanios { get; set; }
+        [BsonElement("tipos_hoja")]
+        public List<string> tipos_hoja { get; set; }
+        [BsonElement("estadoProducto")]
+        public boolean estadoProducto { get; set; }
+    }
+
+    public class beTamanioHoja{
+         [BsonElement("largo")]
         public double largo{ get; set; }
          [BsonElement("ancho")]
         public double ancho{ get; set; }
-        
+         [BsonElement("nombreTamanio")]
+        public double nombreTamanio{ get; set; }
+
+
+
     }
   
     

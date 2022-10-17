@@ -7,13 +7,12 @@ using SISGRAFH.Core.Entities;
 
 namespace SISGRAFH.Core.DTOs.Producto
 {
-    //DTO para Insert/Update
+   
     public class ProductoDto
     {
         public string Id { get; set; }
         public string descripcion_producto{ get; set; }
-        public double Largo { get; set; }
-        public double Ancho { get; set; }
+        public string url_imagen{ get; set; }
     }
 
 
