@@ -22,12 +22,12 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Catalogo.GetAllAsync();
         }
 
-        public Task<beCatalogo> PostCatalogo(beCatalogo catalogo)
+        public async Task<beCatalogo> PostCatalogo(beCatalogo catalogo)
         {
-            return await _unitOfWork.Usuario.InsertOneAsync(catalogo);
+            return await _unitOfWork.Catalogo.InsertOneAsync(catalogo);
         }
 
-        public Task<beCatalogo> UpdateCatalogo(beCatalogo catalogo)
+        public async Task<beCatalogo> UpdateCatalogo(beCatalogo catalogo)
         {
             var catalogoDb = await _unitOfWork.Catalogo.GetByIdAsync(catalogo.Id);
             if (catalogoDb == null)
@@ -35,12 +35,11 @@ namespace SISGRAFH.Core.Services
                 return await PostCatalogo(catalogo);
             };
             catalogoDb.idProducto = catalogoDb.idProducto;
-            catalogoDb.descripcionProducto = catalogoDb.descripcionProducto;
-            catalogoDb.largo = catalogoDb.largo;
-            catalogoDb.ancho = catalogoDb.ancho;
-            
+            //catalogoDb.descripcionProducto = catalogoDb.descripcionProducto;
+            //catalogoDb.largo = catalogoDb.largo;
+            //catalogoDb.ancho = catalogoDb.ancho;
 
-            return await _unitOfWork.Usuario.UpdateOneAsync(catalogoDb);
+            return await _unitOfWork.Catalogo.UpdateOneAsync(catalogoDb);
         }
         
     
