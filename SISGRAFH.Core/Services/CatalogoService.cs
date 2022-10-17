@@ -22,6 +22,11 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Catalogo.GetAllAsync();
         }
 
+        public async Task<beCatalogo> GetCatalogoById(string id)
+        {
+            return await _unitOfWork.Catalogo.GetByIdAsync(id);
+        }
+
         public async Task<beCatalogo> PostCatalogo(beCatalogo catalogo)
         {
             return await _unitOfWork.Catalogo.InsertOneAsync(catalogo);

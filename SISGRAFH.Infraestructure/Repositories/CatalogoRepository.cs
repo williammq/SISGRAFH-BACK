@@ -23,6 +23,11 @@ namespace SISGRAFH.Infraestructure.Repositories
             var catalogos = await _catalogo.Find(catalogo => true).ToListAsync();
             return catalogos;
         }
+        public async Task<IEnumerable<beCatalogo>> GetCatalogoById(string id)
+        {
+            var catalogos = await _catalogo.Find(catalogo => catalogo.Id == id).ToListAsync();
+            return catalogos;
+        }
 
         public async Task<beCatalogo> PostCatalogo(beCatalogo catalogo)
         {

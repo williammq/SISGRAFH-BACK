@@ -10,6 +10,7 @@ namespace SISGRAFH.Core.Interfaces
     public interface ICatalogoService
     {
         Task<IEnumerable<beCatalogo>> GetCatalogo();
+        Task<beCatalogo> GetCatalogoById(string  id);
         Task<beCatalogo> PostCatalogo(beCatalogo catalogo);
         Task<beCatalogo> UpdateCatalogo(beCatalogo catalogo);
     }

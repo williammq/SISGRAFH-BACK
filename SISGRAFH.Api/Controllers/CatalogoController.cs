@@ -30,6 +30,15 @@ namespace SISGRAFH.Api.Controllers
             return Ok(response);
 
         }
+        [HttpGet("GetCatalogoById")]
+        public async Task<IActionResult> GetCatalogoById(string id)
+        {
+            var catalogo = await _catalogoService.GetCatalogoById(id);
+            var response = new ApiResponse<beCatalogo>(catalogo);
+            return Ok(response);
+
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> PostCatalogo(CatalogoDto catalogoDto)
