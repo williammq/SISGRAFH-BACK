@@ -34,10 +34,10 @@ namespace SISGRAFH.Core.Services
             {
                 return await PostCatalogo(catalogo);
             };
-            catalogoDb.idProducto = catalogoDb.idProducto;
-            //catalogoDb.descripcionProducto = catalogoDb.descripcionProducto;
-            //catalogoDb.largo = catalogoDb.largo;
-            //catalogoDb.ancho = catalogoDb.ancho;
+            catalogoDb.idProducto = catalogo.idProducto;
+            catalogoDb.tamanios = catalogo.tamanios;
+            catalogoDb.tipos_hoja = catalogo.tipos_hoja;
+            catalogoDb.estadoProducto = catalogo.estadoProducto;
 
             return await _unitOfWork.Catalogo.UpdateOneAsync(catalogoDb);
         }

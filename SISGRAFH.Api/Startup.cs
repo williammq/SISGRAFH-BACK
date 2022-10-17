@@ -71,6 +71,7 @@ namespace SISGRAFH.Api
             services.AddTransient<ISolicitudService, SolicitudService>();
             services.AddTransient<IMovimientoService, MovimientoService>();
             services.AddTransient<IClienteService, ClienteService>();
+            services.AddTransient<ICatalogoService, CatalogoService>();
 
         }
 

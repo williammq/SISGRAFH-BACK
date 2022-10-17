@@ -11,7 +11,8 @@ namespace SISGRAFH.Core.DTOs.Catalogo
     public class CatalogoDto
     {
        public string Id { get; set; }
-       public List<beTamanioHoja> tamanios { get; set; }
+        public string idProducto { get; set; }
+        public List<beTamanioHojaDto> tamanios { get; set; }
        public List<string> tipos_hoja { get; set; }
        public bool estadoProducto { get; set; }
        
@@ -23,7 +24,7 @@ namespace SISGRAFH.Core.DTOs.Catalogo
          
         public double ancho{ get; set; }
         
-        public double nombreTamanio{ get; set; }
+        public string nombreTamanio{ get; set; }
 
 
 

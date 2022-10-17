@@ -14,7 +14,7 @@ namespace SISGRAFH.Core.Entities
         [BsonElement("nombre")]
         public string nombre { get; set; }
         [BsonElement("descripcion")]
-        public string descripcionProducto { get; set; }
+        public string descripcion { get; set; }
         [BsonElement("url_imagen")]
         public string url_imagen { get; set; }
     }

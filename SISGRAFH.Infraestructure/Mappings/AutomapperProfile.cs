@@ -79,6 +79,9 @@ namespace SISGRAFH.Infraestructure.Mappings
             //Automapper de Catalogo
             CreateMap<beCatalogo, CatalogoDto>();
             CreateMap<CatalogoDto, beCatalogo>();
+
+            CreateMap<beTamanioHoja, beTamanioHojaDto>();
+            CreateMap<beTamanioHojaDto, beTamanioHoja>();
         }
     }
 }
