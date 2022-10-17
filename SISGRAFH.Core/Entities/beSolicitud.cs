@@ -38,7 +38,7 @@ namespace SISGRAFH.Core.Entities
         //4+0 Impresos a todo color una cara y el reverso sin impresión(CMYK / – ).
         //1+1 Impresos a blanco y negro ambas caras(K / K)
         //1+0 Impreso blanco y negro una cara y el anverso sin impresión. (K / – )
-        [BsonElement("tipo_impresion")]
+        [BsonElement("colores_impresion")]
         public string colores_impresion { get; set; }
         [BsonElement("cantidad_ejemplares")]
         public Int32 cantidad_ejemplares { get; set; }
