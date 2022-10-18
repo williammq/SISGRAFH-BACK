@@ -23,5 +23,11 @@ namespace SISGRAFH.Infraestructure.Repositories
             var clientes = await _cliente.Find(cliente => cliente.Correo==correo).ToListAsync();
             return clientes;
         }
+
+        public async Task<IEnumerable<beCliente>> GetClienteById(string id)
+        {
+            var clientes = await _cliente.Find(cliente => cliente.Id == id).ToListAsync();
+            return clientes;
+        }
     }
 }

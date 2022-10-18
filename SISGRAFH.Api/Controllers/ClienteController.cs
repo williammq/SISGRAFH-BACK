@@ -31,6 +31,12 @@ namespace SISGRAFH.Api.Controllers
             var clients = await _clienteService.GetClienteByCorreo(correo);
             return Ok(clients);
         }
+        [HttpGet("GetClientsId")]
+        public async Task<IActionResult> GetClientsId(string id)
+        {
+            var clients = await _clienteService.GetClienteByCorreo(id);
+            return Ok(clients);
+        }
         [HttpPut("UpdateCliente")]
         public async Task<IActionResult> UpdateCliente(beCliente _beCliente)
         {

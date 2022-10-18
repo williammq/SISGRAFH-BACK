@@ -23,7 +23,11 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Cliente.GetAllAsync();
         }
 
-        public async Task<beCliente> GetClienteByCorreo(string id)
+        public async Task<beCliente> GetClienteByCorreo(string correo)
+        {
+            return await _unitOfWork.Cliente.GetByIdAsync(correo);
+        }
+        public async Task<beCliente> GetClienteById(string id)
         {
             return await _unitOfWork.Cliente.GetByIdAsync(id);
         }
