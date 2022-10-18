@@ -35,5 +35,10 @@ namespace SISGRAFH.Infraestructure.Repositories
             return catalogo;
             
         }
+        public async Task<beCatalogo> GetCatalogoByIdProducto(string id_producto)
+        {
+            var catalogo= await _catalogo.Find(catalogo => catalogo.id_producto == id_producto).FirstOrDefaultAsync();
+            return catalogo;
+        }
     }
 }

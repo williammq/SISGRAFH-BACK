@@ -11,6 +11,7 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<beCatalogo>> GetCatalogo();
         Task<beCatalogo> GetCatalogoById(string  id);
+        Task<beCatalogo> GetCatalogoByIdProducto(string id_producto);
         Task<beCatalogo> PostCatalogo(beCatalogo catalogo);
         Task<beCatalogo> UpdateCatalogo(beCatalogo catalogo);
     }

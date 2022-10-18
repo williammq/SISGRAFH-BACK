@@ -13,7 +13,7 @@ namespace SISGRAFH.Core.Entities
     public class beCatalogo : BaseEntity
     {
         [BsonElement("id_producto")]
-        public string idProducto { get; set; }
+        public string id_producto { get; set; }
         [BsonElement("tamanios")]
         public List<beTamanioHoja> tamanios { get; set; }
         [BsonElement("tipos_hoja")]

@@ -13,15 +13,22 @@ namespace SISGRAFH.Infraestructure.Repositories
     public class ProductoRepository : BaseRepository<beProducto>, IProductoRepository
     {
         private readonly IMongoCollection<beProducto> _producto;
+        private readonly IMongoCollection<beCatalogo> _catalogo;
 
         public ProductoRepository(IMongoDatabase database) : base(database)
         {
             _producto = database.GetCollection<beProducto>(MongoCollectionNames.Productos);
+            _catalogo = database.GetCollection<beCatalogo>(MongoCollectionNames.Catalogo);
         }
-        public async Task<IEnumerable<beProducto>> GetProductos()
+        public async Task<IEnumerable<beProducto>> GetProductosInCatalogo()
         {
-            var cotizaciones = await _producto.Find(producto => true).ToListAsync();
-            return cotizaciones;
+            List<beProducto> productosCatalogo = new List<beProducto>();
+            var catalogo = await _catalogo.Find(catalogo => true).ToListAsync();
+            catalogo.ForEach(delegate(beCatalogo c) {
+               beProducto p =  _producto.Find(p => p.Id == c.id_producto).FirstOrDefault();
+                productosCatalogo.Add(p);
+            });
+            return productosCatalogo;
         }
 
         public async Task<beProducto> PostProducto(beProducto producto)

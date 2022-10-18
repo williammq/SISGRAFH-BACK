@@ -36,7 +36,14 @@ namespace SISGRAFH.Api.Controllers
             var catalogo = await _catalogoService.GetCatalogoById(id);
             var response = new ApiResponse<beCatalogo>(catalogo);
             return Ok(response);
+        }
 
+        [HttpGet("GetCatalogoByIdProducto")]
+        public async Task<IActionResult> GetCatalogoByIdProducto(string idProducto)
+        {
+            var catalogo = await _catalogoService.GetCatalogoByIdProducto(idProducto);
+            var response = new ApiResponse<beCatalogo>(catalogo);
+            return Ok(response);
         }
 
 
@@ -49,7 +56,6 @@ namespace SISGRAFH.Api.Controllers
             catalogoDto = _mapper.Map<CatalogoDto>(catalogoPosted);
             var response = new ApiResponse<CatalogoDto>(catalogoDto);
             return Ok(response);
-
         }
 
         [HttpPut]
@@ -61,7 +67,6 @@ namespace SISGRAFH.Api.Controllers
             catalogoDto = _mapper.Map<CatalogoDto>(catalogoPosted);
             var response = new ApiResponse<CatalogoDto>(catalogoDto);
             return Ok(response);
-
         }
     }
 }

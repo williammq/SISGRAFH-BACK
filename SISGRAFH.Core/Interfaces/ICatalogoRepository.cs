@@ -10,7 +10,7 @@ namespace SISGRAFH.Core.Interfaces
     public interface ICatalogoRepository:IRepository<beCatalogo>
     {
         Task<IEnumerable<beCatalogo>> GetCatalogo();
-
+        Task<beCatalogo> GetCatalogoByIdProducto(string id_producto);
         Task<beCatalogo> PostCatalogo(beCatalogo catalogo);
     }
 }

@@ -9,7 +9,7 @@ namespace SISGRAFH.Core.Interfaces
 {
     public interface IProductoRepository:IRepository<beProducto>
     {
-        Task<IEnumerable<beProducto>> GetProductos();
+        Task<IEnumerable<beProducto>> GetProductosInCatalogo();
         Task<beProducto> PostProducto(beProducto producto);
     }
 }

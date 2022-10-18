@@ -28,5 +28,19 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<beProducto>>(cotizaciones);
             return Ok(response);
         }
+        [HttpGet("GetProductosCatalogo")]
+        public async Task<IActionResult> GetProductosCatalogo()
+        {
+            var cotizaciones = await _productoService.GetProductosCatalogo();
+            var response = new ApiResponse<IEnumerable<beProducto>>(cotizaciones);
+            return Ok(response);
+        }
+        [HttpGet("GetProductoById")]
+        public async Task<IActionResult> GetProductoById(string id)
+        {
+            var producto = await _productoService.GetProductoById(id);
+            var response = new ApiResponse<beProducto>(producto);
+            return Ok(response);
+        }
     }
 }

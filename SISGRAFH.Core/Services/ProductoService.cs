@@ -17,9 +17,20 @@ namespace SISGRAFH.Core.Services
         {
             _unitOfWork = unitOfWork;
         }
+
+        public async Task<beProducto> GetProductoById(string id)
+        {
+            return await _unitOfWork.Producto.GetByIdAsync(id);
+        }
+
         public async Task<IEnumerable<beProducto>> GetProductos()
         {
             return await _unitOfWork.Producto.GetAllAsync();
+        }
+
+        public async Task<IEnumerable<beProducto>> GetProductosCatalogo()
+        {
+            return await _unitOfWork.Producto.GetProductosInCatalogo();
         }
 
         public Task<beProducto> PostProducto(beProducto cotizacion)

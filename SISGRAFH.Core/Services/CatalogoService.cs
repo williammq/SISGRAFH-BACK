@@ -27,6 +27,11 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Catalogo.GetByIdAsync(id);
         }
 
+        public async Task<beCatalogo> GetCatalogoByIdProducto(string id_producto)
+        {
+            return await _unitOfWork.Catalogo.GetCatalogoByIdProducto(id_producto);
+        }
+
         public async Task<beCatalogo> PostCatalogo(beCatalogo catalogo)
         {
             return await _unitOfWork.Catalogo.InsertOneAsync(catalogo);
@@ -39,7 +44,7 @@ namespace SISGRAFH.Core.Services
             {
                 return await PostCatalogo(catalogo);
             };
-            catalogoDb.idProducto = catalogo.idProducto;
+            catalogoDb.id_producto = catalogo.id_producto;
             catalogoDb.tamanios = catalogo.tamanios;
             catalogoDb.tipos_hoja = catalogo.tipos_hoja;
             catalogoDb.estadoProducto = catalogo.estadoProducto;
