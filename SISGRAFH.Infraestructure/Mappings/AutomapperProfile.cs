@@ -68,8 +68,8 @@ namespace SISGRAFH.Infraestructure.Mappings
             CreateMap<beTalonario, TalonarioDto>();
             CreateMap<TalonarioDto, beTalonario>();
 
-            CreateMap<beTarjetaPresentación, TalonarioDto>();
-            CreateMap<TalonarioDto, beTarjetaPresentación>();
+            CreateMap<beTarjetaPresentación, TarjetaPresentaciónDto>();
+            CreateMap<TarjetaPresentaciónDto, beTarjetaPresentación>();
 
             CreateMap<beTriptico, TripticoDto>();
             CreateMap<TripticoDto, beTriptico>();
