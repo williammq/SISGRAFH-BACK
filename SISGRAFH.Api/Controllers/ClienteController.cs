@@ -19,26 +19,38 @@ namespace SISGRAFH.Api.Controllers
             _clienteService = clienteService;
            
         }
-        [HttpGet]
+        [HttpGet("GetAllClients")]
         public async Task<IActionResult> GetAllClients()
         {
             var clients = await _clienteService.GetAllClientes();
             return Ok(clients);
         }
-        [HttpGet("GetClientsCorreo")]
+        [HttpGet("GetClientsByCorreo")]
         public async Task<IActionResult> GetClientsCorreo(string correo)
         {
             var clients = await _clienteService.GetClienteByCorreo(correo);
             return Ok(clients);
         }
-        [HttpPut("UpdateCliente")]
+        [HttpGet("GetClientsById")]
+        public async Task<IActionResult> GetClientsId(string id)
+        {
+            var clients = await _clienteService.GetClienteById(id);
+            return Ok(clients);
+        }
+        [HttpGet("GetClientsByNombreApellido")]
+        public async Task<IActionResult> GetClienteByNombreApellido(string nombre,string apellidopaterno, string apellidomaterno)
+        {
+            var clients = await _clienteService.GetClienteByNombreApellido(nombre,apellidopaterno,apellidomaterno);
+            return Ok(clients);
+        }
+        [HttpPut("UpdateClient")]
         public async Task<IActionResult> UpdateCliente(beCliente _beCliente)
         {
             var clients = await _clienteService.UpdateCliente(_beCliente);
             return Ok(clients);
         }
 
-        [HttpPost("InsertCliente")]
+        [HttpPost("InsertClient")]
         public async Task <IActionResult> InsertCliente(beCliente _beCliente)
         {
             var clients = await _clienteService.InsertCliente(_beCliente);

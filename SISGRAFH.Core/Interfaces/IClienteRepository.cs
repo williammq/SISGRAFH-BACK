@@ -11,6 +11,6 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<beCliente>> GetClienteByCorreo(string correo);
 
-
+        Task<IEnumerable<beCliente>> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno);
     }
 }
