@@ -13,9 +13,14 @@ namespace SISGRAFH.Core.DTOs.Cotizacion
         public string codigo_cotizacion { get; set; }
         //Pendiente, En evaluación, Aceptado, Rechazado, Renegociar
         public string estado { get; set; }
-        public DateTime fecha_registro { get; set; } = DateTime.Now;
-        public DateTime fecha_modificacion { get; set; } = DateTime.Now;
+        //public DateTime fecha_registro { get; set; } = DateTime.Now;
+        //public DateTime fecha_modificacion { get; set; } = DateTime.Now;
         //Las maquinas por las que debera pasar antes de llegar a ser despachado
+        public List<ProductoCotizadoDto> productos_cotizados { get; set; }
+    }
+    public class ProductoCotizadoDto
+    {
+        public string id_producto { get; set; }
         public List<localizacionDto> localizaciones { get; set; }
     }
     public class localizacionDto

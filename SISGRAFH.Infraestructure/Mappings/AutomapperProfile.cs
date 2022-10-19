@@ -38,6 +38,9 @@ namespace SISGRAFH.Infraestructure.Mappings
 
             CreateMap<beInsumoCotizacion, insumoCotizacionDto>();
             CreateMap<insumoCotizacionDto, beInsumoCotizacion>();
+
+            CreateMap<beProductoCotizado, ProductoCotizadoDto>();
+            CreateMap<ProductoCotizadoDto, beProductoCotizado>();
             //Automapper de Insumo
             CreateMap<beInsumo, InsumoDto>();
             CreateMap<InsumoDto, beInsumo>();

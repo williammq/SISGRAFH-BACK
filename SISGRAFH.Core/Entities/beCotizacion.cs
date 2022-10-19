@@ -19,14 +19,22 @@ namespace SISGRAFH.Core.Entities
         //Pendiente, En evaluación, Aceptado, Rechazado, Renegociar
         [BsonElement("estado")]
         public string estado { get; set; }
-        [BsonElement("fecha_registro")]
-        public DateTime fecha_registro { get; set; } = DateTime.Now;
-        [BsonElement("fecha_modificacion")]
-        public DateTime fecha_modificacion { get; set; } = DateTime.Now;
+        //[BsonElement("fecha_registro")]
+        //public DateTime fecha_registro { get; set; } = DateTime.Now;
+        //[BsonElement("fecha_modificacion")]
+        //public DateTime fecha_modificacion { get; set; } = DateTime.Now;
         //Las maquinas por las que debera pasar antes de llegar a ser despachado
+        [BsonElement("productos_cotizados")]
+        public List<beProductoCotizado> productos_cotizados { get; set; }
+    }
+    public class beProductoCotizado
+    {
+        [BsonElement("id_producto")]
+        public string id_producto { get; set; }
         [BsonElement("localizaciones")]
         public List<beLocalizacion> localizaciones { get; set; }
     }
+
     public class beLocalizacion
     {
         [BsonElement("id_maquina")]
