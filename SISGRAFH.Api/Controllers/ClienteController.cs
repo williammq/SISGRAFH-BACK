@@ -34,7 +34,7 @@ namespace SISGRAFH.Api.Controllers
         [HttpGet("GetClientsById")]
         public async Task<IActionResult> GetClientsId(string id)
         {
-            var clients = await _clienteService.GetClienteByCorreo(id);
+            var clients = await _clienteService.GetClienteById(id);
             return Ok(clients);
         }
         [HttpGet("GetClientsByNombreApellido")]
