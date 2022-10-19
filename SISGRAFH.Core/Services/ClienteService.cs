@@ -32,6 +32,11 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Cliente.GetByIdAsync(id);
         }
 
+        public async Task<beCliente> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno)
+        {
+            return await GetClienteByNombreApellido(nombre,apellidopaterno,apellidomaterno); 
+        }
+
         public async Task<beCliente> InsertCliente(beCliente _beCliente)
         {
             return await _unitOfWork.Cliente.InsertOneAsync(_beCliente);
