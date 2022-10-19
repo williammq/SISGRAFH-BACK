@@ -15,4 +15,8 @@
     <ProjectReference Include="..\SISGRAFH.Infraestructure\SISGRAFH.Infraestructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="images\" />
+  </ItemGroup>
+
 </Project>

@@ -50,6 +50,8 @@ namespace SISGRAFH.Core.Entities
         public string tipo_hoja { get; set; }
         [BsonElement("acabado_Hoja")]
         public string acabado_Hoja { get; set; }
+        [BsonElement("orientacion")]
+        public Boolean orientacion { get; set; }
         [BsonElement("archivos")]
         public List<string> archivos { get; set; }
     }
@@ -58,7 +60,6 @@ namespace SISGRAFH.Core.Entities
         public Boolean numerado { get; set; }
         public int copias { get; set; }
         public string encuadernado { get; set; }
-        public Boolean orientacion { get; set; }
     }
     public class beTarjetaPresentación : beProducto_solicitud
     {
@@ -70,11 +71,9 @@ namespace SISGRAFH.Core.Entities
     {
         public Boolean plegado { get; set; }
         public string tipo_plegado { get; set; }
-        public Boolean orientacion { get; set; }
     }
     public class beDiptico : beProducto_solicitud
     {
         public Boolean plegado { get; set; }
-        public Boolean orientacion { get; set; }
     }
 }

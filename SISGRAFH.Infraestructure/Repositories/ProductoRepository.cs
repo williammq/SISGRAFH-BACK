@@ -23,7 +23,7 @@ namespace SISGRAFH.Infraestructure.Repositories
         public async Task<IEnumerable<beProducto>> GetProductosInCatalogo()
         {
             List<beProducto> productosCatalogo = new List<beProducto>();
-            var catalogo = await _catalogo.Find(catalogo => true).ToListAsync();
+            var catalogo = await _catalogo.Find(catalogo => catalogo.estadoProducto == true).ToListAsync();
             catalogo.ForEach(delegate(beCatalogo c) {
                beProducto p =  _producto.Find(p => p.Id == c.id_producto).FirstOrDefault();
                 productosCatalogo.Add(p);

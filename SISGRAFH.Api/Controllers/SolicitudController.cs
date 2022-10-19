@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-
+using Microsoft.AspNetCore.Hosting;
 
 namespace SISGRAFH.Api.Controllers
 {
@@ -20,12 +20,16 @@ namespace SISGRAFH.Api.Controllers
     {
         private static ISolicitudService _solicitudService;
         private static IProductoService _productoService;
+        private readonly IHostingEnvironment _enviroment;
+        private readonly string contentPath = "";
         private static IMapper _mapper;
-        public SolicitudController(IProductoService productoService,ISolicitudService solicitudService, IMapper mapper)
+        public SolicitudController(IHostingEnvironment environment, IProductoService productoService,ISolicitudService solicitudService, IMapper mapper)
         {
             _solicitudService = solicitudService;
             _productoService = productoService;
+            _enviroment = environment;
             _mapper = mapper;
+            contentPath = _enviroment.ContentRootPath;
         }
         [HttpGet("GetSolicitudes")]
         public async Task<IActionResult> GetSolicitudes()
@@ -109,7 +113,20 @@ namespace SISGRAFH.Api.Controllers
                         break;
                 }
             });
-
+            string GetPath(string base64)
+            {
+                byte[] arrayBytes = Convert.FromBase64String(base64);
+                string id = Guid.NewGuid().ToString();
+                string ruta = System.IO.Path.Combine(contentPath, "images", id + ".png");
+                System.IO.File.WriteAllBytes(ruta, arrayBytes);
+                return ruta;
+            }
+            solicitud.productos.ForEach(delegate (beProducto_solicitud p) {
+                for (int i = 0; i < p.archivos.Count; i++)
+                {
+                    p.archivos[i] = GetPath(p.archivos[i].Split(',')[1]);
+                }
+            });
             var solicitudPosted = await _solicitudService.PostSolicitud(solicitud);
             var response = new ApiResponse<beSolicitud>(solicitudPosted);
             return Ok(response);

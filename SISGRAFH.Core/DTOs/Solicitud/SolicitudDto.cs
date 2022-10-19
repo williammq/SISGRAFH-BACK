@@ -38,7 +38,6 @@ namespace SISGRAFH.Core.DTOs.Solicitud
         public Boolean numerado { get; set; }
         public int copias { get; set; }
         public string encuadernado { get; set; }
-        public Boolean orientacion { get; set; }
     }
     public class TarjetaPresentaciónDto : Producto_solicitudDto
     {
@@ -50,11 +49,9 @@ namespace SISGRAFH.Core.DTOs.Solicitud
     {
         public Boolean plegado { get; set; }
         public string tipo_plegado { get; set; }
-        public Boolean orientacion { get; set; }
     }
     public class DipticoDto : Producto_solicitudDto
     {
         public Boolean plegado { get; set; }
-        public Boolean orientacion { get; set; }
     }
 }

@@ -29,10 +29,9 @@ namespace SISGRAFH.Core.Services
         }
 
         public async Task<beSolicitud> PostSolicitud(beSolicitud solicitud)
-        {
+        {            
             return await _unitOfWork.Solicitud.InsertOneAsync(solicitud);
         }
-
         public Task<beSolicitud> UpdateSolicitud(beSolicitud solicitud)
         {
             throw new NotImplementedException();
