@@ -45,8 +45,7 @@ namespace SISGRAFH.Core.Services
             {
                 return await PostCotizacion(cotizacion);
             };
-            cotizaciondb.localizaciones =cotizacion.localizaciones;
-            cotizaciondb.fecha_modificacion =DateTime.Now;
+            cotizaciondb.productos_cotizados =cotizacion.productos_cotizados;
             cotizaciondb.estado =cotizacion.estado;
             cotizaciondb.id_solicitud =cotizacion.id_solicitud;
             return await _unitOfWork.Cotizacion.UpdateOneAsync(cotizaciondb);
