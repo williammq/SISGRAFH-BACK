@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SISGRAFH.Api.Responses;
+using SISGRAFH.Core.DTOs.Producto;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using System;
@@ -41,6 +42,28 @@ namespace SISGRAFH.Api.Controllers
             var producto = await _productoService.GetProductoById(id);
             var response = new ApiResponse<beProducto>(producto);
             return Ok(response);
+        }
+        [HttpPost("PostProducto")]
+        public async Task<IActionResult> PostProducto(ProductoDto productoDto)
+        {
+            var producto = _mapper.Map<beProducto>(productoDto);
+            var productoPosted = await _productoService.PostProducto(producto);
+
+            productoDto = _mapper.Map<ProductoDto>(productoPosted);
+            var response = new ApiResponse<ProductoDto>(productoDto);
+            return Ok(response);
+
+        }
+        [HttpPut("UpdateProducto")]
+        public async Task<IActionResult> UpdateProducto(ProductoDto productoDto)
+        {
+            var producto = _mapper.Map<beProducto>(productoDto);
+            var productoPosted = await _productoService.UpdateProducto(producto);
+
+            productoDto = _mapper.Map<ProductoDto>(productoPosted);
+            var response = new ApiResponse<ProductoDto>(productoDto);
+            return Ok(response);
+
         }
     }
 }

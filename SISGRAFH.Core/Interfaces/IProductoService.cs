@@ -12,7 +12,7 @@ namespace SISGRAFH.Core.Interfaces
         Task<IEnumerable<beProducto>> GetProductos();
         Task<IEnumerable<beProducto>> GetProductosCatalogo();
         Task<beProducto> GetProductoById(string id);
-        Task<beProducto> PostProducto(beProducto cotizacion);
-        Task<beProducto> UpdateProducto(beProducto cotizacion);
+        Task<beProducto> PostProducto(beProducto producto);
+        Task<beProducto> UpdateProducto(beProducto producto);
     }
 }

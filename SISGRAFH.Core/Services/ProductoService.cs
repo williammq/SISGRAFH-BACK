@@ -33,14 +33,23 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Producto.GetProductosInCatalogo();
         }
 
-        public Task<beProducto> PostProducto(beProducto cotizacion)
+        public async Task<beProducto> PostProducto(beProducto producto)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.Producto.InsertOneAsync(producto);
         }
 
-        public Task<beProducto> UpdateProducto(beProducto cotizacion)
+        public async Task<beProducto> UpdateProducto(beProducto producto)
         {
-            throw new NotImplementedException();
+            var productoDb = await _unitOfWork.Producto.GetByIdAsync(producto.Id);
+            if (productoDb == null)
+            {
+                return await PostProducto(producto);
+            };
+            productoDb.nombre = producto.nombre;
+            productoDb.descripcion = producto.descripcion;
+            productoDb.url_imagen = producto.url_imagen;
+
+            return await _unitOfWork.Producto.UpdateOneAsync(productoDb);
         }
     }
 }

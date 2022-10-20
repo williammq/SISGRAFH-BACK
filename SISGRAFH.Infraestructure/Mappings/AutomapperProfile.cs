@@ -5,6 +5,7 @@ using SISGRAFH.Core.DTOs.Cotizacion;
 using SISGRAFH.Core.DTOs.Insumo;
 using SISGRAFH.Core.DTOs.Solicitud;
 using SISGRAFH.Core.DTOs.Usuario;
+using SISGRAFH.Core.DTOs.Producto;
 using SISGRAFH.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -90,6 +91,10 @@ namespace SISGRAFH.Infraestructure.Mappings
             //Automapper de Cliente
             CreateMap<beCliente, ClienteDto>();
             CreateMap<ClienteDto, beCliente>();
+
+            //Automapper de Producto
+            CreateMap<beProducto, ProductoDto>();
+            CreateMap<ProductoDto, beProducto>();
         }
     }
 }
