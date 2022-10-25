@@ -23,18 +23,18 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Cliente.GetAllAsync();
         }
 
-        public async Task<beCliente> GetClienteByCorreo(string correo)
+        public async Task<IEnumerable<beCliente>> GetClienteByCorreo(string correo)
         {
-            return await _unitOfWork.Cliente.GetByIdAsync(correo);
+            return await _unitOfWork.Cliente.GetClienteByCorreo(correo);
         }
         public async Task<beCliente> GetClienteById(string id)
         {
             return await _unitOfWork.Cliente.GetByIdAsync(id);
         }
 
-        public async Task<beCliente> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno)
+        public async Task<IEnumerable<beCliente>> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno)
         {
-            return await GetClienteByNombreApellido(nombre,apellidopaterno,apellidomaterno); 
+            return await _unitOfWork.Cliente.GetClienteByNombreApellido(nombre,apellidopaterno,apellidomaterno); 
         }
 
         public async Task<beCliente> InsertCliente(beCliente _beCliente)

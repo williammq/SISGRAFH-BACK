@@ -10,11 +10,11 @@ namespace SISGRAFH.Core.Interfaces
     public interface IClienteService
     {
         Task<IEnumerable<beCliente>> GetAllClientes();
-        Task<beCliente> GetClienteByCorreo(string correo);
+        Task<IEnumerable<beCliente>> GetClienteByCorreo(string correo);
         Task<beCliente> GetClienteById(string id);
         Task<beCliente> UpdateCliente(beCliente _beCliente);
         Task<beCliente> InsertCliente (beCliente _beCliente);
-        Task<beCliente> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno);
+        Task<IEnumerable<beCliente>> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno);
 
     }
 }

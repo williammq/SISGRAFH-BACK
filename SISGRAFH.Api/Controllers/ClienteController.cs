@@ -26,10 +26,10 @@ namespace SISGRAFH.Api.Controllers
             return Ok(clients);
         }
         [HttpGet("GetClientsByCorreo")]
-        public async Task<IActionResult> GetClientsCorreo(string correo)
+        public async Task<IActionResult> GetClienteByCorreo(string correo)
         {
             var clients = await _clienteService.GetClienteByCorreo(correo);
-            return Ok(clients);
+            return Ok(clients); 
         }
         [HttpGet("GetClientsById")]
         public async Task<IActionResult> GetClientsId(string id)
