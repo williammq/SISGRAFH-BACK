@@ -34,6 +34,12 @@ namespace SISGRAFH.Core.Entities
 
         [BsonElement("id_historial_pedidos")]
         public string IdHistorialPedidos { get; set; }
+        
+        [BsonElement("tipo_documento")]
+        public string TipoDocumento { get; set; }
+
+        [BsonElement("numero_documento")]
+        public string NumeroDocumento { get; set; }
 
     }
 }

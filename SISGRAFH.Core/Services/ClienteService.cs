@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace SISGRAFH.Core.Services
 {
     public class ClienteService : IClienteService
+
     {
         private static IUnitOfWork _unitOfWork;
 
@@ -35,6 +36,11 @@ namespace SISGRAFH.Core.Services
         public async Task<IEnumerable<beCliente>> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno)
         {
             return await _unitOfWork.Cliente.GetClienteByNombreApellido(nombre,apellidopaterno,apellidomaterno); 
+        }
+
+        public async Task<IEnumerable<beCliente>> GetClienteByNumeroDocumento(string numeroDocumento)
+        {
+            return await _unitOfWork.Cliente.GetClienteByNumeroDocumento(numeroDocumento);
         }
 
         public async Task<beCliente> InsertCliente(beCliente _beCliente)
