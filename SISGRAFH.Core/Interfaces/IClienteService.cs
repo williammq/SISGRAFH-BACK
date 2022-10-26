@@ -15,6 +15,7 @@ namespace SISGRAFH.Core.Interfaces
         Task<beCliente> UpdateCliente(beCliente _beCliente);
         Task<beCliente> InsertCliente (beCliente _beCliente);
         Task<IEnumerable<beCliente>> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno);
+        Task<IEnumerable<beCliente>> GetClienteByNumeroDocumento(string numeroDocumento);
 
-    }
+    }   
 }
