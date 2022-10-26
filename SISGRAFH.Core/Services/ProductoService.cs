@@ -45,6 +45,7 @@ namespace SISGRAFH.Core.Services
             {
                 return await PostProducto(producto);
             };
+            productoDb.AudithObject = new Audith();
             productoDb.nombre = producto.nombre;
             productoDb.descripcion = producto.descripcion;
             productoDb.url_imagen = producto.url_imagen;

@@ -32,7 +32,7 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<object>>(maquinas);
             return Ok(response);
         }
-        [HttpPost]
+        [HttpPost("PostMaquina")]
         public async Task<IActionResult> PostMaquina(JsonElement JSONmaquina)
         {
             string js = JSONmaquina.ToString();
