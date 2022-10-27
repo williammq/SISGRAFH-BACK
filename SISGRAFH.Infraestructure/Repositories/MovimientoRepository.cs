@@ -18,15 +18,29 @@ namespace SISGRAFH.Infraestructure.Repositories
         {
             _movimiento = database.GetCollection<beMovimiento>(MongoCollectionNames.Movimientos);
         }
-        public async Task<IEnumerable<beMovimiento>> GetMovimiento()
+
+        public async Task<IEnumerable<beMovimiento>> GetAllMovimiento()
         {
             var movimientos = await _movimiento.Find(movimiento => true).ToListAsync();
             return movimientos;
         }
 
+        public async Task<beMovimiento> GetByIdMovimiento(string id)
+        {
+            var movimiento = await _movimiento.Find(movimiento => movimiento.Id == id).FirstOrDefaultAsync();
+            return movimiento;
+        }
+
         public async Task<beMovimiento> PostMovimiento(beMovimiento movimiento)
         {
             await _movimiento.InsertOneAsync(movimiento);
+            return movimiento;
+        }
+
+        public async Task<beMovimiento> UpdateMovimiento(beMovimiento movimiento)
+        {
+            var filter = Builders<beMovimiento>.Filter.Eq(doc => doc.Id, movimiento.Id);
+            await _movimiento.FindOneAndReplaceAsync(filter, movimiento);
             return movimiento;
         }
     }
