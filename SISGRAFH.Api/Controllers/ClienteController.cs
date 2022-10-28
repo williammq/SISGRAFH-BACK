@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Core.Services;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace SISGRAFH.Api.Controllers
@@ -64,5 +65,11 @@ namespace SISGRAFH.Api.Controllers
             return Ok(clients);
         }
 
+        [HttpGet("GetClientsByRuc")]
+        public async Task <IActionResult> GetClienteByRUC(string ruc)
+        {
+            var clients = await _clienteService.GetClienteByRUC(ruc);
+            return Ok(clients);
+        }
     }
 }
