@@ -39,6 +39,8 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("id_maquina")]
         public string id_maquina { get; set; }
+        [BsonElement("numero_orden")]
+        public int numero_orden { get; set; }
         [BsonElement("insumos")]
         public List<beInsumoCotizacion> insumos { get; set; }
     }

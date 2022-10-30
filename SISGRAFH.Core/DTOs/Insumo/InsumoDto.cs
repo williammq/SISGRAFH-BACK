@@ -23,7 +23,7 @@ namespace SISGRAFH.Core.DTOs.Insumo
     {
         public double diametro { get; set; }
         public string material { get; set; }
-        public string longitud { get; set; }
+        public double longitud { get; set; }
         public double grosor_union { get; set; }
         public int numero_agujeros { get; set; }
     }

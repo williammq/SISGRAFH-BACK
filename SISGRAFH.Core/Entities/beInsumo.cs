@@ -42,7 +42,7 @@ namespace SISGRAFH.Core.Entities
         [BsonElement("material")]
         public string material { get; set; }
         [BsonElement("longitud")]
-        public string longitud { get; set; }
+        public double longitud { get; set; }
         [BsonElement("grosor_union")]
         public double grosor_union { get; set; }
         [BsonElement("numero_agujeros")]

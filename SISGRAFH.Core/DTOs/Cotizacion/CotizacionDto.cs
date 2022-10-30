@@ -26,6 +26,7 @@ namespace SISGRAFH.Core.DTOs.Cotizacion
     public class localizacionDto
     {
         public string id_maquina { get; set; }
+        public int numero_orden { get; set; }
         public List<insumoCotizacionDto> insumos { get; set; }
     }
     public class insumoCotizacionDto
