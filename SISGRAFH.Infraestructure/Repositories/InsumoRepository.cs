@@ -17,7 +17,7 @@ namespace SISGRAFH.Infraestructure.Repositories
 
         public InsumoRepository(IMongoDatabase database) : base(database)
         {
-            _insumo = database.GetCollection<beInsumo>(MongoCollectionNames.Maquinas);
+            _insumo = database.GetCollection<beInsumo>(MongoCollectionNames.Insumos);
         }
         public async Task<IEnumerable<object>> GetInsumos()
         {
@@ -31,5 +31,17 @@ namespace SISGRAFH.Infraestructure.Repositories
             return insumo;
         }
 
+        public async Task<IEnumerable<beInsumo>> GetInsumoByCategoria(string categoria)
+        {
+            var insumos = await _insumo.Find(insumo => insumo.categoria == categoria).ToListAsync();
+            insumos.Where(x => x.categoria == categoria);
+            return insumos;
+        }
+
+        public async Task<beInsumo> GetInsumoByNombre(string nombre)
+        {
+            var insumo = await _insumo.Find(insumo => insumo.nombre == nombre).FirstOrDefaultAsync();
+            return insumo;
+        }
     }
 }

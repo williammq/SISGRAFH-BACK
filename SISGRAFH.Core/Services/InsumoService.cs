@@ -89,5 +89,15 @@ namespace SISGRAFH.Core.Services
             }
             return await _unitOfWork.Insumo.UpdateOneAsync(insumoDb);
         }
+
+        public async Task<IEnumerable<beInsumo>> GetInsumoByCategoria(string categoria)
+        {
+            return await _unitOfWork.Insumo.GetInsumoByCategoria(categoria);
+        }
+
+        public async Task<beInsumo> GetInsumoByNombre(string nombre)
+        {
+            return await _unitOfWork.Insumo.GetInsumoByNombre(nombre);
+        }
     }
 }
