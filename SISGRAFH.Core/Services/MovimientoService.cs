@@ -16,9 +16,15 @@ namespace SISGRAFH.Core.Services
         {
             _unitOfWork = unitOfWork;
         }
-        public async Task<IEnumerable<beMovimiento>> GetMovimiento()
+
+        public async Task<IEnumerable<beMovimiento>> GetAllMovimiento()
         {
             return await _unitOfWork.Movimiento.GetAllAsync();
+        }
+
+        public async Task<beMovimiento> GetByIdMovimiento(string id)
+        {
+            return await _unitOfWork.Movimiento.GetByIdMovimiento(id);
         }
 
         public async Task<beMovimiento> PostMovimiento(beMovimiento movimiento)

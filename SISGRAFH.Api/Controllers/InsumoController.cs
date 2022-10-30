@@ -91,5 +91,21 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<beInsumo>(insumoPosted);
             return Ok(response);
         }
+
+        [HttpGet("GetInsumoByCategoria")]
+        public async Task<IActionResult> GetInsumoByCategoria(string categoria)
+        {
+            var insumo = await _insumoService.GetInsumoByCategoria(categoria);
+            var response = new ApiResponse<IEnumerable<beInsumo>>(insumo);
+            return Ok(response);
+        }
+
+        [HttpGet("GetInsumosByNombre")]
+        public async Task<IActionResult> GetInsumosByNombre(string nombre)
+        {
+            var insumo = await _insumoService.GetInsumoByNombre(nombre);
+            var response = new ApiResponse<beInsumo>(insumo);
+            return Ok(response);
+        }
     }
 }

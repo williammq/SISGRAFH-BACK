@@ -23,21 +23,37 @@ namespace SISGRAFH.Api.Controllers
             _movimientoService = movimientoService;
             _mapper = mapper;
         }
-        [HttpGet("GetMovimientos")]
-        public async Task<IActionResult> GetMovimientos()
+        [HttpGet("GetAllMovimientos")]
+        public async Task<IActionResult> GetAllMovimientos()
         {
-            var movimientos = await _movimientoService.GetMovimiento();
+            var movimientos = await _movimientoService.GetAllMovimiento();
             var response = new ApiResponse<IEnumerable<object>>(movimientos);
             return Ok(response);
         }
-        [HttpPost]
-        public async Task<IActionResult> PostMaquina(MovimientoDto movimientoDto)
+        [HttpGet("GetByIdMovimiento")]
+        public async Task<IActionResult> GetByIdMovimiento(string id)
+        {
+            var movimiento = await _movimientoService.GetByIdMovimiento(id);
+            return Ok(movimiento);
+        }
+        [HttpPost("PostMovimiento")]
+        public async Task<IActionResult> PostMMovimiento(MovimientoDto movimientoDto)
         {
             var movimiento = _mapper.Map<beMovimiento>(movimientoDto);
             var cotizacionPosted = await _movimientoService.PostMovimiento(movimiento);
             var response = new ApiResponse<beMovimiento>(cotizacionPosted);
             return Ok(response);
 
+        }
+        [HttpPut("UpdateMovimiento")]
+        public async Task<IActionResult> UpdateMovimiento(MovimientoDto movimientoDto)
+        {
+            var movimiento = _mapper.Map<beMovimiento>(movimientoDto);
+            var cotizacionPosted = await _movimientoService.UpdateMovimiento(movimiento);
+
+            movimientoDto = _mapper.Map<MovimientoDto>(cotizacionPosted);
+            var response = new ApiResponse<MovimientoDto>(movimientoDto);
+            return Ok(response);
         }
     }
 }

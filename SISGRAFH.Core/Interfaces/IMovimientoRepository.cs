@@ -10,7 +10,10 @@ namespace SISGRAFH.Core.Interfaces
 {
     public interface IMovimientoRepository : IRepository<beMovimiento>
     {
-        Task<IEnumerable<beMovimiento>> GetMovimiento();
+        Task<IEnumerable<beMovimiento>> GetAllMovimiento();
+        Task<beMovimiento> GetByIdMovimiento(string id);
         Task<beMovimiento> PostMovimiento(beMovimiento movimiento);
+        Task<beMovimiento> UpdateMovimiento(beMovimiento movimiento);
+
     }
 }

@@ -36,10 +36,13 @@ namespace SISGRAFH.Core.Entities
         public string IdHistorialPedidos { get; set; }
         
         [BsonElement("tipo_documento")]
-        public string TipoDocumento { get; set; }
+        public bool TipoDocumento { get; set; }
 
         [BsonElement("numero_documento")]
         public string NumeroDocumento { get; set; }
+
+        [BsonElement("RUC")]
+        public string RUC { get; set; }
 
     }
 }
