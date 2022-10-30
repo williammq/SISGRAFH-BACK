@@ -48,6 +48,8 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("id_insumo")]
         public string id_insumo { get; set; }
+        [BsonElement("costo_unitario_insumo")]
+        public double costo_unitario_insumo { get; set; }
         [BsonElement("cantidad_requerida")]
         public string cantidad_requerida { get; set; }
     }

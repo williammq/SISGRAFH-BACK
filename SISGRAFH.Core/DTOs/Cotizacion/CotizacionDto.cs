@@ -32,6 +32,7 @@ namespace SISGRAFH.Core.DTOs.Cotizacion
     public class insumoCotizacionDto
     {
         public string id_insumo { get; set; }
+        public double costo_unitario_insumo { get; set; }
         public string cantidad_requerida { get; set; }
     }
 }
