@@ -33,6 +33,12 @@ namespace SISGRAFH.Api.Controllers
             var trabajadores = await _trabajadorService.UpdateTrabajador(_beTrabajador);
             return Ok(trabajadores);
         }
+        [HttpGet("GetTrabajadorById")]
+        public async Task <IActionResult> GetTrabajadorById (string id)
+        {
+            var trabajadores = await _trabajadorService.GetTrabajadorById(id);
+            return Ok(trabajadores);
+        }
 
     }
 }

@@ -23,6 +23,11 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Trabajador.GetAllAsync();
         }
 
+        public async Task<beTrabajador> GetTrabajadorById(string id)
+        {
+            return await _unitOfWork.Trabajador.GetByIdAsync(id);
+        }
+
         public async Task<beTrabajador> InsertTrabajador(beTrabajador _beTrabajador)
         {
             return await _unitOfWork.Trabajador.InsertOneAsync(_beTrabajador);

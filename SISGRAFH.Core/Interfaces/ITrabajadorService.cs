@@ -12,6 +12,6 @@ namespace SISGRAFH.Core.Interfaces
         Task<IEnumerable<beTrabajador>> GetAllTrabajadores();
         Task<beTrabajador> InsertTrabajador(beTrabajador _beTrabajador);
         Task<beTrabajador> UpdateTrabajador(beTrabajador _beTrabajador);
-        
+        Task<beTrabajador> GetTrabajadorById(string id);
     }
 }
