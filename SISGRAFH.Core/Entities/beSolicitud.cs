@@ -33,6 +33,8 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("id_producto")]
         public string id_producto { get; set; }
+        [BsonElement("codigo_producto")]
+        public string codigo_producto { get; set; }
         //4+4 Impresos a todo color ambas caras (CMYK / CMYK).
         //4+1 Impresos a todo color una cara y el reverso a blanco y negro(CMYK / K).
         //4+0 Impresos a todo color una cara y el reverso sin impresión(CMYK / – ).

@@ -24,6 +24,7 @@ namespace SISGRAFH.Core.DTOs.Solicitud
         //4+0 Impresos a todo color una cara y el reverso sin impresión(CMYK / – ).
         //1+1 Impresos a blanco y negro ambas caras(K / K)
         //1+0 Impreso blanco y negro una cara y el anverso sin impresión. (K / – )
+        public string codigo_producto { get; set; }
         public string colores_impresion { get; set; }
         public Int32 cantidad_ejemplares { get; set; }
         // A1,2,3,4,5,Carta,Doble carta,Oficio,Folio,Tabloide,etc.
