@@ -27,5 +27,6 @@ namespace SISGRAFH.Infraestructure.Repositories
         public IMovimientoRepository Movimiento => new MovimientoRepository(_dbContext.Database);
         public ICatalogoRepository Catalogo => new CatalogoRepository(_dbContext.Database);
         public IClienteRepository Cliente => new ClienteRepository(_dbContext.Database);
+        public ITrabajadorRepository Trabajador => new TrabajadorRepository(_dbContext.Database);
     }
 }
