@@ -24,6 +24,11 @@ namespace SISGRAFH.Infraestructure.Repositories
             var solicitudes = await _solicitud.AsQueryable().ToListAsync();
             return solicitudes;
         }
+        public async Task<beSolicitud> GetSolicitudByCodigoCotizacion(string codigo)
+        {
+            var solicitud = await _solicitud.Find(x=>x.codigo_cotizacion == codigo).FirstOrDefaultAsync();
+            return solicitud;
+        }
         public Task<beSolicitud> PostSolicitud(beSolicitud insumo)
         {
             throw new NotImplementedException();
