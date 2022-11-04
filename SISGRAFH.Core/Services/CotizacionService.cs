@@ -35,6 +35,9 @@ namespace SISGRAFH.Core.Services
 
         public async Task<beCotizacion> PostCotizacion(beCotizacion cotizacion)
         {
+            var solicitud = await _unitOfWork.Solicitud.GetSolicitudByCodigoCotizacion(cotizacion.codigo_cotizacion);
+            solicitud.estado = "Cotizado";
+            await _unitOfWork.Solicitud.UpdateOneAsync(solicitud);
             return await _unitOfWork.Cotizacion.InsertOneAsync(cotizacion);
         }
 
