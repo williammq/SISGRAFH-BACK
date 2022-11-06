@@ -9,8 +9,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Core.Services;
-using SISGRAFH.Infraestructure.Data;
+using SISGRAFH.Core.Utils.BlobStorage;
+using SISGRAFH.Infraestructure.Data.BlobStorage;
 using SISGRAFH.Infraestructure.Data.Interfaces;
+using SISGRAFH.Infraestructure.Data.MongoDB;
 using SISGRAFH.Infraestructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -59,9 +61,11 @@ namespace SISGRAFH.Api
 
             //Inyección de dependencias de MongoDB debe ir antes de la I.D. de los servicios
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoConnection"));
+            services.Configure<AzureBlobStorageSettings>(Configuration.GetSection("AzureBlobStorage"));
             services.AddSingleton<MongoContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddScoped<IFileStorage, AzureFileStorage>();
 
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IMaquinaService, MaquinaService>();
