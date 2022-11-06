@@ -11,6 +11,7 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<object>> GetSolicitudes();
         Task<IEnumerable<object>> GetProductosBySolicitud(string id);
+        Task<beSolicitud> GetSolicitudByCodigoCotizacion(string codigo);
         Task<beSolicitud> PostSolicitud(beSolicitud solicitud);
         Task<beSolicitud> UpdateSolicitud(beSolicitud solicitud);
     }

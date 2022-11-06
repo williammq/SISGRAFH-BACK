@@ -47,6 +47,12 @@ namespace SISGRAFH.Core.Entities
         public string id_maquina { get; set; }
         [BsonElement("numero_orden")]
         public int numero_orden { get; set; }
+        [BsonElement("tiempo")]
+        public double tiempo { get; set; }
+        [BsonElement("entrada")]
+        public beComponente entrada { get; set; }
+        [BsonElement("salida")]
+        public beComponente salida { get; set; }
         [BsonElement("insumos")]
         public List<beInsumoCotizacion> insumos { get; set; }
     }
@@ -58,5 +64,16 @@ namespace SISGRAFH.Core.Entities
         public double costo_unitario_insumo { get; set; }
         [BsonElement("cantidad_requerida")]
         public double cantidad_requerida { get; set; }
+    }
+    public class beComponente
+    {
+        [BsonElement("nombre")]
+        public string nombre { get; set; }
+        [BsonElement("cantidad")]
+        public double cantidad { get; set; }
+        [BsonElement("ancho")]
+        public double ancho { get; set; }
+        [BsonElement("largo")]
+        public double largo { get; set; }
     }
 }

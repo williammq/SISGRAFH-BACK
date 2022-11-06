@@ -45,6 +45,13 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<object>>(solicitudes);
             return Ok(response);
         }
+        [HttpGet("GetSolicitudByCodigo")]
+        public async Task<IActionResult> GetSolicitudByCodigo(string codigo)
+        {
+            var solicitudes = await _solicitudService.GetSolicitudByCodigoCotizacion(codigo);
+            var response = new ApiResponse<beSolicitud>(solicitudes);
+            return Ok(response);
+        }
         [HttpPost("PostSolicitud")]
         public async Task<IActionResult> PostSolicitud(JsonElement JSsolicitud)
         {

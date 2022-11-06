@@ -23,6 +23,11 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Solicitud.GetProductosBySolicitud(id);
         }
 
+        public async Task<beSolicitud> GetSolicitudByCodigoCotizacion(string codigo)
+        {
+            return await _unitOfWork.Solicitud.GetSolicitudByCodigoCotizacion(codigo);
+        }
+
         public async Task<IEnumerable<object>> GetSolicitudes()
         {
             return await _unitOfWork.Solicitud.GetAllAsync();
