@@ -29,8 +29,9 @@ namespace SISGRAFH.Infraestructure.Repositories
 
         public IClienteRepository Cliente => throw new NotImplementedException();
 
-        public ICatalogoRepository Catalogo => throw new NotImplementedException();
+        public ICatalogoRepository Catalogo => new CatalogoRepository(_dbContext.Database);
 
         public ITrabajadorRepository Trabajador => throw new NotImplementedException();
+        public IOrden_TrabajoRepository Orden_Trabajo => new Orden_TrabajoRepository(_dbContext.Database);
     }
 }

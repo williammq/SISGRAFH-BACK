@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SISGRAFH.Core.DTOs.Orden_Trabajo;
 
 namespace SISGRAFH.Infraestructure.Mappings
 {
@@ -98,6 +99,10 @@ namespace SISGRAFH.Infraestructure.Mappings
             //Automapper de Producto
             CreateMap<beProducto, ProductoDto>();
             CreateMap<ProductoDto, beProducto>();
+
+            //Automapper de Orden de Trabajo
+            CreateMap<beOrden_Trabajo, Orden_TrabajoDto>();
+            CreateMap<Orden_TrabajoDto, beOrden_Trabajo>();
         }
     }
 }
