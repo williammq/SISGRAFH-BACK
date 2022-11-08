@@ -39,5 +39,11 @@ namespace SISGRAFH.Infraestructure.Repositories
             beCotizacion cotizacion = await _cotizacion.Find(cotizacion => cotizacion.codigo_cotizacion == codigo && cotizacion.estado=="Enviado").FirstOrDefaultAsync();
             return cotizacion;
         }
+
+        public async Task<IEnumerable<beCotizacion>> GetCotizacionesByCodigoCotizacion(string codigo)
+        {
+            var cotizacion = await _cotizacion.Find(cotizacion => cotizacion.codigo_cotizacion == codigo).ToListAsync();
+            return cotizacion;
+        }
     }
 }

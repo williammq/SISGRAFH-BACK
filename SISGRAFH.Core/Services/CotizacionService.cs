@@ -33,6 +33,11 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Cotizacion.GetAllAsync();
         }
 
+        public async Task<IEnumerable<beCotizacion>> GetCotizacionesByCodigoCotizacion(string codigo)
+        {
+            return await _unitOfWork.Cotizacion.GetCotizacionesByCodigoCotizacion(codigo);
+        }
+
         public async Task<beCotizacion> PostCotizacion(beCotizacion cotizacion)
         {
             var solicitud = await _unitOfWork.Solicitud.GetSolicitudByCodigoCotizacion(cotizacion.codigo_cotizacion);

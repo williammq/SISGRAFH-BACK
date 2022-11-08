@@ -46,6 +46,13 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<beCotizacion>(cotizacion);
             return Ok(response);
         }
+        [HttpGet("GetCotizacionesByCodigoCotizacion")]
+        public async Task<IActionResult> GetCotizacionesByCodigoCotizacion(string codigo)
+        {
+            var cotizacion = await _cotizacionService.GetCotizacionesByCodigoCotizacion(codigo);
+            var response = new ApiResponse<IEnumerable<beCotizacion>>(cotizacion);
+            return Ok(response);
+        }
         [HttpPost("PostCotizacion")]
         public async Task<IActionResult> PostCotizacion(cotizacionDto cotizacionDTO)
         {

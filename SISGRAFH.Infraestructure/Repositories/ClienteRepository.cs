@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Core.Utils.MongoDbParams;
@@ -24,7 +25,6 @@ namespace SISGRAFH.Infraestructure.Repositories
             return clientes;
         }
         public async Task <IEnumerable<beCliente>> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno) {
-
             var clientes = await _cliente.Find(cliente => cliente.Nombre == nombre && cliente.ApellidoPaterno == apellidopaterno && cliente.ApellidoMaterno == apellidomaterno).ToListAsync();
             return clientes;
 

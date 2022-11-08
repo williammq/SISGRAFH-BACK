@@ -14,5 +14,6 @@ namespace SISGRAFH.Core.Interfaces
         Task<beCotizacion> UpdateCotizacion(beCotizacion cotizacion);
         Task<beCotizacion> GetCotizacionById(string id);
         Task<beCotizacion> GetCotizacionByCodigoCotizacion(string codigo);
+        Task<IEnumerable<beCotizacion>> GetCotizacionesByCodigoCotizacion(string codigo);
     }
 }

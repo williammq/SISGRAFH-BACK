@@ -18,9 +18,10 @@ namespace SISGRAFH.Infraestructure.Repositories
         {
             _orden = database.GetCollection<beOrden_Trabajo>(MongoCollectionNames.Orden_Trabajo);
         }
-        public Task<IEnumerable<beOrden_Trabajo>> GetOrdenes()
+        public async Task<IEnumerable<beOrden_Trabajo>> GetOrdenes()
         {
-            throw new NotImplementedException();
+            var ordenes = await _orden.Find(o => true).ToListAsync();
+            return ordenes;
         }
     }
 }
