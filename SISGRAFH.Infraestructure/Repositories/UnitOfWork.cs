@@ -33,5 +33,8 @@ namespace SISGRAFH.Infraestructure.Repositories
 
         public ITrabajadorRepository Trabajador => new TrabajadorRepository(_dbContext.Database);
         public IOrden_TrabajoRepository Orden_Trabajo => new Orden_TrabajoRepository(_dbContext.Database);
+
+        public IPagoRepository Pago =>  new PagoRepository(_dbContext.Database);
+        
     }
 }
