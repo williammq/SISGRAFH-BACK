@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using SISGRAFH.Core.DTOs.Login;
 using SISGRAFH.Core.DTOs.Usuario;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
@@ -19,6 +20,17 @@ namespace SISGRAFH.Infraestructure.Repositories
         {
             _usuario = database.GetCollection<beUsuario>(MongoCollectionNames.Usuarios);
         }
+
+        public async Task<beUsuario> GetUserByCredentials(AuthUserInfo authInfo)
+        {
+            var usuario = await
+                _usuario.Find(
+                    usuario => usuario.correo_usuario == authInfo.useremail && 
+                    usuario.Clave == authInfo.password)
+                .FirstOrDefaultAsync();
+            return usuario;
+        }
+
         public async Task<IEnumerable<beUsuario>> GetUsuarios()
         {
             var usuarios = await _usuario.Find(usuario => true).ToListAsync();
