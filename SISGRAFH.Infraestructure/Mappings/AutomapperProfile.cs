@@ -6,6 +6,7 @@ using SISGRAFH.Core.DTOs.Insumo;
 using SISGRAFH.Core.DTOs.Solicitud;
 using SISGRAFH.Core.DTOs.Usuario;
 using SISGRAFH.Core.DTOs.Producto;
+using SISGRAFH.Core.DTOs.Pago;
 using SISGRAFH.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -103,6 +104,10 @@ namespace SISGRAFH.Infraestructure.Mappings
             //Automapper de Orden de Trabajo
             CreateMap<beOrden_Trabajo, Orden_TrabajoDto>();
             CreateMap<Orden_TrabajoDto, beOrden_Trabajo>();
+
+            //Automapper de Pago
+            CreateMap<bePago, PagoDto>();
+            CreateMap<PagoDto, bePago>();
         }
     }
 }
