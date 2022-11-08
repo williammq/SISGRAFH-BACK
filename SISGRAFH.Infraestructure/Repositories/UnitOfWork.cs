@@ -27,11 +27,11 @@ namespace SISGRAFH.Infraestructure.Repositories
 
         public IMovimientoRepository Movimiento => throw new NotImplementedException();
 
-        public IClienteRepository Cliente => throw new NotImplementedException();
+        public IClienteRepository Cliente => new ClienteRepository(_dbContext.Database);
 
         public ICatalogoRepository Catalogo => new CatalogoRepository(_dbContext.Database);
 
-        public ITrabajadorRepository Trabajador => throw new NotImplementedException();
+        public ITrabajadorRepository Trabajador => new TrabajadorRepository(_dbContext.Database);
         public IOrden_TrabajoRepository Orden_Trabajo => new Orden_TrabajoRepository(_dbContext.Database);
     }
 }
