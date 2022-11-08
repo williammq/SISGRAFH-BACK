@@ -1,9 +1,11 @@
 ﻿
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Core.Services;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -14,10 +16,12 @@ namespace SISGRAFH.Api.Controllers
     public class ClienteController:ControllerBase
     {
         private static IClienteService _clienteService;
+        private static IUsuarioService _usuarioService;
 
-        public ClienteController(IClienteService clienteService)
+        public ClienteController(IClienteService clienteService, IUsuarioService usuarioService)
         {
             _clienteService = clienteService;
+            _usuarioService = usuarioService;
            
         }
         [HttpGet("GetAllClients")]
@@ -59,8 +63,24 @@ namespace SISGRAFH.Api.Controllers
         }
 
         [HttpPost("InsertClient")]
-        public async Task <IActionResult> InsertCliente(beCliente _beCliente)
+        public async Task<IActionResult> InsertCliente(beCliente _beCliente, string clave)
         {
+            var id_cliente = ObjectId.GenerateNewId();
+            beUsuario _beUsuario = new beUsuario();
+
+            //Creación de usuario.
+            _beUsuario.TipoUsuario = new ObjTipoUsuario { IdUsuario = id_cliente.ToString(), Tipo = "Cliente" };
+            _beUsuario.correo_usuario = _beCliente.Correo;
+            _beUsuario.Estado = "Activo";
+            _beUsuario.Clave = clave;
+            _beUsuario.NombreUsuario = _beCliente.Nombre;
+            List<ObjRol> roles = new List<ObjRol>();
+            roles.Add(new ObjRol { IdRol = "6367535efa43cf529aad6e0e", Nombre = "Cliente" });
+
+            _beUsuario.Roles = roles;
+            _beCliente.Id = id_cliente.ToString();
+            var usuarios = await _usuarioService.PostUsuario(_beUsuario);
+            _beCliente.IdUsuario = usuarios.Id;
             var clients = await _clienteService.InsertCliente(_beCliente);
             return Ok(clients);
         }

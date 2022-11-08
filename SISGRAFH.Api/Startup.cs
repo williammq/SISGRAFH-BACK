@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,9 +7,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SISGRAFH.Core.Interfaces;
+using SISGRAFH.Core.Interfaces.Login;
 using SISGRAFH.Core.Services;
+using SISGRAFH.Core.Services.Login;
 using SISGRAFH.Core.Utils.BlobStorage;
 using SISGRAFH.Infraestructure.Data.BlobStorage;
 using SISGRAFH.Infraestructure.Data.Interfaces;
@@ -17,6 +21,7 @@ using SISGRAFH.Infraestructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SISGRAFH.Api
@@ -36,9 +41,46 @@ namespace SISGRAFH.Api
         {
 
             services.AddControllers();
+            //need default token provider
+            services.AddAuthentication(JwtBearerDefaults
+             .AuthenticationScheme)
+                 .AddJwtBearer(options =>
+              options.TokenValidationParameters =
+              new TokenValidationParameters
+              {
+                  ValidateIssuer = false,
+                  ValidateAudience = false,
+                  ValidateLifetime = true,
+                  ValidateIssuerSigningKey = true,
+                  IssuerSigningKey = new SymmetricSecurityKey(
+                 //llave secreta que dice si el token es valido
+                 Encoding.UTF8.GetBytes(Configuration.GetSection("jwt:key").Value)),
+                  ClockSkew = TimeSpan.Zero
+              });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SISGRAFH.Api", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Autorizacion para la entradas a las apis que generan la cabecera",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                  {  new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[] {}
+                   }
+                });
             });
             //cualquier cliente desplegado localmente en el puerto
             //logico 8080 podra consumir las APIS de SISGEM-BACK
@@ -66,6 +108,9 @@ namespace SISGRAFH.Api
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IFileStorage, AzureFileStorage>();
+
+            //Login
+            services.AddTransient<ILoginService, LoginService>();
 
             services.AddTransient<IUsuarioService, UsuarioService>();
             services.AddTransient<IMaquinaService, MaquinaService>();
@@ -98,6 +143,8 @@ namespace SISGRAFH.Api
 
             app.UseRouting();
 
+            //Autorizacion y auntenticacion mediante tokens JWT
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
