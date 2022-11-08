@@ -13,7 +13,7 @@ namespace SISGRAFH.Core.DTOs.Pago
      
         public string Id_cliente{ get; set; }
         public double monto_pagado { get; set; }
-        public string url_imagen{ get; set; }
+        public List <string> url_imagen{ get; set; }
         public string estado { get; set; }
         public string motivo_rechazo { get; set; }
         public string codigo_cotizacion { get; set; }
