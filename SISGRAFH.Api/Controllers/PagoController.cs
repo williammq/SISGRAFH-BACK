@@ -54,5 +54,14 @@ namespace SISGRAFH.Api.Controllers
             return Ok(response);
 
         }
+
+        [HttpGet("getPago")]
+        public async Task<IActionResult> GetPago()
+        {
+            var pago = await _pagoService.GetPago();
+            var response = new ApiResponse<IEnumerable<bePago>>(pago);
+            return Ok(response);
+
+        }
     }
 }

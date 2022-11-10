@@ -32,5 +32,11 @@ namespace SISGRAFH.Infraestructure.Repositories
             await _pago.InsertOneAsync(pago);
             return pago;
         }
+
+        public async Task<IEnumerable<bePago>> GetPago()
+        {
+            var pagos = await _pago.Find(pagos => true).ToListAsync();
+            return pagos;
+        }
     }
 }

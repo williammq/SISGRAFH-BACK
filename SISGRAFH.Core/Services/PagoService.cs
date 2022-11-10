@@ -19,13 +19,14 @@ namespace SISGRAFH.Core.Services
 
         public async Task<bePago> evaluarPago(bePago pago)
         {
-            var pagoDb = await _unitOfWork.Pago.GetByIdAsync(pago.Id_cliente);
+            var pagoDb = await _unitOfWork.Pago.GetByIdAsync(pago.Id);
             if (pagoDb == null)
             {
                 return await PostPago(pago);
             };
             
             pagoDb.estado = pago.estado;
+            pagoDb.motivo_rechazo = pago.motivo_rechazo;
 
 
             return await _unitOfWork.Pago.UpdateOneAsync(pagoDb);
@@ -35,6 +36,10 @@ namespace SISGRAFH.Core.Services
         {
             pago.Id = null;
             return await _unitOfWork.Pago.InsertOneAsync(pago);
+        }
+        public async Task<IEnumerable<bePago>> GetPago()
+        {
+            return await _unitOfWork.Pago.GetAllAsync();
         }
     }
 }

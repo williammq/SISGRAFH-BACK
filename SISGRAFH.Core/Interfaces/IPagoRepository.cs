@@ -12,6 +12,7 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<bePago> PostPago(bePago pago);
         Task<bePago> GetPagoByIdCliente(string idcliente);
+        Task<IEnumerable<bePago>> GetPago();
 
     }
 }
