@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using SISGRAFH.Core.DTOs.Login;
 using SISGRAFH.Core.DTOs.Pago;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
@@ -18,6 +19,12 @@ namespace SISGRAFH.Infraestructure.Repositories
         public PagoRepository(IMongoDatabase database): base(database)
         {
             _pago = database.GetCollection<bePago>(MongoCollectionNames.Pagos);
+        }
+
+        public async Task<bePago> GetPagoByIdCliente(string idcliente)
+        {
+            var pago = await _pago.Find(pago => pago.Id == idcliente).FirstOrDefaultAsync();
+            return pago;
         }
 
         public async Task<bePago> PostPago(bePago pago)

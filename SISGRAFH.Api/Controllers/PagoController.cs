@@ -21,11 +21,13 @@ namespace SISGRAFH.Api.Controllers
     {
         
         private static IPagoService _pagoService;
+   
         private static IMapper _mapper;
         public PagoController(IPagoService pagoService, IMapper mapper)
         {
             _pagoService = pagoService;
             _mapper = mapper;
+            
         }
           
         [HttpPost("PagoTP1")]
@@ -36,6 +38,19 @@ namespace SISGRAFH.Api.Controllers
 
             pagoDto = _mapper.Map<PagoDto>(usuarioPosted);
             var response = new ApiResponse<PagoDto>(pagoDto);
+            return Ok(response);
+
+        }
+
+
+        [HttpPut("Evaluar_Pago")]
+        public async Task<IActionResult> evaluarPago(PagoDto evalpagoDto)
+        {
+            var evalpagos = _mapper.Map<bePago>(evalpagoDto);
+            var pagoPosted = await _pagoService.evaluarPago(evalpagos);
+
+            evalpagoDto = _mapper.Map<PagoDto>(pagoPosted);
+            var response = new ApiResponse<PagoDto>(evalpagoDto);
             return Ok(response);
 
         }
