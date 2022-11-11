@@ -22,7 +22,7 @@ namespace SISGRAFH.Api.Controllers
             _usuarioService = usuarioService;
             _mapper = mapper;
         }
-        [HttpGet]
+        [HttpGet("getUsuario")]
         public async Task<IActionResult> GetUsers()
         {
             var users = await _usuarioService.GetUsuarios();
@@ -31,7 +31,7 @@ namespace SISGRAFH.Api.Controllers
 
         }
 
-        [HttpPost]
+        [HttpPost("postUsuario")]
         public async Task<IActionResult> PostUsers(UsuarioDto usuarioDto)
         {
             var usuario = _mapper.Map<beUsuario>(usuarioDto);
@@ -43,7 +43,7 @@ namespace SISGRAFH.Api.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPut("putUsuario")]
         public async Task<IActionResult> UpdateUser(UsuarioDto usuarioDto)
         {
             var usuario = _mapper.Map<beUsuario>(usuarioDto);
