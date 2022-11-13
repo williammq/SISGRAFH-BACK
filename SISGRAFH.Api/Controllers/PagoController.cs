@@ -11,7 +11,7 @@ using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Infraestructure.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using SISGRAFH.Core.Utils.BlobStorage;
 
 namespace SISGRAFH.Api.Controllers
 {
@@ -21,15 +21,13 @@ namespace SISGRAFH.Api.Controllers
     {
         
         private static IPagoService _pagoService;
-   
         private static IMapper _mapper;
         public PagoController(IPagoService pagoService, IMapper mapper)
         {
             _pagoService = pagoService;
             _mapper = mapper;
-            
         }
-          
+
         [HttpPost("PagoTP1")]
         public async Task<IActionResult> PostPago(PagoDto pagoDto)
         {

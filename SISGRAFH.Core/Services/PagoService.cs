@@ -1,5 +1,6 @@
 ﻿using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
+using SISGRAFH.Core.Utils.BlobStorage;
 using SISGRAFH.Infraestructure.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace SISGRAFH.Core.Services
     public class PagoService : IPagoService
     {
         private static IUnitOfWork _unitOfWork;
+        private static IFileStorage _fileStorage;
 
-        public PagoService(IUnitOfWork unitOfWork)
+        public PagoService(IUnitOfWork unitOfWork, IFileStorage fileStorage)
         {
             _unitOfWork = unitOfWork;
+            _fileStorage = fileStorage;
         }
 
         public async Task<bePago> evaluarPago(bePago pago)
@@ -34,7 +37,17 @@ namespace SISGRAFH.Core.Services
 
         public async Task<bePago> PostPago(bePago pago)
         {
-            pago.Id = null;
+            for (int i=0;i<pago.url_imagen.Count;i++)
+            {
+                string base64String = pago.url_imagen[i].Split(",")[1];
+                pago.url_imagen[i] = await _fileStorage.SaveFile(Convert.FromBase64String(base64String), "jpg", "sisgraphfiles");
+            }
+            var cotizacion = await _unitOfWork.Cotizacion.GetCotizacionByCodigoCotizacion(pago.codigo_cotizacion);
+            var solicitud = await _unitOfWork.Solicitud.GetSolicitudByCodigoCotizacion(pago.codigo_cotizacion);
+            solicitud.estado = "Pago en evaluacion";
+            cotizacion.estado ="Aprobado";
+            await _unitOfWork.Cotizacion.UpdateOneAsync(cotizacion);
+            await _unitOfWork.Solicitud.UpdateOneAsync(solicitud);
             return await _unitOfWork.Pago.InsertOneAsync(pago);
         }
         public async Task<IEnumerable<bePago>> GetPago()
