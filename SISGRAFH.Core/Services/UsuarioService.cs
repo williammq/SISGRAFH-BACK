@@ -59,6 +59,7 @@ namespace SISGRAFH.Core.Services
             userDb.Roles = usuarioRq.Roles;
             userDb.Clave = usuarioRq.Clave;
             userDb.Estado = usuarioRq.Estado;
+            userDb.correo_usuario = usuarioRq.correo_usuario;
 
             return await _unitOfWork.Usuario.UpdateOneAsync(userDb);
         }

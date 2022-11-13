@@ -120,20 +120,6 @@ namespace SISGRAFH.Api.Controllers
                         break;
                 }
             });
-            string GetPath(string base64)
-            {
-                byte[] arrayBytes = Convert.FromBase64String(base64);
-                string id = Guid.NewGuid().ToString();
-                string ruta = System.IO.Path.Combine(contentPath, "images", id + ".png");
-                System.IO.File.WriteAllBytes(ruta, arrayBytes);
-                return ruta;
-            }
-            solicitud.productos.ForEach(delegate (beProducto_solicitud p) {
-                for (int i = 0; i < p.archivos.Count; i++)
-                {
-                    p.archivos[i] = GetPath(p.archivos[i].Split(',')[1]);
-                }
-            });
             var solicitudPosted = await _solicitudService.PostSolicitud(solicitud);
             var response = new ApiResponse<beSolicitud>(solicitudPosted);
             return Ok(response);

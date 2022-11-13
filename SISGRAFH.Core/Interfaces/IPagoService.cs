@@ -7,5 +7,7 @@ namespace SISGRAFH.Core.Interfaces
     public interface IPagoService
     {
         Task<bePago> PostPago(bePago pago);
+        Task<bePago> evaluarPago(bePago pago);
+        Task<IEnumerable<bePago>> GetPago();
     }
 }

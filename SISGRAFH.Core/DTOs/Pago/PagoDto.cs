@@ -10,10 +10,10 @@ namespace SISGRAFH.Core.DTOs.Pago
 {
     public class PagoDto
     {
-     
-        public string Id_cliente{ get; set; }
+        public string Id { get; set; }
+        public string id_cliente{ get; set; }
         public double monto_pagado { get; set; }
-        public string url_imagen{ get; set; }
+        public List <string> url_imagen{ get; set; }
         public string estado { get; set; }
         public string motivo_rechazo { get; set; }
         public string codigo_cotizacion { get; set; }

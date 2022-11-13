@@ -33,14 +33,14 @@ namespace SISGRAFH.Core.DTOs.Insumo
         public string color { get; set; }
         public int rendimiento { get; set; }
         public string tecnologia_impresion { get; set; }
-        public List<modelo_serie_Dto> compatibilidad { get; set; }
+        public List<string> compatibilidad { get; set; }
     }
 
-    public class modelo_serie_Dto
-    {
-        public string modelo { get; set; }
-        public List<string> serie { get; set; }
-    }
+    //public class modelo_serie_Dto
+    //{
+    //    public string modelo { get; set; }
+    //    public List<string> serie { get; set; }
+    //}
 
     public class PapelDto : InsumoDto
     {

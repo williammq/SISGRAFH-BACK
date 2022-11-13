@@ -36,5 +36,6 @@ namespace SISGRAFH.Infraestructure.Repositories
 
         public IPagoRepository Pago =>  new PagoRepository(_dbContext.Database);
         
+
     }
 }

@@ -65,8 +65,8 @@ namespace SISGRAFH.Infraestructure.Mappings
             CreateMap<bePlacaOffset, PlacaOffsetDto>();
             CreateMap<PlacaOffsetDto, bePlacaOffset>();
 
-            CreateMap<modelo_serie, modelo_serie_Dto>();
-            CreateMap<modelo_serie_Dto, modelo_serie>();
+            //CreateMap<modelo_serie, modelo_serie_Dto>();
+            //CreateMap<modelo_serie_Dto, modelo_serie>();
             //AutoMapper de solicitud de Cotización
             CreateMap<beSolicitud, SolicitudDto>();
             CreateMap<SolicitudDto, beSolicitud>(); 

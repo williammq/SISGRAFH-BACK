@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using SISGRAFH.Core.DTOs.Login;
 using SISGRAFH.Core.DTOs.Pago;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
@@ -20,10 +21,22 @@ namespace SISGRAFH.Infraestructure.Repositories
             _pago = database.GetCollection<bePago>(MongoCollectionNames.Pagos);
         }
 
+        public async Task<bePago> GetPagoByIdCliente(string idcliente)
+        {
+            var pago = await _pago.Find(pago => pago.Id == idcliente).FirstOrDefaultAsync();
+            return pago;
+        }
+
         public async Task<bePago> PostPago(bePago pago)
         {
             await _pago.InsertOneAsync(pago);
             return pago;
+        }
+
+        public async Task<IEnumerable<bePago>> GetPago()
+        {
+            var pagos = await _pago.Find(pagos => true).ToListAsync();
+            return pagos;
         }
     }
 }

@@ -11,7 +11,7 @@ using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Infraestructure.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using SISGRAFH.Core.Utils.BlobStorage;
 
 namespace SISGRAFH.Api.Controllers
 {
@@ -27,7 +27,7 @@ namespace SISGRAFH.Api.Controllers
             _pagoService = pagoService;
             _mapper = mapper;
         }
-          
+
         [HttpPost("PagoTP1")]
         public async Task<IActionResult> PostPago(PagoDto pagoDto)
         {
@@ -36,6 +36,28 @@ namespace SISGRAFH.Api.Controllers
 
             pagoDto = _mapper.Map<PagoDto>(usuarioPosted);
             var response = new ApiResponse<PagoDto>(pagoDto);
+            return Ok(response);
+
+        }
+
+
+        [HttpPut("Evaluar_Pago")]
+        public async Task<IActionResult> evaluarPago(PagoDto evalpagoDto)
+        {
+            var evalpagos = _mapper.Map<bePago>(evalpagoDto);
+            var pagoPosted = await _pagoService.evaluarPago(evalpagos);
+
+            evalpagoDto = _mapper.Map<PagoDto>(pagoPosted);
+            var response = new ApiResponse<PagoDto>(evalpagoDto);
+            return Ok(response);
+
+        }
+
+        [HttpGet("getPago")]
+        public async Task<IActionResult> GetPago()
+        {
+            var pago = await _pagoService.GetPago();
+            var response = new ApiResponse<IEnumerable<bePago>>(pago);
             return Ok(response);
 
         }

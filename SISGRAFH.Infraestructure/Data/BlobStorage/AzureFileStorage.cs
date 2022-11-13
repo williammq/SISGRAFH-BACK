@@ -57,9 +57,7 @@ namespace SISGRAFH.Infraestructure.Data.BlobStorage
             return blob.Uri.ToString();
         }
 
-        public async Task<string> SaveFile(byte[] contenido,
-            string extension,
-            string nombreContenedor)
+        public async Task<string> SaveFile(byte[] contenido,string extension,string nombreContenedor)
         {
             var account = CloudStorageAccount.Parse(connectionString);
             var clientService = account.CreateCloudBlobClient();
