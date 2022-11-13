@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace SISGRAFH.Infraestructure.Repositories
 {
@@ -42,5 +43,10 @@ namespace SISGRAFH.Infraestructure.Repositories
             await _usuario.InsertOneAsync(usuario);
             return usuario;
         }
+        public async Task<beUsuario> UsuariobyCorreo(string correodestino) {
+            var usuarios = await _usuario.Find(usuario => usuario.correo_usuario == correodestino).FirstOrDefaultAsync();
+            return usuarios;
+        } 
     }
+        
 }

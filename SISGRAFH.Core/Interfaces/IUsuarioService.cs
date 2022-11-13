@@ -9,5 +9,6 @@ namespace SISGRAFH.Core.Interfaces
         Task<IEnumerable<beUsuario>> GetUsuarios();
         Task<beUsuario> PostUsuario(beUsuario usuario);
         Task<beUsuario> UpdateUser(beUsuario usuario);
+        Task<beUsuario> RestablecerContraseña(string correodestino,string clasenueva);
     }
 }
