@@ -13,5 +13,7 @@ namespace SISGRAFH.Core.Interfaces
         Task<IEnumerable<beUsuario>> GetUsuarios();
         Task<beUsuario> PostUsuario(beUsuario usuario);
         Task<beUsuario> GetUserByCredentials(AuthUserInfo authInfo);
+        Task<beUsuario> UsuariobyCorreo(string correodestino);
     }
+    
 }

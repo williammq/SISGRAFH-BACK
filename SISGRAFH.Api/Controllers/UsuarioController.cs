@@ -53,6 +53,13 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<UsuarioDto>(usuarioDto);
             return Ok(response);
 
+        }       
+        [HttpPost("Restablecercontraseña")]
+        public async Task<IActionResult> Restablecercontraseña(string  correo,string clavenueva)
+        {
+            var usuario = await _usuarioService.RestablecerContraseña(correo,clavenueva);
+            return Ok(usuario);
+
         }
     }
 }

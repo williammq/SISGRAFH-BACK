@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace SISGRAFH.Core.Services
 {
@@ -30,6 +31,22 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Usuario.InsertOneAsync(usuario);
         }
 
+        public async Task<beUsuario> RestablecerContraseña(string correodestino,string clavenueva)
+        {
+            var usuarios = await _unitOfWork.Usuario.UsuariobyCorreo(correodestino);
+            //string emailorigen = "sisgrafh.tp@gmail.com";
+            //string password = "deecrofmepnfpemr";
+            //MailMessage omail = new MailMessage(emailorigen, correodestino, "prueba de mensajeria", "hola");
+            //SmtpClient osmtpcliente = new SmtpClient("smtp.gmail.com");
+            //osmtpcliente.UseDefaultCredentials = false;
+            //osmtpcliente.Port = 587;
+            //osmtpcliente.Credentials = new System.Net.NetworkCredential(emailorigen, password);
+            //osmtpcliente.Send(omail);
+            //osmtpcliente.Dispose();
+            usuarios.Clave = clavenueva;
+            return await _unitOfWork.Usuario.UpdateOneAsync(usuarios);
+        }
+
         public async Task<beUsuario> UpdateUser(beUsuario usuarioRq)
         {
             var userDb = await _unitOfWork.Usuario.GetByIdAsync(usuarioRq.Id);
@@ -46,5 +63,6 @@ namespace SISGRAFH.Core.Services
 
             return await _unitOfWork.Usuario.UpdateOneAsync(userDb);
         }
+
     }
 }
