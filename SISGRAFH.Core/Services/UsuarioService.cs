@@ -34,15 +34,16 @@ namespace SISGRAFH.Core.Services
         public async Task<beUsuario> RestablecerContraseña(string correodestino,string clavenueva)
         {
             var usuarios = await _unitOfWork.Usuario.UsuariobyCorreo(correodestino);
-            //string emailorigen = "sisgrafh.tp@gmail.com";
-            //string password = "deecrofmepnfpemr";
-            //MailMessage omail = new MailMessage(emailorigen, correodestino, "prueba de mensajeria", "hola");
-            //SmtpClient osmtpcliente = new SmtpClient("smtp.gmail.com");
-            //osmtpcliente.UseDefaultCredentials = false;
-            //osmtpcliente.Port = 587;
-            //osmtpcliente.Credentials = new System.Net.NetworkCredential(emailorigen, password);
-            //osmtpcliente.Send(omail);
-            //osmtpcliente.Dispose();
+            string emailorigen = "sisgrafh.tp@gmail.com";
+            string password = "hneplwgssafiwoix";
+            MailMessage omail = new MailMessage(emailorigen, correodestino, "prueba de mensajeria", "hola");
+            SmtpClient osmtpcliente = new SmtpClient("smtp.gmail.com");
+            osmtpcliente.UseDefaultCredentials = false;
+            osmtpcliente.Port = 587;
+            osmtpcliente.Credentials = new System.Net.NetworkCredential(emailorigen, password);
+            osmtpcliente.EnableSsl = true;
+            osmtpcliente.Send(omail);
+            osmtpcliente.Dispose();
             usuarios.Clave = clavenueva;
             return await _unitOfWork.Usuario.UpdateOneAsync(usuarios);
         }
