@@ -66,12 +66,10 @@ namespace SISGRAFH.Api.Controllers
         [HttpPost("InsertClient")]
         public async Task<IActionResult> InsertCliente(beCliente _beCliente, string clave)
         {
-            var usuarioExistente = await _clienteService.GetClienteByCorreo(_beCliente.Correo);
-            var usuarioExistente_documento = await _clienteService.GetClienteByNumeroDocumento(_beCliente.NumeroDocumento);
-            if (usuarioExistente != null || usuarioExistente_documento!=null)
+            var usuarioExistente = await _clienteService.GetClienteByProperty(_beCliente) != null;
+            if (usuarioExistente)
             {
-                //var response = new ApiResponse<IEnumerable<beCliente>>(usuarioExistente);
-                return BadRequest("Usuario ya registrado, intente con otro correo o N° de documento");
+                return BadRequest("Cliente YA EXISTENTE!(el correo, telefono, RUC o N° de documento ya fueron registrados antes)");
             }
             else
             {
@@ -84,15 +82,12 @@ namespace SISGRAFH.Api.Controllers
                 _beUsuario.Estado = "Activo";
                 _beUsuario.Clave = clave;
                 _beUsuario.NombreUsuario = _beCliente.Nombre;
-                List<ObjRol> roles = new List<ObjRol>();
-                roles.Add(new ObjRol { IdRol = "6367535efa43cf529aad6e0e", Nombre = "Cliente" });
-
-                _beUsuario.Roles = roles;
+                _beUsuario.Roles.Add(new ObjRol { IdRol = "6367535efa43cf529aad6e0e", Nombre = "Cliente" });
                 _beCliente.Id = id_cliente.ToString();
-                var usuarios = await _usuarioService.PostUsuario(_beUsuario);
-                _beCliente.IdUsuario = usuarios.Id;
-                var clients = await _clienteService.InsertCliente(_beCliente);
-                return Ok(clients);
+                var usuario = await _usuarioService.PostUsuario(_beUsuario);
+                _beCliente.IdUsuario = usuario.Id;
+                var client = await _clienteService.InsertCliente(_beCliente);
+                return Ok(client);
             }            
         }
 

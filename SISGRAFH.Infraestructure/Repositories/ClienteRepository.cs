@@ -35,6 +35,11 @@ namespace SISGRAFH.Infraestructure.Repositories
             var clientes = await _cliente.Find(cliente => cliente.NumeroDocumento==numeroDocumento).ToListAsync();
             return clientes;
         }
+        public async Task<beCliente> GetClienteByProperty(beCliente beCliente)
+        {
+            var clientes = await _cliente.Find(cliente => (cliente.NumeroDocumento == beCliente.NumeroDocumento) || (cliente.Correo == beCliente.Correo) || (cliente.Telefono == beCliente.Telefono) || (cliente.RUC.Length>0 && cliente.RUC == beCliente.RUC)).FirstOrDefaultAsync();
+            return clientes;
+        }
 
         public async Task<IEnumerable<beCliente>> GetClienteByRUC(string ruc)
         {

@@ -43,6 +43,11 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Cliente.GetClienteByNumeroDocumento(numeroDocumento);
         }
 
+        public async Task<beCliente> GetClienteByProperty(beCliente beCliente)
+        {
+            return await _unitOfWork.Cliente.GetClienteByProperty(beCliente);
+        }
+
         public async Task<IEnumerable<beCliente>> GetClienteByRUC(string ruc)
         {
             return await _unitOfWork.Cliente.GetClienteByRUC(ruc);

@@ -22,7 +22,7 @@ namespace SISGRAFH.Core.Entities
         [BsonElement("estado")]
         public string Estado { get; set; }
         [BsonElement("roles")]
-        public List<ObjRol> Roles { get; set; }
+        public List<ObjRol> Roles { get; set; } = new List<ObjRol>();
 
         [BsonElement("correo_usuario")]
         public string correo_usuario { get; set; }
