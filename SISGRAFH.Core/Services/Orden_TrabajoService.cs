@@ -22,10 +22,9 @@ namespace SISGRAFH.Core.Services
         {
             List<beOrden_Trabajo> ordenes = new List<beOrden_Trabajo>();
             var cotizacion = await _unitOfWork.Cotizacion.GetByIdAsync(id_cotizacion);
-            var solicitud = await _unitOfWork.Solicitud.GetSolicitudByCodigoCotizacion(cotizacion.codigo_cotizacion);
             cotizacion.productos_cotizados.ForEach(async delegate (beProductoCotizado pc) {
                 beOrden_Trabajo ot = new beOrden_Trabajo();
-                ot.id_solicitud = solicitud.Id;
+                ot.id_solicitud = cotizacion.id_solicitud;
                 ot.id_producto = pc.id_producto;
                 ot.codigo_producto = pc.codigo_producto;
                 ot.instrucciones = pc.localizaciones;
