@@ -20,5 +20,6 @@ namespace SISGRAFH.Core.Utils.MongoDbParams
         public const string Trabajadores = "Trabajadores";
         public const string Orden_Trabajo = "Orden_Trabajo";
         public const string Pagos = "Pagos"; 
+        public const string Reporte_Produccion = "Reporte_Produccion";
     }
 }

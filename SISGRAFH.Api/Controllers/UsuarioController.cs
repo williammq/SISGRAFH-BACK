@@ -54,7 +54,7 @@ namespace SISGRAFH.Api.Controllers
             return Ok(response);
 
         }       
-        [HttpPost("Restablecercontraseña")]
+        [HttpPut("Restablecercontraseña")]
         public async Task<IActionResult> Restablecercontraseña(string  correo,string clavenueva)
         {
             var usuario = await _usuarioService.RestablecerContraseña(correo,clavenueva);

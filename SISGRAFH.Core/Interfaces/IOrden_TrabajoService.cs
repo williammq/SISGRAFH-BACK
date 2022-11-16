@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Core.Interfaces
 {
-    interface IOrden_TrabajoService
+    public interface IOrden_TrabajoService
     {
         Task<IEnumerable<beOrden_Trabajo>> GetOrdenes();
         Task<beOrden_Trabajo> PostOrden(beOrden_Trabajo ot);
+        Task<List<beOrden_Trabajo>> GenerarOrdenesByCotizacion(string id_cotizacion);
     }
 }

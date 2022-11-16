@@ -9,6 +9,7 @@ namespace SISGRAFH.Core.DTOs.Orden_Trabajo
 {
     public class Orden_TrabajoDto
     {
+        public string Id { get; set; }
         public string id_producto { get; set; }
         public string codigo_producto { get; set; }
         public string id_solicitud { get; set; }
