@@ -58,8 +58,14 @@ namespace SISGRAFH.Api.Controllers
         public async Task<IActionResult> Restablecercontraseña(RestablecerContraseniaDto restablecer)
         {
             var usuario = await _usuarioService.RestablecerContraseña(restablecer);
-            return Ok(usuario);
-
+            if (usuario != null)
+            {
+                return Ok(usuario);
+            }
+            else
+            {
+                return BadRequest("Este correo NO ESTÁ REGISTRADO!");
+            }
         }
     }
 }
