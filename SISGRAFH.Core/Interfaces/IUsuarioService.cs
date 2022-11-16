@@ -1,4 +1,5 @@
-﻿using SISGRAFH.Core.Entities;
+﻿using SISGRAFH.Core.DTOs.Usuario;
+using SISGRAFH.Core.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,6 +10,6 @@ namespace SISGRAFH.Core.Interfaces
         Task<IEnumerable<beUsuario>> GetUsuarios();
         Task<beUsuario> PostUsuario(beUsuario usuario);
         Task<beUsuario> UpdateUser(beUsuario usuario);
-        Task<beUsuario> RestablecerContraseña(string correodestino,string clasenueva);
+        Task<beUsuario> RestablecerContraseña(RestablecerContraseniaDto restablecer);
     }
 }
