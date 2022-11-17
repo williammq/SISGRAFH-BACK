@@ -1,6 +1,6 @@
 ﻿using SISGRAFH.Core.Interfaces;
-using SISGRAFH.Infraestructure.Data;
 using SISGRAFH.Infraestructure.Data.Interfaces;
+using SISGRAFH.Infraestructure.Data.MongoDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +24,18 @@ namespace SISGRAFH.Infraestructure.Repositories
         public IInsumoRepository Insumo => new InsumoRepository(_dbContext.Database);
         public IProductoRepository Producto => new ProductoRepository(_dbContext.Database);
         public ISolicitudRepository Solicitud => new SolicitudRepository(_dbContext.Database);
-        public IMovimientoRepository Movimiento => new MovimientoRepository(_dbContext.Database);
-        public ICatalogoRepository Catalogo => new CatalogoRepository(_dbContext.Database);
+
+        public IMovimientoRepository Movimiento => throw new NotImplementedException();
+
         public IClienteRepository Cliente => new ClienteRepository(_dbContext.Database);
+
+        public ICatalogoRepository Catalogo => new CatalogoRepository(_dbContext.Database);
+
+        public ITrabajadorRepository Trabajador => new TrabajadorRepository(_dbContext.Database);
+        public IOrden_TrabajoRepository Orden_Trabajo => new Orden_TrabajoRepository(_dbContext.Database);
+
+        public IPagoRepository Pago =>  new PagoRepository(_dbContext.Database);
+        
+
     }
 }

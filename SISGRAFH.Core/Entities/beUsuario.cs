@@ -14,6 +14,7 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("nombre_usuario")]
         public string NombreUsuario { get; set; }
+
         [BsonElement("clave")]
         public string Clave { get; set; }
         [BsonElement("tipo_usuario")]
@@ -21,7 +22,11 @@ namespace SISGRAFH.Core.Entities
         [BsonElement("estado")]
         public string Estado { get; set; }
         [BsonElement("roles")]
-        public List<ObjRol> Roles { get; set; }
+        public List<ObjRol> Roles { get; set; } = new List<ObjRol>();
+
+        [BsonElement("correo_usuario")]
+        public string correo_usuario { get; set; }
+
     }
 
     public class ObjTipoUsuario

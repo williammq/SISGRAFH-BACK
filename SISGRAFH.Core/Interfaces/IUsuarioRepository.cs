@@ -1,4 +1,5 @@
-﻿using SISGRAFH.Core.Entities;
+﻿using SISGRAFH.Core.DTOs.Login;
+using SISGRAFH.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,8 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<beUsuario>> GetUsuarios();
         Task<beUsuario> PostUsuario(beUsuario usuario);
+        Task<beUsuario> GetUserByCredentials(AuthUserInfo authInfo);
+        Task<beUsuario> UsuariobyCorreo(string correodestino);
     }
+    
 }

@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Core.Utils.MongoDbParams;
@@ -24,7 +25,6 @@ namespace SISGRAFH.Infraestructure.Repositories
             return clientes;
         }
         public async Task <IEnumerable<beCliente>> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno) {
-
             var clientes = await _cliente.Find(cliente => cliente.Nombre == nombre && cliente.ApellidoPaterno == apellidopaterno && cliente.ApellidoMaterno == apellidomaterno).ToListAsync();
             return clientes;
 
@@ -33,6 +33,17 @@ namespace SISGRAFH.Infraestructure.Repositories
         public async Task<IEnumerable<beCliente>> GetClienteByNumeroDocumento(string numeroDocumento)
         {
             var clientes = await _cliente.Find(cliente => cliente.NumeroDocumento==numeroDocumento).ToListAsync();
+            return clientes;
+        }
+        public async Task<beCliente> GetClienteByProperty(beCliente beCliente)
+        {
+            var clientes = await _cliente.Find(cliente => (cliente.NumeroDocumento == beCliente.NumeroDocumento) || (cliente.Correo == beCliente.Correo) || (cliente.Telefono == beCliente.Telefono) || (cliente.RUC.Length>0 && cliente.RUC == beCliente.RUC)).FirstOrDefaultAsync();
+            return clientes;
+        }
+
+        public async Task<IEnumerable<beCliente>> GetClienteByRUC(string ruc)
+        {
+            var clientes = await _cliente.Find(cliente => cliente.RUC==ruc).ToListAsync();
             return clientes;
         }
     }

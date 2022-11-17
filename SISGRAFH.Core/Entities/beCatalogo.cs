@@ -23,16 +23,12 @@ namespace SISGRAFH.Core.Entities
     }
 
     public class beTamanioHoja{
-
          [BsonElement("largo")]
         public double largo{ get; set; }
          [BsonElement("ancho")]
         public double ancho{ get; set; }
          [BsonElement("nombreTamanio")]
         public string nombreTamanio{ get; set; }
-        
-
-
     }
   
     

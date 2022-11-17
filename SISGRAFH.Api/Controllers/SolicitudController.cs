@@ -45,6 +45,13 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<object>>(solicitudes);
             return Ok(response);
         }
+        [HttpGet("GetSolicitudByCodigo")]
+        public async Task<IActionResult> GetSolicitudByCodigo(string codigo)
+        {
+            var solicitudes = await _solicitudService.GetSolicitudByCodigoCotizacion(codigo);
+            var response = new ApiResponse<beSolicitud>(solicitudes);
+            return Ok(response);
+        }
         [HttpPost("PostSolicitud")]
         public async Task<IActionResult> PostSolicitud(JsonElement JSsolicitud)
         {
@@ -111,20 +118,6 @@ namespace SISGRAFH.Api.Controllers
                     default:
                         solicitud.productos.Add(_mapper.Map<beProducto_solicitud>(p));
                         break;
-                }
-            });
-            string GetPath(string base64)
-            {
-                byte[] arrayBytes = Convert.FromBase64String(base64);
-                string id = Guid.NewGuid().ToString();
-                string ruta = System.IO.Path.Combine(contentPath, "images", id + ".png");
-                System.IO.File.WriteAllBytes(ruta, arrayBytes);
-                return ruta;
-            }
-            solicitud.productos.ForEach(delegate (beProducto_solicitud p) {
-                for (int i = 0; i < p.archivos.Count; i++)
-                {
-                    p.archivos[i] = GetPath(p.archivos[i].Split(',')[1]);
                 }
             });
             var solicitudPosted = await _solicitudService.PostSolicitud(solicitud);

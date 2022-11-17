@@ -19,6 +19,10 @@ namespace SISGRAFH.Core.Entities
         //Pendiente, En evaluación, Aceptado, Rechazado, Renegociar
         [BsonElement("estado")]
         public string estado { get; set; }
+        [BsonElement("fecha_entrega")]
+        public DateTime fecha_entrega { get; set; }
+        [BsonElement("margen_ganancia")]
+        public double margen_ganancia { get; set; }
         //[BsonElement("fecha_registro")]
         //public DateTime fecha_registro { get; set; } = DateTime.Now;
         //[BsonElement("fecha_modificacion")]
@@ -31,6 +35,8 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("id_producto")]
         public string id_producto { get; set; }
+        [BsonElement("codigo_producto")]
+        public string codigo_producto { get; set; }
         [BsonElement("localizaciones")]
         public List<beLocalizacion> localizaciones { get; set; }
     }
@@ -39,6 +45,14 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("id_maquina")]
         public string id_maquina { get; set; }
+        [BsonElement("numero_orden")]
+        public int numero_orden { get; set; }
+        [BsonElement("tiempo")]
+        public double tiempo { get; set; }
+        [BsonElement("entrada")]
+        public beComponente entrada { get; set; }
+        [BsonElement("salida")]
+        public beComponente salida { get; set; }
         [BsonElement("insumos")]
         public List<beInsumoCotizacion> insumos { get; set; }
     }
@@ -46,7 +60,20 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("id_insumo")]
         public string id_insumo { get; set; }
+        [BsonElement("costo_unitario_insumo")]
+        public double costo_unitario_insumo { get; set; }
         [BsonElement("cantidad_requerida")]
-        public string cantidad_requerida { get; set; }
+        public double cantidad_requerida { get; set; }
+    }
+    public class beComponente
+    {
+        [BsonElement("nombre")]
+        public string nombre { get; set; }
+        [BsonElement("cantidad")]
+        public double cantidad { get; set; }
+        [BsonElement("ancho")]
+        public double ancho { get; set; }
+        [BsonElement("largo")]
+        public double largo { get; set; }
     }
 }

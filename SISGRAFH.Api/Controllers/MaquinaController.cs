@@ -49,6 +49,23 @@ namespace SISGRAFH.Api.Controllers
             return Ok(response);
 
         }
+        [HttpPut("PutMaquina")]
+        public async Task<IActionResult> PutMaquina(JsonElement JSONmaquina)
+        {
+            string js = JSONmaquina.ToString();
+            var maquina = JsonSerializer.Deserialize<beMaquina>(js);
+            switch (maquina.tipo_maquina)
+            {
+                case "Impresora": maquina = JsonSerializer.Deserialize<beImpresoraDigital>(js); break;
+                case "Guillotina": maquina = JsonSerializer.Deserialize<beGuillotina>(js); break;
+                case "Laminadora": maquina = JsonSerializer.Deserialize<beLaminadora>(js); break;
+            }
+            var maquinaPosted = await _maquinaService.UpdateMaquina(maquina);
+
+            var response = new ApiResponse<beMaquina>(maquinaPosted);
+            return Ok(response);
+
+        }
 
     }
 }

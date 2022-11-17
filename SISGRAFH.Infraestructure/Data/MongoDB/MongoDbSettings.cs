@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SISGRAFH.Infraestructure.Data
+namespace SISGRAFH.Infraestructure.Data.MongoDB
 {
     public class MongoDbSettings
     {

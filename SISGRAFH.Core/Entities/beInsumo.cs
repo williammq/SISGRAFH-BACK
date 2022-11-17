@@ -42,7 +42,7 @@ namespace SISGRAFH.Core.Entities
         [BsonElement("material")]
         public string material { get; set; }
         [BsonElement("longitud")]
-        public string longitud { get; set; }
+        public double longitud { get; set; }
         [BsonElement("grosor_union")]
         public double grosor_union { get; set; }
         [BsonElement("numero_agujeros")]
@@ -60,13 +60,13 @@ namespace SISGRAFH.Core.Entities
         public string tecnologia_impresion { get; set; }
         //no necesario en offset
         [BsonElement("compatibilidad")]
-        public List<modelo_serie> compatibilidad { get; set; }
+        public List<string> compatibilidad { get; set; }
     }
-    public class modelo_serie
-    {
-        public string modelo { get; set; }
-        public List<string> serie { get; set; }
-    }
+    //public class modelo_serie
+    //{
+    //    public string modelo { get; set; }
+    //    public List<string> serie { get; set; }
+    //}
     public class bePapel : beInsumo 
     {
         //medidas del papel milimetros

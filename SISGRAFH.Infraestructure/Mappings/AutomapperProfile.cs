@@ -6,12 +6,14 @@ using SISGRAFH.Core.DTOs.Insumo;
 using SISGRAFH.Core.DTOs.Solicitud;
 using SISGRAFH.Core.DTOs.Usuario;
 using SISGRAFH.Core.DTOs.Producto;
+using SISGRAFH.Core.DTOs.Pago;
 using SISGRAFH.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SISGRAFH.Core.DTOs.Orden_Trabajo;
 
 namespace SISGRAFH.Infraestructure.Mappings
 {
@@ -42,6 +44,9 @@ namespace SISGRAFH.Infraestructure.Mappings
 
             CreateMap<beProductoCotizado, ProductoCotizadoDto>();
             CreateMap<ProductoCotizadoDto, beProductoCotizado>();
+
+            CreateMap<beComponente, componenteDto>();
+            CreateMap<componenteDto, beComponente>();
             //Automapper de Insumo
             CreateMap<beInsumo, InsumoDto>();
             CreateMap<InsumoDto, beInsumo>();
@@ -60,8 +65,8 @@ namespace SISGRAFH.Infraestructure.Mappings
             CreateMap<bePlacaOffset, PlacaOffsetDto>();
             CreateMap<PlacaOffsetDto, bePlacaOffset>();
 
-            CreateMap<modelo_serie, modelo_serie_Dto>();
-            CreateMap<modelo_serie_Dto, modelo_serie>();
+            //CreateMap<modelo_serie, modelo_serie_Dto>();
+            //CreateMap<modelo_serie_Dto, modelo_serie>();
             //AutoMapper de solicitud de Cotización
             CreateMap<beSolicitud, SolicitudDto>();
             CreateMap<SolicitudDto, beSolicitud>(); 
@@ -95,6 +100,14 @@ namespace SISGRAFH.Infraestructure.Mappings
             //Automapper de Producto
             CreateMap<beProducto, ProductoDto>();
             CreateMap<ProductoDto, beProducto>();
+
+            //Automapper de Orden de Trabajo
+            CreateMap<beOrden_Trabajo, Orden_TrabajoDto>();
+            CreateMap<Orden_TrabajoDto, beOrden_Trabajo>();
+
+            //Automapper de Pago
+            CreateMap<bePago, PagoDto>();
+            CreateMap<PagoDto, bePago>();
         }
     }
 }
