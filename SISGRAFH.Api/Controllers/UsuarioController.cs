@@ -55,11 +55,17 @@ namespace SISGRAFH.Api.Controllers
 
         }       
         [HttpPut("Restablecercontraseña")]
-        public async Task<IActionResult> Restablecercontraseña(string  correo,string clavenueva)
+        public async Task<IActionResult> Restablecercontraseña(RestablecerContraseniaDto restablecer)
         {
-            var usuario = await _usuarioService.RestablecerContraseña(correo,clavenueva);
-            return Ok(usuario);
-
+            var usuario = await _usuarioService.RestablecerContraseña(restablecer);
+            if (usuario != null)
+            {
+                return Ok(usuario);
+            }
+            else
+            {
+                return BadRequest("Este correo NO ESTÁ REGISTRADO!");
+            }
         }
     }
 }
