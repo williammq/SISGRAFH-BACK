@@ -27,10 +27,17 @@ namespace SISGRAFH.Api.Controllers
             _mapper = mapper;
         }
         [HttpPost("GenerarOrdenesByCotizacion")]
-        public async Task<IActionResult> GenerarOrdenesByCotizacion(string id_cotizacion)
+        public async Task<IActionResult> GenerarOrdenesByCotizacion(string codigo)
         {
-            var ordenes = await _orden_TrabajoService.GenerarOrdenesByCotizacion(id_cotizacion);
+            var ordenes = await _orden_TrabajoService.GenerarOrdenesByCotizacion(codigo);
             var response = new ApiResponse<List<beOrden_Trabajo>>(ordenes);
+            return Ok(response);
+        }
+        [HttpPost("GetAllOrdenes")]
+        public async Task<IActionResult> GetAllOrdenes(string codigo)
+        {
+            var ordenes = await _orden_TrabajoService.GetOrdenes();
+            var response = new ApiResponse<IEnumerable<beOrden_Trabajo>>(ordenes);
             return Ok(response);
         }
     }

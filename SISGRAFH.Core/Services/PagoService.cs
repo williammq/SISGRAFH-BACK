@@ -42,7 +42,7 @@ namespace SISGRAFH.Core.Services
                 string base64String = pago.url_imagen[i].Split(",")[1];
                 pago.url_imagen[i] = await _fileStorage.SaveFile(Convert.FromBase64String(base64String), "jpg", "sisgraphfiles");
             }
-            var cotizacion = await _unitOfWork.Cotizacion.GetCotizacionByCodigoCotizacion(pago.codigo_cotizacion);
+            var cotizacion = await _unitOfWork.Cotizacion.GetCotizacionByCodigoCotizacion(pago.codigo_cotizacion,"Enviado");
             var solicitud = await _unitOfWork.Solicitud.GetSolicitudByCodigoCotizacion(pago.codigo_cotizacion);
             solicitud.estado = "Pago en evaluacion";
             cotizacion.estado ="Aprobado";

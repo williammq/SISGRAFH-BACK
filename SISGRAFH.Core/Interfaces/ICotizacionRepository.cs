@@ -12,7 +12,7 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<beCotizacion>> GetCotizaciones();
         Task<beCotizacion> PostCotizacion(beCotizacion cotizacion);
-        Task<beCotizacion> GetCotizacionByCodigoCotizacion(string codigo);
+        Task<beCotizacion> GetCotizacionByCodigoCotizacion(string codigo, string estado);
         Task<IEnumerable<beCotizacion>> GetCotizacionesByCodigoCotizacion(string codigo);
     }
 }

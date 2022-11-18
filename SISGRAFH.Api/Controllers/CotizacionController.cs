@@ -42,7 +42,7 @@ namespace SISGRAFH.Api.Controllers
         [HttpGet("GetCotizacionByCodigoCotizacion")]
         public async Task<IActionResult> GetCotizacionByCodigoCotizacion(string codigo)
         {
-            var cotizacion = await _cotizacionService.GetCotizacionByCodigoCotizacion(codigo);
+            var cotizacion = await _cotizacionService.GetCotizacionByCodigoCotizacion(codigo,"Enviado");
             var response = new ApiResponse<beCotizacion>(cotizacion);
             return Ok(response);
         }

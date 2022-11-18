@@ -18,10 +18,10 @@ namespace SISGRAFH.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<List<beOrden_Trabajo>> GenerarOrdenesByCotizacion(string id_cotizacion)
+        public async Task<List<beOrden_Trabajo>> GenerarOrdenesByCotizacion(string codigo)
         {
             List<beOrden_Trabajo> ordenes = new List<beOrden_Trabajo>();
-            var cotizacion = await _unitOfWork.Cotizacion.GetByIdAsync(id_cotizacion);
+            var cotizacion = await _unitOfWork.Cotizacion.GetCotizacionByCodigoCotizacion(codigo, "Aprobado");
             cotizacion.productos_cotizados.ForEach(async delegate (beProductoCotizado pc) {
                 beOrden_Trabajo ot = new beOrden_Trabajo();
                 ot.id_solicitud = cotizacion.id_solicitud;

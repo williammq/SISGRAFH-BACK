@@ -12,6 +12,6 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<beOrden_Trabajo>> GetOrdenes();
         Task<beOrden_Trabajo> PostOrden(beOrden_Trabajo ot);
-        Task<List<beOrden_Trabajo>> GenerarOrdenesByCotizacion(string id_cotizacion);
+        Task<List<beOrden_Trabajo>> GenerarOrdenesByCotizacion(string codigo);
     }
 }

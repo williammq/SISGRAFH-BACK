@@ -18,9 +18,9 @@ namespace SISGRAFH.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<beCotizacion> GetCotizacionByCodigoCotizacion(string codigo)
+        public async Task<beCotizacion> GetCotizacionByCodigoCotizacion(string codigo,string estado)
         {
-            return await _unitOfWork.Cotizacion.GetCotizacionByCodigoCotizacion(codigo);
+            return await _unitOfWork.Cotizacion.GetCotizacionByCodigoCotizacion(codigo,estado);
         }
 
         public async Task<beCotizacion> GetCotizacionById(string id)
