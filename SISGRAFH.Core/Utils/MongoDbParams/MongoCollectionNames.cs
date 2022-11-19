@@ -23,5 +23,6 @@ namespace SISGRAFH.Core.Utils.MongoDbParams
         public const string Reporte_Produccion = "Reporte_Produccion";
         public const string Counter = "Counter";
         public const string Ubigeo = "Ubigeo";
+        public const string Pedidos = "Pedidos";
     }
 }

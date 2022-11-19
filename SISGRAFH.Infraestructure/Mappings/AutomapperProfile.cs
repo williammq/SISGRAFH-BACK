@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SISGRAFH.Core.DTOs.Orden_Trabajo;
+using SISGRAFH.Core.DTOs.Pedido;
 
 namespace SISGRAFH.Infraestructure.Mappings
 {
@@ -108,6 +109,10 @@ namespace SISGRAFH.Infraestructure.Mappings
             //Automapper de Pago
             CreateMap<bePago, PagoDto>();
             CreateMap<PagoDto, bePago>();
+
+            //Automapper de Pedidos
+            CreateMap<bePedido, PedidoDto>();
+            CreateMap<PedidoDto, bePedido>();
         }
     }
 }

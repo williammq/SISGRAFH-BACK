@@ -27,7 +27,23 @@ namespace SISGRAFH.Core.Services
             {
                 return await PostPago(pago);
             };
-            
+            var solicitud = await _unitOfWork.Solicitud.GetSolicitudByCodigoCotizacion(pago.codigo_cotizacion);
+            switch (pago.estado.ToLower())
+            {
+                case "aprobado":
+                    bePedido pedido = new bePedido();
+                    pedido.id_solicitud = solicitud.Id;
+                    pedido.id_cliente = pago.id_cliente;
+                    pedido.productos = solicitud.productos;
+                    pedido.estado = "En producción";
+                    solicitud.estado = "Pagado";
+                    await _unitOfWork.Pedido.InsertOneAsync(pedido);
+                    break;
+                case "rechazado":
+                    solicitud.estado = "Pago pendiente";
+                    break;
+            }
+            await _unitOfWork.Solicitud.UpdateOneAsync(solicitud);
             pagoDb.estado = pago.estado;
             pagoDb.motivo_rechazo = pago.motivo_rechazo;
 

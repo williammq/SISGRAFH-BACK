@@ -8,6 +8,7 @@ namespace SISGRAFH.Core.DTOs.Solicitud
 {
     public class SolicitudDto
     {
+        public string Id { get; set; }
         public string nombre_apellidos { get; set; }
         public string numero_celular { get; set; }
         public string correo { get; set; }

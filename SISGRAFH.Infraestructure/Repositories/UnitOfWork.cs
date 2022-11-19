@@ -37,6 +37,6 @@ namespace SISGRAFH.Infraestructure.Repositories
         public IPagoRepository Pago =>  new PagoRepository(_dbContext.Database);
         public IUbigeoRepository Ubigeo => new UbigeoRepository(_dbContext.Database);
 
-
+        public IPedidoRepository Pedido => new PedidoRepository(_dbContext.Database);
     }
 }

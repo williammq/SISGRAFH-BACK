@@ -22,5 +22,6 @@ namespace SISGRAFH.Infraestructure.Data.Interfaces
         public IOrden_TrabajoRepository Orden_Trabajo { get; }
         public IPagoRepository Pago { get; }
         public IUbigeoRepository Ubigeo { get; }
+        public IPedidoRepository Pedido { get; }
     }
 }
