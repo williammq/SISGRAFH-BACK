@@ -12,6 +12,7 @@ using SISGRAFH.Infraestructure.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SISGRAFH.Core.Utils.BlobStorage;
+using SISGRAFH.Core.Services;
 
 namespace SISGRAFH.Api.Controllers
 {
@@ -19,7 +20,7 @@ namespace SISGRAFH.Api.Controllers
     [ApiController]
     public class PagoController : ControllerBase
     {
-        
+
         private static IPagoService _pagoService;
         private static IMapper _mapper;
         public PagoController(IPagoService pagoService, IMapper mapper)
@@ -60,6 +61,14 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<bePago>>(pago);
             return Ok(response);
 
+        }
+
+        [HttpGet("GetPagoById")]
+        public async Task<IActionResult> GetPagoById(string id)
+        {
+            var pagoid= await _pagoService.GetPagoById(id);
+            var response = new ApiResponse<bePago>(pagoid);
+            return Ok(response);
         }
     }
 }

@@ -70,5 +70,10 @@ namespace SISGRAFH.Core.Services
         {
             return await _unitOfWork.Pago.GetAllAsync();
         }
+
+        public async Task<bePago> GetPagoById(string id)
+        {
+            return await _unitOfWork.Pago.GetByIdAsync(id);
+        }
     }
 }
