@@ -18,6 +18,7 @@ namespace SISGRAFH.Core.Entities
         public string codigo_producto { get; set; }
         [BsonElement("id_solicitud")]
         public string id_solicitud { get; set; }
+        //En cola, En produccion,Finalizado
         [BsonElement("estado")]
         public string estado { get; set; }
         [BsonElement("instrucciones")]

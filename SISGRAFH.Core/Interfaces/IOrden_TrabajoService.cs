@@ -11,6 +11,8 @@ namespace SISGRAFH.Core.Interfaces
     public interface IOrden_TrabajoService
     {
         Task<IEnumerable<beOrden_Trabajo>> GetOrdenes();
+        Task<IEnumerable<beOrden_Trabajo>> GetOrdenesByCodigoCotizacion(string codigo);
+        Task<IEnumerable<beOrden_Trabajo>> GetOrdenesByIdMaquina(string id_maquina);
         Task<beOrden_Trabajo> PostOrden(beOrden_Trabajo ot);
         Task<List<beOrden_Trabajo>> GenerarOrdenesByCotizacion(string codigo);
     }

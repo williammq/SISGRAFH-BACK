@@ -23,5 +23,11 @@ namespace SISGRAFH.Infraestructure.Repositories
             var ordenes = await _orden.Find(o => true).ToListAsync();
             return ordenes;
         }
+
+        public async Task<IEnumerable<beOrden_Trabajo>> GetOrdenesByIDSolicitud(string id_solicitud)
+        {
+            var ordenes = await _orden.Find(o => o.id_solicitud==id_solicitud).ToListAsync();
+            return ordenes;
+        }
     }
 }

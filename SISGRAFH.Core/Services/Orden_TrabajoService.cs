@@ -40,6 +40,18 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Orden_Trabajo.GetAllAsync();
         }
 
+        public async Task<IEnumerable<beOrden_Trabajo>> GetOrdenesByCodigoCotizacion(string codigo)
+        {
+            var solicitud = await _unitOfWork.Solicitud.GetSolicitudByCodigoCotizacion(codigo);
+            return await _unitOfWork.Orden_Trabajo.GetOrdenesByIDSolicitud(solicitud.Id);
+        }
+
+        public async Task<IEnumerable<beOrden_Trabajo>> GetOrdenesByIdMaquina(string id_maquina)
+        {
+            var ordenes = await _unitOfWork.Orden_Trabajo.GetAllAsync();
+            return ordenes.Where(x=>x.instrucciones.Any(i=>i.id_maquina==id_maquina));
+        }
+
         public async Task<beOrden_Trabajo> PostOrden(beOrden_Trabajo ot)
         {
             return await _unitOfWork.Orden_Trabajo.InsertOneAsync(ot);

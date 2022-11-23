@@ -33,10 +33,24 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<List<beOrden_Trabajo>>(ordenes);
             return Ok(response);
         }
-        [HttpPost("GetAllOrdenes")]
+        [HttpGet("GetAllOrdenes")]
         public async Task<IActionResult> GetAllOrdenes(string codigo)
         {
             var ordenes = await _orden_TrabajoService.GetOrdenes();
+            var response = new ApiResponse<IEnumerable<beOrden_Trabajo>>(ordenes);
+            return Ok(response);
+        }
+        [HttpGet("GetOrdenesByCodigoSolicitud")]
+        public async Task<IActionResult> GetOrdenesByCodigoSolicitud(string codigo)
+        {
+            var ordenes = await _orden_TrabajoService.GetOrdenesByCodigoCotizacion(codigo);
+            var response = new ApiResponse<IEnumerable<beOrden_Trabajo>>(ordenes);
+            return Ok(response);
+        }
+        [HttpGet("GetOrdenesByidMaquina")]
+        public async Task<IActionResult> GetOrdenesByidMaquina(string id_maquina)
+        {
+            var ordenes = await _orden_TrabajoService.GetOrdenesByIdMaquina(id_maquina);
             var response = new ApiResponse<IEnumerable<beOrden_Trabajo>>(ordenes);
             return Ok(response);
         }

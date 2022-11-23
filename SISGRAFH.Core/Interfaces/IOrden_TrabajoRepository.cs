@@ -10,5 +10,6 @@ namespace SISGRAFH.Core.Interfaces
     public interface IOrden_TrabajoRepository : IRepository<beOrden_Trabajo>
     {
         Task<IEnumerable<beOrden_Trabajo>> GetOrdenes();
+        Task<IEnumerable<beOrden_Trabajo>> GetOrdenesByIDSolicitud(string id_solicitud);
     }
 }

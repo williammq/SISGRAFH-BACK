@@ -22,11 +22,13 @@ namespace SISGRAFH.Api.Controllers
     {
 
         private static IPagoService _pagoService;
+        private static IOrden_TrabajoService _ordenTrabajoService;
         private static IMapper _mapper;
-        public PagoController(IPagoService pagoService, IMapper mapper)
+        public PagoController(IPagoService pagoService, IOrden_TrabajoService ordenTrabajoService, IMapper mapper)
         {
             _pagoService = pagoService;
             _mapper = mapper;
+            _ordenTrabajoService = ordenTrabajoService;
         }
 
         [HttpPost("PagoTP1")]
@@ -46,6 +48,7 @@ namespace SISGRAFH.Api.Controllers
         public async Task<IActionResult> evaluarPago(PagoDto evalpagoDto)
         {
             var evalpagos = _mapper.Map<bePago>(evalpagoDto);
+            if (evalpagoDto.estado.ToLower() == "aprobado") {await _ordenTrabajoService.GenerarOrdenesByCotizacion(evalpagoDto.codigo_cotizacion); }
             var pagoPosted = await _pagoService.evaluarPago(evalpagos);
 
             evalpagoDto = _mapper.Map<PagoDto>(pagoPosted);
