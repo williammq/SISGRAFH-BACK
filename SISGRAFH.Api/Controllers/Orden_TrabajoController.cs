@@ -12,6 +12,7 @@ using SISGRAFH.Infraestructure.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SISGRAFH.Core.Utils.BlobStorage;
+using SISGRAFH.Core.DTOs.Orden_Trabajo;
 
 namespace SISGRAFH.Api.Controllers
 {
@@ -52,6 +53,14 @@ namespace SISGRAFH.Api.Controllers
         {
             var ordenes = await _orden_TrabajoService.GetOrdenesByIdMaquina(id_maquina);
             var response = new ApiResponse<IEnumerable<beOrden_Trabajo>>(ordenes);
+            return Ok(response);
+        }
+        [HttpPut("UpdateOrdenTrabajo")]
+        public async Task<IActionResult> UpdateOrdenTrabajo(Orden_TrabajoDto orden_TrabajoDto)
+        {
+            var ot = _mapper.Map<beOrden_Trabajo>(orden_TrabajoDto);
+            var otUpdated = await _orden_TrabajoService.UpdateOrden(ot);
+            var response = new ApiResponse<beOrden_Trabajo>(otUpdated);
             return Ok(response);
         }
     }

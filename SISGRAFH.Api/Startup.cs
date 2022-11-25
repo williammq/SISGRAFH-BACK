@@ -125,8 +125,7 @@ namespace SISGRAFH.Api
             services.AddTransient<IPagoService, PagoService>();
             services.AddTransient<IOrden_TrabajoService, Orden_TrabajoService>();
             services.AddTransient<IUbigeoService, UbigeoService>();
-            services.AddTransient<IPedidoService, PedidoService>();
-            
+            services.AddTransient<IReporteProduccionService, ReporteProduccionService>();
 
         }
 

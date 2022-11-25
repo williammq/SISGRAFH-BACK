@@ -65,6 +65,18 @@ namespace SISGRAFH.Core.Services
                     lam.grosor_laminacion_maximo = lamPut.grosor_laminacion_maximo;
                     lam.velocidad = lamPut.velocidad;
                     break;
+                case "beTroqueladora":
+                    var troq = (beTroqueladora)maquinaDb;
+                    var troqPut = (beTroqueladora)maquina;
+                    troq.capacidad = troqPut.capacidad;
+                    troq.cuchilla = troqPut.cuchilla;
+                    break;
+                case "beHendidora":
+                    var hen = (beHendidora)maquinaDb;
+                    var henPut = (beHendidora)maquina;
+                    hen.ancho_maximo_plegado = henPut.ancho_maximo_plegado;
+                    hen.profundidad_plegado = henPut.profundidad_plegado;
+                    break;
             }
             return await _unitOfWork.Maquina.UpdateOneAsync(maquinaDb);
         }
