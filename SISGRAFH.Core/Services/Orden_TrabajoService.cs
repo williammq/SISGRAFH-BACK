@@ -35,6 +35,11 @@ namespace SISGRAFH.Core.Services
             return ordenes;
         }
 
+        public async Task<beOrden_Trabajo> GetOrdenById(string id)
+        {
+            return await _unitOfWork.Orden_Trabajo.GetByIdAsync(id);
+        }
+
         public async Task<IEnumerable<beOrden_Trabajo>> GetOrdenes()
         {
             return await _unitOfWork.Orden_Trabajo.GetAllAsync();
@@ -55,6 +60,21 @@ namespace SISGRAFH.Core.Services
         public async Task<beOrden_Trabajo> PostOrden(beOrden_Trabajo ot)
         {
             return await _unitOfWork.Orden_Trabajo.InsertOneAsync(ot);
+        }
+
+        public async Task<beOrden_Trabajo> UpdateOrden(beOrden_Trabajo ot)
+        {
+            var otDb = await _unitOfWork.Orden_Trabajo.GetByIdAsync(ot.Id);
+            if (otDb == null)
+            {
+                return await PostOrden(ot);
+            };
+            otDb.codigo_producto = ot.codigo_producto;
+            otDb.instrucciones = ot.instrucciones;
+            otDb.id_solicitud = ot.id_solicitud;
+            otDb.estado = ot.estado;
+            otDb.id_producto = ot.id_producto;
+            return await _unitOfWork.Orden_Trabajo.UpdateOneAsync(otDb);
         }
     }
 }

@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SISGRAFH.Core.DTOs.Orden_Trabajo;
 using SISGRAFH.Core.DTOs.Pedido;
+using SISGRAFH.Core.DTOs.Reporte_Producción;
 
 namespace SISGRAFH.Infraestructure.Mappings
 {
@@ -113,6 +114,13 @@ namespace SISGRAFH.Infraestructure.Mappings
             //Automapper de Pedidos
             CreateMap<bePedido, PedidoDto>();
             CreateMap<PedidoDto, bePedido>();
+            //Automapper de Reporte de Producción
+            CreateMap<beReporteProduccion, ReporteProduccionDto>();
+            CreateMap<ReporteProduccionDto, beReporteProduccion>();
+
+            CreateMap<beInsumoProduccion, InsumoProduccionDto>();
+            CreateMap<InsumoProduccionDto, beInsumoProduccion>();
+
         }
     }
 }

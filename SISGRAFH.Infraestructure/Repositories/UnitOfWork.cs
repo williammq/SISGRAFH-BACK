@@ -38,5 +38,7 @@ namespace SISGRAFH.Infraestructure.Repositories
         public IUbigeoRepository Ubigeo => new UbigeoRepository(_dbContext.Database);
 
         public IPedidoRepository Pedido => new PedidoRepository(_dbContext.Database);
+
+        public IReporteProduccionRepository ReporteProduccion => new ReporteProduccionReposistory(_dbContext.Database);
     }
 }

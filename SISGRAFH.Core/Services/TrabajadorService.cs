@@ -35,7 +35,6 @@ namespace SISGRAFH.Core.Services
         {
             string base64String = _beTrabajador.Foto.Split(",")[1];
             _beTrabajador.Foto = await _fileStorage.SaveFile(Convert.FromBase64String(base64String), "jpg", "sisgraphfiles");
-
             return await _unitOfWork.Trabajador.InsertOneAsync(_beTrabajador);
         }
 

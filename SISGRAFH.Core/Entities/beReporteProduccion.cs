@@ -15,10 +15,14 @@ namespace SISGRAFH.Core.Entities
         public string id_orden_trabajo { get; set; }
         [BsonElement("id_maquina")]
         public string id_maquina { get; set; }
+        [BsonElement("id_usuario")]
+        public string id_usuario { get; set; }
         [BsonElement("fecha_hora_inicio")]
         public DateTime fecha_hora_inicio { get; set; }
         [BsonElement("fecha_hora_fin")]
         public DateTime fecha_hora_fin { get; set; }
+        [BsonElement("estado")]
+        public string estado { get; set; }
         [BsonElement("entrada")]
         public beComponente entrada { get; set; }
         [BsonElement("salida")]
