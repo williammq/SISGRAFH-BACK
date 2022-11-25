@@ -127,6 +127,7 @@ namespace SISGRAFH.Api
             services.AddTransient<IUbigeoService, UbigeoService>();
             services.AddTransient<IReporteProduccionService, ReporteProduccionService>();
 
+            services.AddTransient<IPedidoService,PedidoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
