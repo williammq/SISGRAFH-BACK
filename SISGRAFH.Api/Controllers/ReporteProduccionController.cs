@@ -50,5 +50,26 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<beReporteProduccion>(reportePosted);
             return Ok(response);
         }
+        [HttpPut("UpdateReporteProduccion")]
+        public async Task<IActionResult> UpdateReporteProduccion(ReporteProduccionDto reporteProduccionDto)
+        {
+            var ot = await _orden_TrabajoService.GetOrdenById(reporteProduccionDto.id_orden_trabajo);
+            //var finalizo = ot.instrucciones.ToArray()[ot.instrucciones.Count()-1].numero_orden==reporteProduccionDto.numero_instruccion && reporteProduccionDto.estado=="Finalizado";
+            String id_usuario = this.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "iduser")?.Value;
+            reporteProduccionDto.id_usuario = id_usuario;
+            if (reporteProduccionDto.estado == "Finalizado" && ot.instrucciones[ot.instrucciones.Count()-1].numero_orden==reporteProduccionDto.numero_instruccion) 
+            {
+                ot.estado = "Finalizado";  await _orden_TrabajoService.UpdateOrden(ot); 
+            }
+            //if (!finalizo)
+            //{
+            //    ot.estado = "En proceso";
+            //    await _orden_TrabajoService.UpdateOrden(ot);
+            //}
+            var reporte = _mapper.Map<beReporteProduccion>(reporteProduccionDto);
+            var reportePosted = await _reporteProduccionService.UpdateReporteProduccion(reporte);
+            var response = new ApiResponse<beReporteProduccion>(reportePosted);
+            return Ok(response);
+        }
     }
 }

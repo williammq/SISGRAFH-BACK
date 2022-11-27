@@ -14,6 +14,8 @@ namespace SISGRAFH.Core.Entities
     {
         [BsonElement("id_producto")]
         public string id_producto { get; set; }
+        [BsonElement("codigo")]
+        public string codigo { get; set; }
         [BsonElement("codigo_producto")]
         public string codigo_producto { get; set; }
         [BsonElement("id_solicitud")]

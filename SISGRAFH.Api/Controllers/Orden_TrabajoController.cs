@@ -55,6 +55,13 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<beOrden_Trabajo>>(ordenes);
             return Ok(response);
         }
+        [HttpGet("GetOrdenesByid")]
+        public async Task<IActionResult> GetOrdenesByid(string id)
+        {
+            var orden = await _orden_TrabajoService.GetOrdenById(id);
+            var response = new ApiResponse<beOrden_Trabajo>(orden);
+            return Ok(response);
+        }
         [HttpPut("UpdateOrdenTrabajo")]
         public async Task<IActionResult> UpdateOrdenTrabajo(Orden_TrabajoDto orden_TrabajoDto)
         {
