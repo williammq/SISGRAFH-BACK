@@ -127,5 +127,11 @@ namespace SISGRAFH.Infraestructure.Repositories
             var ordenes = await _orden.Find(o => o.instrucciones.Any(i=>i.id_maquina==id_maquina)).ToListAsync();
             return ordenes;
         }
+
+        public async Task<beOrden_Trabajo> GetOrdenesByCodigo(string codigo)
+        {
+            var orden = await _orden.Find(o => o.codigo==codigo).FirstOrDefaultAsync();
+            return orden;
+        }
     }
 }
