@@ -70,5 +70,12 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<beOrden_Trabajo>(otUpdated);
             return Ok(response);
         }
+        [HttpGet("GetOrdenesBycodigo")]
+        public async Task<IActionResult> GetOrdenesBycodigo(string codigo)
+        {
+            var orden = await _orden_TrabajoService.GetOrdenesByCodigo(codigo);
+            var response = new ApiResponse<beOrden_Trabajo>(orden);
+            return Ok(response);
+        }
     }
 }
