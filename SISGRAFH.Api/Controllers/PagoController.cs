@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using SISGRAFH.Core.Utils.BlobStorage;
 using SISGRAFH.Core.Services;
+using SISGRAFH.Core.DTOs.Usuario;
 
 namespace SISGRAFH.Api.Controllers
 {
@@ -72,6 +73,18 @@ namespace SISGRAFH.Api.Controllers
             var pagoid= await _pagoService.GetPagoById(id);
             var response = new ApiResponse<bePago>(pagoid);
             return Ok(response);
+        }
+
+        [HttpPut("putPago")]
+        public async Task<IActionResult> UpdateUser(PagoDto modpago)
+        {
+            var modipago = _mapper.Map<bePago>(modpago);
+            var pagoPosted = await _pagoService.ModPago(modipago);
+
+            modpago = _mapper.Map<PagoDto>(pagoPosted);
+            var response = new ApiResponse<PagoDto>(modpago);
+            return Ok(response);
+
         }
     }
 }
