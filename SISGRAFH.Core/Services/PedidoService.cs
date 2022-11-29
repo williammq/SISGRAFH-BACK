@@ -30,10 +30,20 @@ namespace SISGRAFH.Core.Services
         {
             return await _unitOfWork.Pedido.GetPedidosByCliente(id);
         }
+        public async Task<IEnumerable<object>> GetTrackigPedidosByCliente(string id)
+        {
+            var cliente = await _unitOfWork.Cliente.GetClienteByUsuario(id);
+            if(cliente is null)
+            {
+                return null;
+            }
+            return await _unitOfWork.Pedido.GetTrackigPedidosByCliente(cliente.Id);
+        }
 
         public async Task<IEnumerable<object>> GetProductosByPedido(string id)
         {
             return await _unitOfWork.Pedido.GetProductosByPedido(id);
         }
+
     }
 }

@@ -29,6 +29,27 @@ namespace SISGRAFH.Infraestructure.Repositories
             var pedidos = await _pedido.Find(x => x.id_cliente == id).ToListAsync();
             return pedidos;
         }
+        public async Task<IEnumerable<object>> GetTrackigPedidosByCliente(string id)
+        {
+            var listPedidos = await _pedido.Find(x => x.id_cliente == id).ToListAsync();
+            var trackingPedidos = new List<object>();
+            foreach(var pedido in listPedidos)
+            {
+                int trckStep = 1;
+                if (pedido.estado == "Casi listo") trckStep = 2;
+                if (pedido.estado == "Finalizado") trckStep = 3;
+                trackingPedidos.Add(new {
+                    idSolicitud = pedido.id_solicitud,
+                    idCliente = pedido.id_cliente,
+                    estado = pedido.estado,
+                    fechaCreacion = pedido.AudithObject.FechaCreacion.ToString("dd/MM/yyyy HH:mm"),
+                    step = trckStep
+                });
+            }
+            
+
+            return trackingPedidos;
+        }
 
         public async Task<IEnumerable<object>> GetProductosByPedido(string id)
         {
@@ -37,5 +58,6 @@ namespace SISGRAFH.Infraestructure.Repositories
             productos.AddRange(pedido.productos.AsQueryable().ToList());
             return productos;
         }
+
     }
 }
