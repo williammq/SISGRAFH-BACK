@@ -20,29 +20,9 @@ namespace SISGRAFH.Core.Services
             _fileStorage = fileStorage;
         }
 
-        public async Task<IEnumerable<beReporteVenta>> consultarventa()
+        public async Task<IEnumerable<beReporteVenta>> consulventa()
         {
             return await _unitOfWork.Venta.GetAllAsync();
-        }
-
-        public async Task<beReporteVenta> PostReporteVenta(beReporteVenta venta)
-        {
-            
-            return await _unitOfWork.Venta.InsertOneAsync(venta);
-        }
-        public async Task<IEnumerable<beReporteVenta>> GetReporteVenta()
-        {
-            return await _unitOfWork.Venta.GetAllAsync();
-        }
-
-        public Task<beReporteVenta> consulventa(beReporteVenta venta)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<beReporteVenta>> GetReporteventa()
-        {
-            throw new NotImplementedException();
         }
     }
 }

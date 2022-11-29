@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SISGRAFH.Core.Entities
 {
-       [BsonCollection(MongoCollectionNames.Pagos)]
+   [BsonCollection(MongoCollectionNames.Pagos)]
    public class bePago : BaseEntity
     {
         

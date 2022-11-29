@@ -6,8 +6,6 @@ namespace SISGRAFH.Core.Interfaces
 {
     public interface IReporteVentaService
     {
-        Task<beReporteVenta> PostReporteVenta(beReporteVenta venta);
         Task<IEnumerable<beReporteVenta>> consulventa();
-        Task<IEnumerable<beReporteVenta>> GetReporteventa();
     }
 }
