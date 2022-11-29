@@ -63,6 +63,5 @@ namespace SISGRAFH.Core.Services
 
             return await _unitOfWork.Usuario.UpdateOneAsync(userDb);
         }
-
     }
 }
