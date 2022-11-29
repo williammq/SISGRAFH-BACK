@@ -1,5 +1,6 @@
 ﻿using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
+using SISGRAFH.Core.Utils.BlobStorage;
 using SISGRAFH.Infraestructure.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace SISGRAFH.Core.Services
     public class MaquinaService : IMaquinaService
     {
         private static IUnitOfWork _unitOfWork;
+        private static IFileStorage _fileStorage;
 
-        public MaquinaService(IUnitOfWork unitOfWork)
+        public MaquinaService(IUnitOfWork unitOfWork, IFileStorage fileStorage)
         {
             _unitOfWork = unitOfWork;
+            _fileStorage = fileStorage;
         }
         public async Task<IEnumerable<object>> GetMaquinas()
         {
@@ -24,11 +27,14 @@ namespace SISGRAFH.Core.Services
 
         public async Task<beMaquina> PostMaquina(beMaquina maquina)
         {
+            string base64String = maquina.url_imagen.Split(",")[1];
+            maquina.url_imagen = await _fileStorage.SaveFile(Convert.FromBase64String(base64String), "jpg", "sisgraphfiles");
             return await _unitOfWork.Maquina.InsertOneAsync(maquina);
         }
 
         public async Task<beMaquina> UpdateMaquina(beMaquina maquina)
         {
+            string base64String = maquina.url_imagen.Split(",")[1];
             var maquinaDb = await _unitOfWork.Maquina.GetByIdAsync(maquina.Id);
             if (maquinaDb == null)
             {
@@ -37,7 +43,7 @@ namespace SISGRAFH.Core.Services
             maquinaDb.nombre = maquina.nombre;
             maquinaDb.descripcion = maquina.descripcion;
             maquinaDb.marca = maquina.marca;
-            maquinaDb.url_imagen = maquina.url_imagen;
+            maquinaDb.url_imagen = await _fileStorage.SaveFile(Convert.FromBase64String(base64String), "jpg", "sisgraphfiles");
             maquinaDb.tipo_maquina = maquina.tipo_maquina;
             switch (maquinaDb.GetType().Name)
             {
@@ -64,6 +70,18 @@ namespace SISGRAFH.Core.Services
                     lam.ancho_maximo_laminacion = lamPut.ancho_maximo_laminacion;
                     lam.grosor_laminacion_maximo = lamPut.grosor_laminacion_maximo;
                     lam.velocidad = lamPut.velocidad;
+                    break;
+                case "beTroqueladora":
+                    var troq = (beTroqueladora)maquinaDb;
+                    var troqPut = (beTroqueladora)maquina;
+                    troq.capacidad = troqPut.capacidad;
+                    troq.cuchilla = troqPut.cuchilla;
+                    break;
+                case "beHendidora":
+                    var hen = (beHendidora)maquinaDb;
+                    var henPut = (beHendidora)maquina;
+                    hen.ancho_maximo_plegado = henPut.ancho_maximo_plegado;
+                    hen.profundidad_plegado = henPut.profundidad_plegado;
                     break;
             }
             return await _unitOfWork.Maquina.UpdateOneAsync(maquinaDb);

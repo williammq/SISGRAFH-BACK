@@ -37,13 +37,9 @@ namespace SISGRAFH.Api.Controllers
             _beUsuario.Estado = "Activo";
             _beUsuario.Clave = clave;
 
-
-            //Verificar 
             List<ObjRol> roles = new List<ObjRol>();
             roles.Add(new ObjRol { IdRol = "6367535efa43cf529aad6e0e", Nombre = "Trabajador" });
             _beUsuario.Roles = roles;
-
-
 
             _beTrabajador.Id = id_trabajador.ToString();
             var usuarios = await _usuarioService.PostUsuario(_beUsuario);
@@ -63,6 +59,5 @@ namespace SISGRAFH.Api.Controllers
             var trabajadores = await _trabajadorService.GetTrabajadorById(id);
             return Ok(trabajadores);
         }
-
     }
 }

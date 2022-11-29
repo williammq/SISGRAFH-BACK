@@ -16,8 +16,8 @@ namespace SISGRAFH.Core.Interfaces
         Task <IEnumerable<beCliente>> GetClienteByNumeroDocumento (string numeroDocumento);
 
         Task<IEnumerable<beCliente>> GetClienteByRUC(string ruc);
-
-
+        
+        Task<beCliente> GetClienteByProperty(beCliente beCliente);
     }
 }
     

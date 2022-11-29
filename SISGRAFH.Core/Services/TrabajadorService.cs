@@ -1,5 +1,6 @@
 ﻿using SISGRAFH.Core.Entities;
 using SISGRAFH.Core.Interfaces;
+using SISGRAFH.Core.Utils.BlobStorage;
 using SISGRAFH.Infraestructure.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace SISGRAFH.Core.Services
     public class TrabajadorService : ITrabajadorService
     {
         private static IUnitOfWork _unitOfWork;
+        private static IFileStorage _fileStorage;
 
-        public TrabajadorService(IUnitOfWork unitOfWork)
+        public TrabajadorService(IUnitOfWork unitOfWork, IFileStorage fileStorage)
         {
             _unitOfWork = unitOfWork;
+            _fileStorage= fileStorage;
         }
 
         public async Task<IEnumerable<beTrabajador>> GetAllTrabajadores()
@@ -30,6 +33,8 @@ namespace SISGRAFH.Core.Services
 
         public async Task<beTrabajador> InsertTrabajador(beTrabajador _beTrabajador)
         {
+            string base64String = _beTrabajador.Foto.Split(",")[1];
+            _beTrabajador.Foto = await _fileStorage.SaveFile(Convert.FromBase64String(base64String), "jpg", "sisgraphfiles");
             return await _unitOfWork.Trabajador.InsertOneAsync(_beTrabajador);
         }
 

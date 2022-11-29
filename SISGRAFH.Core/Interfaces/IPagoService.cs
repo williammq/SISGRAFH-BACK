@@ -9,5 +9,8 @@ namespace SISGRAFH.Core.Interfaces
         Task<bePago> PostPago(bePago pago);
         Task<bePago> evaluarPago(bePago pago);
         Task<IEnumerable<bePago>> GetPago();
+        Task<bePago> GetPagoById(string id);
+
+        Task<bePago> ModPago(bePago pago);
     }
 }

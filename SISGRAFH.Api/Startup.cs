@@ -123,6 +123,11 @@ namespace SISGRAFH.Api
             services.AddTransient<ICatalogoService, CatalogoService>();
             services.AddTransient<ITrabajadorService, TrabajadorService>();
             services.AddTransient<IPagoService, PagoService>();
+            services.AddTransient<IOrden_TrabajoService, Orden_TrabajoService>();
+            services.AddTransient<IUbigeoService, UbigeoService>();
+            services.AddTransient<IReporteProduccionService, ReporteProduccionService>();
+
+            services.AddTransient<IPedidoService,PedidoService>();
             services.AddTransient<IReporteVentaService, ReporteVentaService>();
 
         }
