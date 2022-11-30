@@ -111,6 +111,11 @@ namespace SISGRAFH.Infraestructure.Mappings
             //Automapper de Pago
             CreateMap<bePago, PagoDto>();
             CreateMap<PagoDto, bePago>();
+            //Automapper de Reporte de producción
+            CreateMap<beReporteProduccion, ReporteProduccionDto>();
+            CreateMap<ReporteProduccionDto, beReporteProduccion>();
+            CreateMap<beInsumoProduccion, InsumoProduccionDto>();
+            CreateMap<InsumoProduccionDto, beInsumoProduccion>();
         }
     }
 }

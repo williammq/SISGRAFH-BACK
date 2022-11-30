@@ -26,6 +26,6 @@ namespace SISGRAFH.Core.DTOs.Reporte_Producción
     {
         public string id_insumo { get; set; }
         public double cantidad { get; set; }
-        public double stock_usado { get; set; }
+        public int stock_usado { get; set; }
     }
 }

@@ -35,20 +35,24 @@ namespace SISGRAFH.Api.Controllers
         [HttpPost("PostReporteProduccion")]
         public async Task<IActionResult> PostReporteProduccion(ReporteProduccionDto reporteProduccionDto)
         {
-            var reportes = await _reporteProduccionService.GetReportesProduccionById_Ot(reporteProduccionDto.id_orden_trabajo);
-            var hayReportes = reportes.Count()>0;
-            String id_usuario = this.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "iduser")?.Value;
-            reporteProduccionDto.id_usuario = id_usuario;
-            if (!hayReportes)
-            {
-                var ot = await _orden_TrabajoService.GetOrdenById(reporteProduccionDto.id_orden_trabajo);
-                ot.estado = "En proceso";
-                await _orden_TrabajoService.UpdateOrden(ot);
+            try {
+                var reportes = await _reporteProduccionService.GetReportesProduccionById_Ot(reporteProduccionDto.id_orden_trabajo);
+                var hayReportes = reportes.Count() > 0;
+                String id_usuario = this.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "iduser")?.Value;
+                reporteProduccionDto.id_usuario = id_usuario;
+                if (!hayReportes)
+                {
+                    var ot = await _orden_TrabajoService.GetOrdenById(reporteProduccionDto.id_orden_trabajo);
+                    ot.estado = "En proceso";
+                    await _orden_TrabajoService.UpdateOrden(ot);
+                }
+                var reporte = _mapper.Map<beReporteProduccion>(reporteProduccionDto);
+                var reportePosted = await _reporteProduccionService.PostReporteProduccion(reporte);
+                var response = new ApiResponse<beReporteProduccion>(reportePosted);
+                return Ok(response);
+            } catch (Exception e){
+                return BadRequest(e.Message);
             }
-            var reporte = _mapper.Map<beReporteProduccion>(reporteProduccionDto);
-            var reportePosted = await _reporteProduccionService.PostReporteProduccion(reporte);
-            var response = new ApiResponse<beReporteProduccion>(reportePosted);
-            return Ok(response);
         }
         [HttpPut("UpdateReporteProduccion")]
         public async Task<IActionResult> UpdateReporteProduccion(ReporteProduccionDto reporteProduccionDto)
