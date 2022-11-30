@@ -11,6 +11,7 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<object>> GetPedidos();
         Task<IEnumerable<object>> GetPedidosByCliente(string id);
+        Task<IEnumerable<object>> GetTrackigPedidosByCliente(string id);
         Task<IEnumerable<object>> GetProductosByPedido(string id);
     }
 }

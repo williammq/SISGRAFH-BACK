@@ -1,6 +1,8 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using SISGRAFH.Core.Interfaces;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -30,6 +32,15 @@ namespace SISGRAFH.Api.Controllers
             var pedidos = await _pedidoService.GetPedidosByCliente(id);
             return Ok(pedidos);
         }
+
+        [HttpGet("GetTrackigPedidosByCliente")]
+        public async Task<IActionResult> GetTrackigPedidosByCliente()
+        {
+            String id_usuario = this.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "iduser")?.Value;
+            var pedidos = await _pedidoService.GetTrackigPedidosByCliente(id_usuario);
+            return Ok(pedidos);
+        }
+
         [HttpGet("GetProductoByCliente")]
         public async Task<IActionResult> GetProductoByCliente(string id)
         {

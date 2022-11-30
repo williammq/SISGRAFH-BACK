@@ -10,6 +10,7 @@ namespace SISGRAFH.Core.Interfaces
     public interface IClienteRepository : IRepository<beCliente>
     {
         Task<IEnumerable<beCliente>> GetClienteByCorreo(string correo);
+        Task<beCliente> GetClienteByUsuario(string idUsuario);
 
         Task<IEnumerable<beCliente>> GetClienteByNombreApellido(string nombre, string apellidopaterno, string apellidomaterno);
         
