@@ -32,5 +32,27 @@ namespace SISGRAFH.Core.Services
         {
             return await _unitOfWork.ReporteProduccion.InsertOneAsync(reporteProduccion);
         }
+
+        public async Task<beReporteProduccion> UpdateReporteProduccion(beReporteProduccion reporteProduccion)
+        {
+            var reporteProduccionDb = await _unitOfWork.ReporteProduccion.GetByIdAsync(reporteProduccion.Id);
+            if (reporteProduccionDb == null)
+            {
+                return await PostReporteProduccion(reporteProduccion);
+            };
+            reporteProduccionDb.AudithObject = new Audith();
+            reporteProduccionDb.id_maquina = reporteProduccion.id_maquina;
+            reporteProduccionDb.id_orden_trabajo = reporteProduccion.id_orden_trabajo;
+            reporteProduccionDb.id_usuario = reporteProduccion.id_usuario;
+            reporteProduccionDb.insumos_entrada = reporteProduccion.insumos_entrada;
+            reporteProduccionDb.insumos_salida = reporteProduccion.insumos_salida;
+            reporteProduccionDb.fecha_hora_inicio = reporteProduccion.fecha_hora_inicio;
+            reporteProduccionDb.fecha_hora_fin = reporteProduccion.fecha_hora_fin;
+            reporteProduccionDb.estado = reporteProduccion.estado;
+            reporteProduccionDb.entrada = reporteProduccion.entrada;
+            reporteProduccionDb.salida = reporteProduccion.salida;
+            reporteProduccionDb.numero_instruccion = reporteProduccion.numero_instruccion;
+            return await _unitOfWork.ReporteProduccion.UpdateOneAsync(reporteProduccionDb);
+        }
     }
 }

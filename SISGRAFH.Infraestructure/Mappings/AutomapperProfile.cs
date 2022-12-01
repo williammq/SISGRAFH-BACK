@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SISGRAFH.Core.DTOs.Orden_Trabajo;
+using SISGRAFH.Core.DTOs.ReporteVenta;
 using SISGRAFH.Core.DTOs.Pedido;
 using SISGRAFH.Core.DTOs.Reporte_Producción;
 using SISGRAFH.Core.DTOs.Reporte_Merma;
@@ -111,14 +112,9 @@ namespace SISGRAFH.Infraestructure.Mappings
             //Automapper de Pago
             CreateMap<bePago, PagoDto>();
             CreateMap<PagoDto, bePago>();
-
-            //Automapper de Pedidos
-            CreateMap<bePedido, PedidoDto>();
-            CreateMap<PedidoDto, bePedido>();
-            //Automapper de Reporte de Producción
+            //Automapper de Reporte de producción
             CreateMap<beReporteProduccion, ReporteProduccionDto>();
             CreateMap<ReporteProduccionDto, beReporteProduccion>();
-
             CreateMap<beInsumoProduccion, InsumoProduccionDto>();
             CreateMap<InsumoProduccionDto, beInsumoProduccion>();
 

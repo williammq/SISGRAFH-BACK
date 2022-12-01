@@ -101,7 +101,7 @@ namespace SISGRAFH.Api
             //Automapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            //Inyección de dependencias de MongoDB debe ir antes de la I.D. de los servicios
+            //Inyecciï¿½n de dependencias de MongoDB debe ir antes de la I.D. de los servicios
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoConnection"));
             services.Configure<AzureBlobStorageSettings>(Configuration.GetSection("AzureBlobStorage"));
             services.AddSingleton<MongoContext>();
@@ -130,6 +130,7 @@ namespace SISGRAFH.Api
             services.AddTransient<IPedidoService,PedidoService>();
 
             services.AddTransient<IReporteMermaService, ReporteMermaService>();
+            services.AddTransient<IReporteVentaService, ReporteVentaService>();
 
         }
 

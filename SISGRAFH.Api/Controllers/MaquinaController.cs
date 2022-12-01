@@ -42,6 +42,8 @@ namespace SISGRAFH.Api.Controllers
                 case "Impresora": maquina = JsonSerializer.Deserialize<beImpresoraDigital>(js); break;
                 case "Guillotina": maquina = JsonSerializer.Deserialize<beGuillotina>(js); break;
                 case "Laminadora": maquina = JsonSerializer.Deserialize<beLaminadora>(js); break;
+                case "Troqueladora": maquina = JsonSerializer.Deserialize<beTroqueladora>(js); break;
+                case "Hendidora": maquina = JsonSerializer.Deserialize<beHendidora>(js); break;
             }
             var maquinaPosted = await _maquinaService.PostMaquina(maquina);
 

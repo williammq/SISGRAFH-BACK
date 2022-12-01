@@ -15,6 +15,8 @@ namespace SISGRAFH.Core.Entities
         public string id_orden_trabajo { get; set; }
         [BsonElement("id_maquina")]
         public string id_maquina { get; set; }
+        [BsonElement("numero_instruccion")]
+        public int numero_instruccion { get; set; }
         [BsonElement("id_usuario")]
         public string id_usuario { get; set; }
         [BsonElement("fecha_hora_inicio")]
@@ -27,14 +29,18 @@ namespace SISGRAFH.Core.Entities
         public beComponente entrada { get; set; }
         [BsonElement("salida")]
         public beComponente salida { get; set; }
-        [BsonElement("insumos_usados")]
-        public List<beInsumoProduccion> insumos_usados { get; set; }
+        [BsonElement("insumos_entrada")]
+        public List<beInsumoProduccion> insumos_entrada { get; set; }
+        [BsonElement("insumos_salida")]
+        public List<beInsumoProduccion> insumos_salida { get; set; }
     }
     public class beInsumoProduccion
     {
         [BsonElement("id_insumo")]
         public string id_insumo { get; set; }
-        [BsonElement("cantidad_usada")]
-        public double cantidad_usada { get; set; }
+        [BsonElement("cantidad")]
+        public double cantidad { get; set; }
+        [BsonElement("stock_usado")]
+        public int stock_usado { get; set; }
     }
 }

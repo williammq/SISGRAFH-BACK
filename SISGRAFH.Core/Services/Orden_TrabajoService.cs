@@ -22,7 +22,7 @@ namespace SISGRAFH.Core.Services
         {
             List<beOrden_Trabajo> ordenes = new List<beOrden_Trabajo>();
             var cotizacion = await _unitOfWork.Cotizacion.GetCotizacionByCodigoCotizacion(codigo, "Aprobado");
-            cotizacion.productos_cotizados.ForEach(async delegate (beProductoCotizado pc) {
+            cotizacion.productos_cotizados.ForEach(delegate (beProductoCotizado pc) {
                 beOrden_Trabajo ot = new beOrden_Trabajo();
                 ot.id_solicitud = cotizacion.id_solicitud;
                 ot.id_producto = pc.id_producto;
@@ -30,8 +30,11 @@ namespace SISGRAFH.Core.Services
                 ot.instrucciones = pc.localizaciones;
                 ot.estado = "En cola";
                 ordenes.Add(ot);
-                await _unitOfWork.Orden_Trabajo.InsertOneAsync(ot);
             });
+            if (ordenes.Count() > 0)
+            {
+                ordenes.ForEach(async x => await _unitOfWork.Orden_Trabajo.PostOrdenTrabjo(x));
+            }
             return ordenes;
         }
 
@@ -45,6 +48,11 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Orden_Trabajo.GetAllAsync();
         }
 
+        public async Task<beOrden_Trabajo> GetOrdenesByCodigo(string codigo)
+        {
+            return await _unitOfWork.Orden_Trabajo.GetOrdenesByCodigo(codigo);
+        }
+
         public async Task<IEnumerable<beOrden_Trabajo>> GetOrdenesByCodigoCotizacion(string codigo)
         {
             var solicitud = await _unitOfWork.Solicitud.GetSolicitudByCodigoCotizacion(codigo);
@@ -53,13 +61,12 @@ namespace SISGRAFH.Core.Services
 
         public async Task<IEnumerable<beOrden_Trabajo>> GetOrdenesByIdMaquina(string id_maquina)
         {
-            var ordenes = await _unitOfWork.Orden_Trabajo.GetAllAsync();
-            return ordenes.Where(x=>x.instrucciones.Any(i=>i.id_maquina==id_maquina));
+            return await _unitOfWork.Orden_Trabajo.GetOrdenesByMaquina(id_maquina);
         }
 
         public async Task<beOrden_Trabajo> PostOrden(beOrden_Trabajo ot)
         {
-            return await _unitOfWork.Orden_Trabajo.InsertOneAsync(ot);
+            return await _unitOfWork.Orden_Trabajo.PostOrdenTrabjo(ot);
         }
 
         public async Task<beOrden_Trabajo> UpdateOrden(beOrden_Trabajo ot)
@@ -69,7 +76,9 @@ namespace SISGRAFH.Core.Services
             {
                 return await PostOrden(ot);
             };
+            otDb.AudithObject = new Audith();
             otDb.codigo_producto = ot.codigo_producto;
+            otDb.codigo = ot.codigo;
             otDb.instrucciones = ot.instrucciones;
             otDb.id_solicitud = ot.id_solicitud;
             otDb.estado = ot.estado;

@@ -21,6 +21,7 @@ namespace SISGRAFH.Infraestructure.Data.Interfaces
         public ITrabajadorRepository Trabajador { get; }
         public IOrden_TrabajoRepository Orden_Trabajo { get; }
         public IPagoRepository Pago { get; }
+        public IReporteVentaRepository Venta { get; }
         public IUbigeoRepository Ubigeo { get; }
         public IPedidoRepository Pedido { get; }
         public IReporteMermaRepository ReporteMerma { get; }

@@ -55,12 +55,26 @@ namespace SISGRAFH.Api.Controllers
             var response = new ApiResponse<IEnumerable<beOrden_Trabajo>>(ordenes);
             return Ok(response);
         }
+        [HttpGet("GetOrdenesByid")]
+        public async Task<IActionResult> GetOrdenesByid(string id)
+        {
+            var orden = await _orden_TrabajoService.GetOrdenById(id);
+            var response = new ApiResponse<beOrden_Trabajo>(orden);
+            return Ok(response);
+        }
         [HttpPut("UpdateOrdenTrabajo")]
         public async Task<IActionResult> UpdateOrdenTrabajo(Orden_TrabajoDto orden_TrabajoDto)
         {
             var ot = _mapper.Map<beOrden_Trabajo>(orden_TrabajoDto);
             var otUpdated = await _orden_TrabajoService.UpdateOrden(ot);
             var response = new ApiResponse<beOrden_Trabajo>(otUpdated);
+            return Ok(response);
+        }
+        [HttpGet("GetOrdenesBycodigo")]
+        public async Task<IActionResult> GetOrdenesBycodigo(string codigo)
+        {
+            var orden = await _orden_TrabajoService.GetOrdenesByCodigo(codigo);
+            var response = new ApiResponse<beOrden_Trabajo>(orden);
             return Ok(response);
         }
     }

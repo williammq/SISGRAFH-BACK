@@ -35,6 +35,8 @@ namespace SISGRAFH.Infraestructure.Repositories
         public IOrden_TrabajoRepository Orden_Trabajo => new Orden_TrabajoRepository(_dbContext.Database);
 
         public IPagoRepository Pago =>  new PagoRepository(_dbContext.Database);
+
+        public IReporteVentaRepository Venta => new ReporteVentaServiceRepository(_dbContext.Database);
         public IUbigeoRepository Ubigeo => new UbigeoRepository(_dbContext.Database);
 
         public IPedidoRepository Pedido => new PedidoRepository(_dbContext.Database);

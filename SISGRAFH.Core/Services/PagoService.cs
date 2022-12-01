@@ -75,5 +75,22 @@ namespace SISGRAFH.Core.Services
         {
             return await _unitOfWork.Pago.GetByIdAsync(id);
         }
+
+        public async Task<bePago> ModPago(bePago pago)
+        {
+            var modpagoDb = await _unitOfWork.Pago.GetByIdAsync(pago.Id);
+            if (modpagoDb == null)
+            {
+                return await PostPago(pago);
+            };
+            modpagoDb.id_cliente = pago.id_cliente;
+            modpagoDb.monto_pagado = pago.monto_pagado;
+            modpagoDb.url_imagen = pago.url_imagen;
+            modpagoDb.estado = pago.estado;
+            modpagoDb.motivo_rechazo = pago.motivo_rechazo;
+            modpagoDb.codigo_cotizacion = pago.codigo_cotizacion;
+
+            return await _unitOfWork.Pago.UpdateOneAsync(modpagoDb);
+        }
     }
 }
