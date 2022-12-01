@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SISGRAFH.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace SISGRAFH.Core.Interfaces
     {
         Task<IEnumerable<object>> GetPedidos();
         Task<IEnumerable<object>> GetPedidosByCliente(string id);
+        Task<bePedido> GetPedidosById(string id);
+        Task<bePedido> GetPedidosById_solicitud(string id_solicitud);
         Task<IEnumerable<object>> GetTrackigPedidosByCliente(string id);
         Task<IEnumerable<object>> GetProductosByPedido(string id);
     }

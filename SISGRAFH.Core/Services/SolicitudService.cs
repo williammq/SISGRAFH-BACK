@@ -22,6 +22,11 @@ namespace SISGRAFH.Core.Services
             _fileStorage = fileStorage;
         }
 
+        public async Task<beSolicitud> GetSolicitudById(string id)
+        {
+            return await _unitOfWork.Solicitud.GetByIdAsync(id);
+        }
+
         public async Task<IEnumerable<object>> GetProductosBySolicitud(string id)
         {
             return await _unitOfWork.Solicitud.GetProductosBySolicitud(id);

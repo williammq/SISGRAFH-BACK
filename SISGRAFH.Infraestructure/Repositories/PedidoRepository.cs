@@ -58,6 +58,10 @@ namespace SISGRAFH.Infraestructure.Repositories
             productos.AddRange(pedido.productos.AsQueryable().ToList());
             return productos;
         }
-
+        public async Task<bePedido> GetPedidosById_solicitud(string id_solicitud)
+        {
+            var pedido = await _pedido.Find(x => x.id_solicitud == id_solicitud).FirstOrDefaultAsync();
+            return pedido;
+        }
     }
 }

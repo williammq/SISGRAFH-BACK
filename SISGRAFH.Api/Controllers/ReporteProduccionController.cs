@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SISGRAFH.Api.Responses;
 using SISGRAFH.Core.DTOs.Reporte_Producción;
@@ -18,11 +17,13 @@ namespace SISGRAFH.Api.Controllers
     {
         private static IReporteProduccionService _reporteProduccionService;
         private static IOrden_TrabajoService _orden_TrabajoService;
+        private static ISolicitudService _solicitudService;
         private static IMapper _mapper;
-        public ReporteProduccionController(IOrden_TrabajoService orden_TrabajoService,IReporteProduccionService reporteProduccionService, IMapper mapper)
+        public ReporteProduccionController(IOrden_TrabajoService orden_TrabajoService, IReporteProduccionService reporteProduccionService, IMapper mapper, ISolicitudService solicitudService)
         {
             _reporteProduccionService = reporteProduccionService;
             _orden_TrabajoService = orden_TrabajoService;
+            _solicitudService = solicitudService;
             _mapper = mapper;
         }
         [HttpGet("GetReportesProduccion")]
@@ -35,7 +36,8 @@ namespace SISGRAFH.Api.Controllers
         [HttpPost("PostReporteProduccion")]
         public async Task<IActionResult> PostReporteProduccion(ReporteProduccionDto reporteProduccionDto)
         {
-            try {
+            try
+            {
                 var reportes = await _reporteProduccionService.GetReportesProduccionById_Ot(reporteProduccionDto.id_orden_trabajo);
                 var hayReportes = reportes.Count() > 0;
                 String id_usuario = this.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "iduser")?.Value;
@@ -50,7 +52,9 @@ namespace SISGRAFH.Api.Controllers
                 var reportePosted = await _reporteProduccionService.PostReporteProduccion(reporte);
                 var response = new ApiResponse<beReporteProduccion>(reportePosted);
                 return Ok(response);
-            } catch (Exception e){
+            }
+            catch (Exception e)
+            {
                 return BadRequest(e.Message);
             }
         }
@@ -58,13 +62,19 @@ namespace SISGRAFH.Api.Controllers
         public async Task<IActionResult> UpdateReporteProduccion(ReporteProduccionDto reporteProduccionDto)
         {
             var ot = await _orden_TrabajoService.GetOrdenById(reporteProduccionDto.id_orden_trabajo);
+            var sol = await _solicitudService.GetSolicitudById(ot.id_solicitud);
+            var ots = await _orden_TrabajoService.GetOrdenesByCodigoCotizacion(sol.codigo_cotizacion);
             //var finalizo = ot.instrucciones.ToArray()[ot.instrucciones.Count()-1].numero_orden==reporteProduccionDto.numero_instruccion && reporteProduccionDto.estado=="Finalizado";
             String id_usuario = this.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "iduser")?.Value;
             reporteProduccionDto.id_usuario = id_usuario;
-            if (reporteProduccionDto.estado == "Finalizado" && ot.instrucciones[ot.instrucciones.Count()-1].numero_orden==reporteProduccionDto.numero_instruccion) 
+            if (reporteProduccionDto.estado == "Finalizado" && ot.instrucciones[ot.instrucciones.Count() - 1].numero_orden == reporteProduccionDto.numero_instruccion)
             {
-                ot.estado = "Finalizado";  await _orden_TrabajoService.UpdateOrden(ot); 
+                ot.estado = "Finalizado"; await _orden_TrabajoService.UpdateOrden(ot);
             }
+            //if (sol.productos.Count() == ots.Where(x => x.estado == "Finalizado").Count())
+            //{
+
+            //}
             //if (!finalizo)
             //{
             //    ot.estado = "En proceso";

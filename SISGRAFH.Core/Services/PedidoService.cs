@@ -1,4 +1,5 @@
-﻿using SISGRAFH.Core.Interfaces;
+﻿using SISGRAFH.Core.Entities;
+using SISGRAFH.Core.Interfaces;
 using SISGRAFH.Core.Utils.BlobStorage;
 using SISGRAFH.Infraestructure.Data.Interfaces;
 using System;
@@ -45,5 +46,14 @@ namespace SISGRAFH.Core.Services
             return await _unitOfWork.Pedido.GetProductosByPedido(id);
         }
 
+        public async Task<bePedido> GetPedidosById(string id)
+        {
+            return await _unitOfWork.Pedido.GetByIdAsync(id);
+        }
+
+        public async Task<bePedido> GetPedidosById_solicitud(string id_solicitud)
+        {
+            return await _unitOfWork.Pedido.GetPedidosById_solicitud(id_solicitud);
+        }
     }
 }
