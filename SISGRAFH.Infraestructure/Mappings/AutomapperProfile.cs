@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using SISGRAFH.Core.DTOs.Orden_Trabajo;
 using SISGRAFH.Core.DTOs.Pedido;
 using SISGRAFH.Core.DTOs.Reporte_Producción;
+using SISGRAFH.Core.DTOs.Reporte_Merma;
 
 namespace SISGRAFH.Infraestructure.Mappings
 {
@@ -121,6 +122,15 @@ namespace SISGRAFH.Infraestructure.Mappings
             CreateMap<beInsumoProduccion, InsumoProduccionDto>();
             CreateMap<InsumoProduccionDto, beInsumoProduccion>();
 
+            //Automapper de Reporte de Merma
+            CreateMap<beReporteMerma, ReporteMermaDto>();
+            CreateMap<ReporteMermaDto, beReporteMerma>(); 
+            
+            CreateMap<Objinsumo, ObjinsumoDto>();
+            CreateMap<ObjinsumoDto, Objinsumo>();
+            
+            CreateMap<Objtrabajador, ObjtrabajadorDto>();
+            CreateMap<ObjtrabajadorDto, Objtrabajador>();
         }
     }
 }

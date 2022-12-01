@@ -40,5 +40,7 @@ namespace SISGRAFH.Infraestructure.Repositories
         public IPedidoRepository Pedido => new PedidoRepository(_dbContext.Database);
 
         public IReporteProduccionRepository ReporteProduccion => new ReporteProduccionReposistory(_dbContext.Database);
+
+        public IReporteMermaRepository ReporteMerma => new ReporteMermaRepository(_dbContext.Database);
     }
 }

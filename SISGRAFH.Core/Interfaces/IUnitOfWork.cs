@@ -23,6 +23,7 @@ namespace SISGRAFH.Infraestructure.Data.Interfaces
         public IPagoRepository Pago { get; }
         public IUbigeoRepository Ubigeo { get; }
         public IPedidoRepository Pedido { get; }
+        public IReporteMermaRepository ReporteMerma { get; }
         public IReporteProduccionRepository ReporteProduccion { get; }
     }
 }
